@@ -6,7 +6,8 @@ import edu.monash.fit2099.engine.Location;
 
 public class Fruit extends Item {
     private int turn;
-    private boolean probability;
+    private Probability probability;
+    private static final int chances = 60;
 
     public Fruit() {
         super("Fruit", 'o', true);
@@ -23,10 +24,10 @@ public class Fruit extends Item {
         }
     }
 
-    public void
 
     public void searchFruit(Location location) {
-        if(probability) {
+        probability = new Probability();
+        if(probability.calculateProbability(chances)) {
             location.addItem(new Fruit());
         } else {
             System.out.println("You search the tree for fruit, but you can't find any ripe ones.");

@@ -1,6 +1,5 @@
 package game;
 
-import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
@@ -28,7 +27,7 @@ public class Fruit extends Item {
     public void searchFruit(Location location) {
         probability = new Probability();
         if(probability.calculateProbability(chances)) {
-            location.addItem(new Fruit());
+            location.addItem(this);
         } else {
             System.out.println("You search the tree for fruit, but you can't find any ripe ones.");
         }

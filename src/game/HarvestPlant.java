@@ -31,7 +31,7 @@ public class HarvestPlant extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "harvested" + plant.toString();
+        return actor.toString() + "harvested" + plant.toString();
     }
 
 }

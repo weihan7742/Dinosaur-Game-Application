@@ -1,10 +1,13 @@
 package game;
 
 import edu.monash.fit2099.engine.Ground;
+import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
 public class Tree extends Ground {
 	private int age = 0;
+	private Probability probability = new Probability();
+	private Item fruit = new Fruit();
 
 	public Tree() {
 		super('+');
@@ -19,5 +22,9 @@ public class Tree extends Ground {
 			displayChar = 't';
 		if (age == 20)
 			displayChar = 'T';
+
+		if (probability.calculateProbability(5)) {
+			location.addItem(fruit);
+		}
 	}
 }

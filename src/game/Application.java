@@ -19,7 +19,7 @@ public class Application {
 		World world = new World(new Display());
 
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree());
-		
+
 		List<String> map = Arrays.asList(
 		"................................................................................",
 		"................................................................................",
@@ -55,8 +55,19 @@ public class Application {
 		// Place a pair of stegosaurs in the middle of the map
 		gameMap.at(30, 12).addActor(new Stegosaur("Stegosaur"));
 		gameMap.at(32, 12).addActor(new Stegosaur("Stegosaur"));
-		
-			
+
+		// Place grass
+		Probability probability = new Probability();
+		for(int i: gameMap.getYRange()){
+			for(int j: gameMap.getXRange()){
+				if(gameMap.at(j,i).getDisplayChar() == '.') {
+					if(probability.calculateProbability(2)) {
+						gameMap.at(j,i).setGround(new Grass());
+					}
+				}
+			}
+		}
+
 		world.run();
 	}
 }

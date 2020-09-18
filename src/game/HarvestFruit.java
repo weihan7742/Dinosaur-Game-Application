@@ -2,14 +2,13 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-public class HarvestPlant extends Action {
+public class HarvestFruit extends Action {
 
     private Item plant;
-    private Item hay = new Hay();
     private Item fruit = new Fruit();
     private Location location;
 
-    public HarvestPlant(Item plant, Location location) {
+    public HarvestFruit(Item plant, Location location) {
         this.plant = plant;
         this.location = location;
     }
@@ -19,13 +18,10 @@ public class HarvestPlant extends Action {
         char plantChar = location.getDisplayChar();
         location.removeItem(plant);
 
-        if( actor.getDisplayChar() == '@') {
-            if (plantChar == '^') {
-                actor.addItemToInventory(hay);
-            } else if (plantChar == 'o') {
+        if (plantChar == 'o') {
                 actor.addItemToInventory(fruit);
             }
-        }
+
         return menuDescription(actor);
     }
 

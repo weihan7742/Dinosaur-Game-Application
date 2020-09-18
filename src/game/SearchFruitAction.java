@@ -19,6 +19,7 @@ public class SearchFruitAction extends Action {
     public String execute(Actor actor, GameMap map) {
         char treeChar = location.getDisplayChar();
 
+
         if (treeChar == '+' || treeChar == 't' || treeChar == 'T') {
             if (probability.calculateProbability(40)) {
                 actor.addItemToInventory(fruit);

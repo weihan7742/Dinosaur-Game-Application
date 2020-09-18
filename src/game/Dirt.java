@@ -13,16 +13,15 @@ public class Dirt extends Ground {
 		super('.');
 	}
 
+	// Put doc
 	@Override
 	public void tick(Location currentLocation) {
 		super.tick(currentLocation);
-
 		for (int i = 1; i < 3; i++) {
 			if (currentLocation.x() - i >= 0 && currentLocation.x() + i < currentLocation.map().getXRange().max()) {
-
 				if (currentLocation.map().at(currentLocation.x()+i, currentLocation.y()).getDisplayChar() == '^' ||
 						currentLocation.map().at(currentLocation.x()-i,currentLocation.y()).getDisplayChar() == '^') {
-					if (probability.calculateProbability(10)) {
+					if (probability.calculateProbability(5)) {
 						currentLocation.setGround(new Grass());
 					}
 				}
@@ -30,16 +29,13 @@ public class Dirt extends Ground {
 		}
 
 		if (currentLocation.y()-1 >= 0 && currentLocation.y()+1 < currentLocation.map().getYRange().max()){
-			Location yUp = new Location(currentLocation.map(),currentLocation.x(), currentLocation.y()+1);
-			Location yDown = new Location(currentLocation.map(),currentLocation.x(), currentLocation.y()-1);
-
-			if (currentLocation.map().at(currentLocation.x(), currentLocation.y()+1).getDisplayChar() == '^' ||
-					currentLocation.map().at(currentLocation.x(),currentLocation.y()-1).getDisplayChar() == '^') {
-				if (probability.calculateProbability(10)){
+			char yUp = currentLocation.map().at(currentLocation.x(), currentLocation.y()+1).getDisplayChar();
+			char yDown = currentLocation.map().at(currentLocation.x(),currentLocation.y()-1).getDisplayChar();
+			if (yUp == '+' || yUp == 't' || yUp == 'T' || yDown == '+' || yDown == 't' || yDown == 'T') {
+				if (probability.calculateProbability(2)){
 					currentLocation.setGround(new Grass());
 				}
 			}
 		}
-
 	}
 }

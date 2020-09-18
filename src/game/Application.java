@@ -56,6 +56,9 @@ public class Application {
 		gameMap.at(30, 12).addActor(new Stegosaur("Stegosaur"));
 		gameMap.at(32, 12).addActor(new Stegosaur("Stegosaur"));
 
+		// Place a vending machine in the map
+		gameMap.at(18,6).addItem(new VendingMachine());
+
 		// Place grass
 		Probability probability = new Probability();
 		for(int i: gameMap.getYRange()){
@@ -67,7 +70,6 @@ public class Application {
 				}
 			}
 		}
-
 		world.run();
 	}
 }

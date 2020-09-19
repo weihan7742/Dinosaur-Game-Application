@@ -21,6 +21,7 @@ public class HarvestGrassAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + " harvested a grass";
+        return actor + " harvests a grass";
     }
+
 }

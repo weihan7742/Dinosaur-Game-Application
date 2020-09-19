@@ -26,7 +26,7 @@ public class SearchFruitAction extends Action {
 
     @Override
     public String menuDescription(Actor actor) {
-        return actor + "picked a Fruit from the Tree";
+        return actor + " picks a Fruit from the Tree";
     }
 
 

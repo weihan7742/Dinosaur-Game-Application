@@ -9,7 +9,7 @@ public class EatFoodBehaviour implements Behaviour {
     @Override
     public Action getAction(Actor actor, GameMap map) {
         if (map.locationOf(actor).getGround().getDisplayChar() == '^' || map.locationOf(actor).getDisplayChar() == 'o') {
-            return new EatFoodAction();
+            return new EatFoodAction(actor);
         }
         int currentDistance = 1000;
         Location actorLocation = map.locationOf(actor);

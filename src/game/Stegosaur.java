@@ -3,18 +3,13 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A herbivorous dinosaur.
  *
  */
-public class Stegosaur extends Actor {
+public class Stegosaur extends Dinosaur {
 	// Will need to change this to a collection if Stegosaur gets additional Behaviours.
 	private Behaviour[] behaviours = {new WanderBehaviour()};
-	protected final int MaxHitPoints = 100;
-	private final int hunger = 35;
 	protected int turn;
 
 	/** 
@@ -24,7 +19,7 @@ public class Stegosaur extends Actor {
 	 * @param name the name of this Stegosaur
 	 */
 	public Stegosaur(String name) {
-		super(name, 'd', 50);
+		super(name, 'd', 100, DinosaurCapability.ALIVE, 50);
 	}
 
 	@Override
@@ -32,20 +27,6 @@ public class Stegosaur extends Actor {
 		return new Actions(new AttackAction(this));
 	}
 
-	public boolean hunger(GameMap map, Display display) {
-		boolean y = false;
-		hurt(1);
-		if (!this.isConscious()) {
-			turn ++;
-			if (turn >= 20) {
-				display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
-			} else {
-				display.println("Please Feed Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") ");
-			}
-			y = true;
-		}
-		return y;
-	}
 
 	/**
 	 * Figure out what to do next.
@@ -57,12 +38,22 @@ public class Stegosaur extends Actor {
 	 */
 	@Override
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-		display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ hitPoints);
-		if (hunger(map, display)) {
+		display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
+		de();
+		hunger(this, map, display);
+		if (hasCapability(DinosaurCapability.DEAD)) {
 			return new DoNothingAction();
 		}
-		if (hitPoints < 35) {
-			display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is getting hungry");
+
+		if (hasCapability(DinosaurCapability.UNCONSCIOUS)) {
+			turn ++;
+			if (turn == 20) {
+				addCapability(DinosaurCapability.DEAD);
+				display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is getting hungry");
+				map.removeActor(this);
+			}
+		}
+		if (hasCapability(DinosaurCapability.HUNGRY)) {
 			if (new EatFoodBehaviour().getAction(this, map) != null){
 				return new EatFoodBehaviour().getAction(this, map);
 			}

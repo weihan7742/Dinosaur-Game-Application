@@ -2,13 +2,13 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-import java.util.Objects;
+import java.util.HashMap;
 
 public class EatFoodAction extends Action {
     private Ground grass;
     private Item food;
-    protected Item item = new Fruit();
     private Dinosaur dino;
+    private HashMap<Character, Integer> foodPoints = new HashMap<Character, Integer>();
 
     public EatFoodAction(Actor dino, Item food) {
         this.dino = (Dinosaur) dino;
@@ -23,20 +23,17 @@ public class EatFoodAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        createFoodPoints();
         if (actor.isConscious()) {
             if (map.locationOf(actor).getGround().getDisplayChar() == '^') {
                 map.locationOf(actor).setGround(new Dirt());
             }
         }
         if (food != null) {
-            if (food.toString().equals("Fruit")) {
-                dino.fed(actor, 30);
-            } else if (food.toString().equals("Hay")) {
-                dino.fed(actor, 20);
-            }
+            dino.fed(actor, foodPoints.get(food.getDisplayChar()));
             return menuDescription(actor) + food;
         } else if (grass != null) {
-            dino.fed(actor, 5);
+            dino.fed(actor, foodPoints.get(grass.getDisplayChar()));
             return menuDescription(actor) + "grass";
         }
         return null;
@@ -46,5 +43,11 @@ public class EatFoodAction extends Action {
     @Override
     public String menuDescription (Actor actor){
         return actor + " eats a ";
+    }
+
+    public void createFoodPoints() {
+        foodPoints.put('o', 30);
+        foodPoints.put('h', 20);
+        foodPoints.put('^', 5);
     }
 }

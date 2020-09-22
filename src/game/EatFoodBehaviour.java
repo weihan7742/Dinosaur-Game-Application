@@ -8,12 +8,16 @@ public class EatFoodBehaviour implements Behaviour {
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
+
+        //If actor is standing on grass or a fruit, actor will eat it
         if (map.locationOf(actor).getGround().getDisplayChar() == '^') {
             return new EatFoodAction(actor, new Grass());
         } //else if (((map.locationOf(actor).getItems() != null) && (map.locationOf(actor).getItems().get(0).toString() == "Fruit"))) {
            // map.locationOf(actor).removeItem(new Fruit());
           //  return new EatFoodAction(actor, new Fruit());
         //}
+
+        //If actor is not standing on a grass or fruit, actor will move to the nearest food source
         int currentDistance = 1000;
         Location actorLocation = map.locationOf(actor);
         List<Exit> exits = actorLocation.getExits();

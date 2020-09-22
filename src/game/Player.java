@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Player extends Actor {
 
 	private Menu menu = new Menu();
-	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour()};
+	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(), new FeedingBehaviour()};
 
 	/**
 	 * Constructor.

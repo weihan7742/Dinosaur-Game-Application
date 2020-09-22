@@ -8,9 +8,12 @@ public class EatFoodBehaviour implements Behaviour {
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        if (map.locationOf(actor).getGround().getDisplayChar() == '^' || map.locationOf(actor).getDisplayChar() == 'o') {
-            return new EatFoodAction(actor);
-        }
+        if (map.locationOf(actor).getGround().getDisplayChar() == '^') {
+            return new EatFoodAction(actor, new Grass());
+        } //else if (((map.locationOf(actor).getItems() != null) && (map.locationOf(actor).getItems().get(0).toString() == "Fruit"))) {
+           // map.locationOf(actor).removeItem(new Fruit());
+          //  return new EatFoodAction(actor, new Fruit());
+        //}
         int currentDistance = 1000;
         Location actorLocation = map.locationOf(actor);
         List<Exit> exits = actorLocation.getExits();

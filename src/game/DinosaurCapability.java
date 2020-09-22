@@ -5,4 +5,6 @@ public enum DinosaurCapability {
     DEAD,
     HUNGRY,
     UNCONSCIOUS,
+    MALE,
+    FEMALE,
 }

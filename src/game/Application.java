@@ -9,6 +9,9 @@ import edu.monash.fit2099.engine.FancyGroundFactory;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.World;
 
+import static game.DinosaurCapability.FEMALE;
+import static game.DinosaurCapability.MALE;
+
 /**
  * The main class for the Jurassic World game.
  *
@@ -53,8 +56,8 @@ public class Application {
 		world.addPlayer(player, gameMap.at(9, 4));
 		
 		// Place a pair of stegosaurs in the middle of the map
-		gameMap.at(30, 12).addActor(new Stegosaur("Stegosaur"));
-		gameMap.at(32, 12).addActor(new Stegosaur("Stegosaur"));
+		gameMap.at(30, 12).addActor(new Stegosaur("Stegosaur", MALE));
+		gameMap.at(32, 12).addActor(new Stegosaur("Stegosaur", FEMALE));
 
 		// Place a vending machine in the map
 		gameMap.at(18,6).addItem(new VendingMachine());

@@ -12,14 +12,14 @@ public class Stegosaur extends Dinosaur {
 	private Behaviour[] behaviours = {new WanderBehaviour()};
 	protected int turn;
 
-	/** 
+	/**
 	 * Constructor.
 	 * All Stegosaurs are represented by a 'd' and have 100 hit points.
-	 * 
+	 *
 	 * @param name the name of this Stegosaur
 	 */
-	public Stegosaur(String name) {
-		super(name, 'd', 100, DinosaurCapability.ALIVE, 50);
+	public Stegosaur(String name, DinosaurCapability gender) {
+		super(name, 'd', 100, DinosaurCapability.ALIVE, gender, 50);
 	}
 
 	@Override
@@ -30,10 +30,10 @@ public class Stegosaur extends Dinosaur {
 
 	/**
 	 * Figure out what to do next.
-	 * 
+	 *
 	 * FIXME: Stegosaur wanders around at random, or if no suitable MoveActions are available, it
 	 * just stands there.  That's boring.
-	 * 
+	 *
 	 * @see edu.monash.fit2099.engine.Actor#playTurn(Actions, Action, GameMap, Display)
 	 */
 	@Override
@@ -41,9 +41,6 @@ public class Stegosaur extends Dinosaur {
 		display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
 		de();
 		hunger(this, map, display);
-		if (hasCapability(DinosaurCapability.DEAD)) {
-			return new DoNothingAction();
-		}
 
 		if (hasCapability(DinosaurCapability.UNCONSCIOUS)) {
 			turn ++;
@@ -53,11 +50,13 @@ public class Stegosaur extends Dinosaur {
 				map.removeActor(this);
 			}
 		}
+
 		if (hasCapability(DinosaurCapability.HUNGRY)) {
 			if (new EatFoodBehaviour().getAction(this, map) != null){
 				return new EatFoodBehaviour().getAction(this, map);
 			}
 		}
+
 		for (Behaviour behaviour : behaviours) {
 			if (behaviour.getAction(this, map) != null)
 				return behaviour.getAction(this, map);

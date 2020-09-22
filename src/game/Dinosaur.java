@@ -13,19 +13,23 @@ public abstract class Dinosaur extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Dinosaur(String name, char displayChar, int hitPoints, DinosaurCapability capability, int foodLevel) {
+    public Dinosaur(String name, char displayChar, int hitPoints, DinosaurCapability state, DinosaurCapability gender, int foodLevel) {
         super(name, displayChar, hitPoints);
-        addCapability(capability);
+        addCapability(state);
+        addCapability(gender);
         this.foodLevel = foodLevel;
     }
 
     public void hunger(Actor actor, GameMap map, Display display) {
         if (foodLevel < 35) {
-            addCapability(DinosaurCapability.HUNGRY);
             display.println(actor + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is getting hungry");
-        } else if (foodLevel > 35) {
+            if ((!hasCapability(DinosaurCapability.HUNGRY))) {
+                addCapability(DinosaurCapability.HUNGRY);
+                //display.println(actor + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is getting hungry");
+            }
+
+        } else if (foodLevel >= 35) {
             removeCapability(DinosaurCapability.HUNGRY);
-            addCapability(DinosaurCapability.ALIVE);
         } else {
             addCapability(DinosaurCapability.UNCONSCIOUS);
         }
@@ -35,7 +39,7 @@ public abstract class Dinosaur extends Actor {
         foodLevel -= 1;
     }
 
-    public void fed(Actor dino, int foodPoints) {
+    public void fed(Actor dino,int foodPoints) {
         foodLevel += foodPoints;
     }
 }

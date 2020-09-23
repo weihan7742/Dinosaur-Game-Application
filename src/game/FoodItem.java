@@ -2,7 +2,7 @@ package game;
 
 import edu.monash.fit2099.engine.Item;
 
-public class FoodItem extends PortableItem {
+public abstract class FoodItem extends PortableItem {
 
     /***
      * Constructor.
@@ -12,4 +12,5 @@ public class FoodItem extends PortableItem {
     public FoodItem(String name, char displayChar) {
         super(name, displayChar);
     }
+
 }

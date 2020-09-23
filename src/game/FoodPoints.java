@@ -13,6 +13,7 @@ public class FoodPoints {
     }
 
     public HashMap<Character, Integer> getFoodPoints() {
+        createFoodPoints();
         return new HashMap<>(foodPoints);
     }
 }

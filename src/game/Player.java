@@ -1,13 +1,14 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
+import edu.monash.fit2099.interfaces.GroundInterface;
 
 import java.util.ArrayList;
 
 /**
  * Class representing the Player.
  */
-public class Player extends Actor {
+public class Player extends Actor implements EcoPointInterface {
 
 	private Menu menu = new Menu();
 	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(), new FeedingBehaviour()};
@@ -36,6 +37,7 @@ public class Player extends Actor {
 				return lastAction.getNextAction();
 			}
 		}
+		System.out.println("Player currently has " + ecoPoint.getEcoPoint() + " points.");
 		return menu.showMenu(this, actions, display);
 	}
 }

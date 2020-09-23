@@ -2,10 +2,10 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-public class HarvestGrassAction extends Action {
+public class HarvestGrassAction extends Action implements EcoPointInterface{
     protected int x;
     protected int y;
-
+    private final int givenEcoPoint = 1;
 
     public HarvestGrassAction(int x, int y) {
         this.x = x;
@@ -16,6 +16,7 @@ public class HarvestGrassAction extends Action {
     public String execute(Actor actor, GameMap map) {
         map.at(x,y).setGround(new Dirt());
         actor.addItemToInventory(new Hay());
+        ecoPoint.addEcoPoint(givenEcoPoint);    // Add 1 point after harvesting
         return menuDescription(actor);
     }
 

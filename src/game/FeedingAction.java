@@ -5,9 +5,8 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Item;
 
-public class FeedingAction extends Action {
+public class FeedingAction extends Action implements EcoPointInterface {
     private Item food;
-
 
     public FeedingAction(Item food) {
         this.food = food;

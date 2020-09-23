@@ -22,7 +22,9 @@ public class Dirt extends Ground {
 				if (currentLocation.map().at(currentLocation.x()+i, currentLocation.y()).getDisplayChar() == '^' ||
 						currentLocation.map().at(currentLocation.x()-i,currentLocation.y()).getDisplayChar() == '^') {
 					if (probability.calculateProbability(5)) {
-						currentLocation.setGround(new Grass());
+						Grass grass = new Grass();
+						currentLocation.setGround(grass);
+						grass.addEcoPoint();
 					}
 				}
 			}
@@ -32,8 +34,10 @@ public class Dirt extends Ground {
 			char yUp = currentLocation.map().at(currentLocation.x(), currentLocation.y()+1).getDisplayChar();
 			char yDown = currentLocation.map().at(currentLocation.x(),currentLocation.y()-1).getDisplayChar();
 			if (yUp == '+' || yUp == 't' || yUp == 'T' || yDown == '+' || yDown == 't' || yDown == 'T') {
-				if (probability.calculateProbability(2)){
-					currentLocation.setGround(new Grass());
+				if (probability.calculateProbability(5)){
+					Grass grass = new Grass();
+					currentLocation.setGround(grass);
+					grass.addEcoPoint();
 				}
 			}
 		}

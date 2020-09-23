@@ -52,7 +52,7 @@ public class Application {
 		GameMap gameMap = new GameMap(groundFactory, map );
 		world.addGameMap(gameMap);
 		
-		Actor player = new Player("Player", '@', 100);
+		Player player = new Player("Player", '@', 100);
 		world.addPlayer(player, gameMap.at(9, 4));
 		
 		// Place a pair of stegosaurs in the middle of the map
@@ -62,13 +62,15 @@ public class Application {
 		// Place a vending machine in the map
 		gameMap.at(18,6).addItem(new VendingMachine());
 
-		// Place grass
+		// Place grass initially
 		Probability probability = new Probability();
 		for(int i: gameMap.getYRange()){
 			for(int j: gameMap.getXRange()){
 				if(gameMap.at(j,i).getDisplayChar() == '.') {
 					if(probability.calculateProbability(2)) {
-						gameMap.at(j,i).setGround(new Grass());
+						Grass grass = new Grass();
+						gameMap.at(j,i).setGround(grass);
+						grass.addEcoPoint();
 					}
 				}
 			}

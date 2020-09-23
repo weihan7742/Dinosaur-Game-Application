@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Player extends Actor implements EcoPointInterface {
 
 	private Menu menu = new Menu();
-	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(), new FeedingBehaviour(), new BuyingBehaviour()};
+	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(), new FeedingBehaviour(), new BuyingBehaviour(), new AttackBehaviour()};
 
 	/**
 	 * Constructor.

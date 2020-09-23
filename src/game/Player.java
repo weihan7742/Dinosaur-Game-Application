@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Player extends Actor implements EcoPointInterface {
 
 	private Menu menu = new Menu();
-	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(), new FeedingBehaviour()};
+	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(), new FeedingBehaviour(), new BuyingBehaviour()};
 
 	/**
 	 * Constructor.
@@ -29,6 +29,14 @@ public class Player extends Actor implements EcoPointInterface {
 	public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 		// Handle multi-turn Actions
 		for (Behaviour behaviour : behaviours) {
+			if (behaviour.getClass() == BuyingBehaviour.class){
+				if (((BuyingBehaviour) behaviour).getMoreActions(this,map)!= null){
+					for (Action moreActions: ((BuyingBehaviour) behaviour).getMoreActions(this,map)){
+						actions.add(moreActions);
+					}
+				}
+				continue;
+			}
 			Action action = behaviour.getAction(this, map);
 			if (action != null) {
 				actions.add(action);

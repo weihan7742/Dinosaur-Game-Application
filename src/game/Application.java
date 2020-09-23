@@ -60,7 +60,7 @@ public class Application {
 		gameMap.at(32, 12).addActor(new Stegosaur("Stegosaur", FEMALE));
 
 		// Place a vending machine in the map
-		gameMap.at(18,6).addItem(new VendingMachine());
+		gameMap.at(9,4).setGround(new VendingMachine());
 
 		// Place grass initially
 		Probability probability = new Probability();

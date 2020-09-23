@@ -20,6 +20,12 @@ public class EatFoodAction extends Action {
         this.grass = grass;
     }
 
+    private void createFoodPoints() {
+        foodPoints.put('o', 30);
+        foodPoints.put('h', 20);
+        foodPoints.put('^', 5);
+    }
+
 
     @Override
     public String execute(Actor actor, GameMap map) {
@@ -43,11 +49,5 @@ public class EatFoodAction extends Action {
     @Override
     public String menuDescription (Actor actor){
         return actor + " eats a ";
-    }
-
-    public void createFoodPoints() {
-        foodPoints.put('o', 30);
-        foodPoints.put('h', 20);
-        foodPoints.put('^', 5);
     }
 }

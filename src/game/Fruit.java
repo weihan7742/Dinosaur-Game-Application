@@ -1,8 +1,9 @@
 package game;
 
+import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
-public class Fruit extends PortableItem {
+public class Fruit extends FoodItem {
     private int age;
 
     public Fruit() {

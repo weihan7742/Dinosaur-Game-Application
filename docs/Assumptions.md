@@ -2,7 +2,7 @@
 * Dinosaur can only execute one action per turn. 
     * Thus, following scenarios cannot happen
         1. Dinosaur cannot move to the food source and eats the food in the same turn
-        2. Dinosaur cannot move to another opposite sex dinosaur and mate in the same round
+        2. Dinosaur cannot move to an opposite sex dinosaur and mate in the same round
         
 * Dinosaur will eat food whenever it is standing on a food source
 * A dinosaur will remain stationary when mating regardless if breeding is successful or not

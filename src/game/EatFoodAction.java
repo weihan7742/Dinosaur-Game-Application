@@ -27,12 +27,16 @@ public class EatFoodAction extends Action {
                 map.locationOf(actor).setGround(new Dirt());
             }
         }
-        if (food != null) {
+        if (actor.hasCapability(DinosaurCapability.HERBIVORE)) {
+            if (food != null) {
+                dino.fed(actor, foodpoints.getFoodPoints().get(food.getDisplayChar()));
+                return menuDescription(actor) + food;
+            } else if (grass != null) {
+                dino.fed(actor, foodpoints.getFoodPoints().get(grass.getDisplayChar()));
+                return menuDescription(actor) + "grass";
+            }
+        } else if (actor.hasCapability((DinosaurCapability.CARNIVORE))) {
             dino.fed(actor, foodpoints.getFoodPoints().get(food.getDisplayChar()));
-            return menuDescription(actor) + food;
-        } else if (grass != null) {
-            dino.fed(actor, foodpoints.getFoodPoints().get(grass.getDisplayChar()));
-            return menuDescription(actor) + "grass";
         }
         return null;
     }

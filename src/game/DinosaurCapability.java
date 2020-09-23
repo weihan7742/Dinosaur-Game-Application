@@ -6,4 +6,6 @@ public enum DinosaurCapability {
     HUNGRY,
     HEALTHY,
     UNCONSCIOUS,
+    HERBIVORE,
+    CARNIVORE,
 }

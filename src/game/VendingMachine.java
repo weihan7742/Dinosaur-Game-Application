@@ -19,7 +19,7 @@ public class VendingMachine extends Ground {
 //        itemSold.put(carnivoreMealKit, -500);
 //        itemSold.put(stegosaurEggs, -200);
 //        itemSold.put(allosaurEggs,-1000);
-//        itemSold.put(laserGun,-500)
+        itemSold.add(new LaserGun());
         addItemPrice();
     }
 
@@ -30,6 +30,7 @@ public class VendingMachine extends Ground {
     public void addItemPrice(){
         itemPrice.put("Hay",-20);
         itemPrice.put("Fruit",-30);
+        itemPrice.put("Laser Gun",-50); // Remember to change this
     }
 
     public HashMap<String,Integer> getItemPrice(){

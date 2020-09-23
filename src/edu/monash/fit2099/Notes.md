@@ -6,4 +6,8 @@ Put "[/]" if the item has been resolved
 
 - [] 
 
-2. 
+2. Buying items feature
+
+- getAction in BuyingBehaviour is redundant (returns null anyhow)
+- VendingMachine has ArrayList and HashMap (which can be redundant)
+

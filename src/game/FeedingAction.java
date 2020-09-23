@@ -3,12 +3,12 @@ package game;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Item;
 
-public class FeedingAction extends Action implements EcoPointInterface {
-    private Item food;
 
-    public FeedingAction(Item food) {
+public class FeedingAction extends Action {
+    private FoodItem food;
+
+    public FeedingAction(FoodItem food) {
         this.food = food;
     }
 

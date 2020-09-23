@@ -6,6 +6,8 @@ import edu.monash.fit2099.engine.GameMap;
 
 public abstract class Dinosaur extends Actor {
     protected int foodLevel;
+    private boolean gender;
+    private boolean pregnant;
     /**
      * Constructor.
      *
@@ -13,23 +15,25 @@ public abstract class Dinosaur extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Dinosaur(String name, char displayChar, int hitPoints, DinosaurCapability state, DinosaurCapability gender, int foodLevel) {
+    public Dinosaur(String name, char displayChar, int hitPoints, DinosaurCapability state, boolean gender, int foodLevel) {
         super(name, displayChar, hitPoints);
         addCapability(state);
-        addCapability(gender);
+        this.gender = gender;
         this.foodLevel = foodLevel;
     }
 
     public void hunger(Actor actor, GameMap map, Display display) {
-        if (foodLevel < 35) {
+        if (foodLevel < 30 && foodLevel > 0) {
             display.println(actor + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is getting hungry");
             if ((!hasCapability(DinosaurCapability.HUNGRY))) {
                 addCapability(DinosaurCapability.HUNGRY);
-                //display.println(actor + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is getting hungry");
+            }
+        } else if (foodLevel >= 30) {
+            removeCapability(DinosaurCapability.HUNGRY);
+            if (foodLevel >= 31) {
+                addCapability(DinosaurCapability.HEALTHY);
             }
 
-        } else if (foodLevel >= 35) {
-            removeCapability(DinosaurCapability.HUNGRY);
         } else {
             addCapability(DinosaurCapability.UNCONSCIOUS);
         }
@@ -42,4 +46,17 @@ public abstract class Dinosaur extends Actor {
     public void fed(Actor dino,int foodPoints) {
         foodLevel += foodPoints;
     }
+
+    public void setPregnant(boolean pregnant) {
+        this.pregnant = pregnant;
+    }
+
+    public boolean isPregnant() {
+        return pregnant;
+    }
+
+    public boolean gender() {
+        return gender;
+    }
+
 }

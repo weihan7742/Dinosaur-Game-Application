@@ -5,6 +5,7 @@ import edu.monash.fit2099.engine.*;
 import java.util.List;
 
 public class FeedingBehaviour implements Behaviour {
+    private FoodItem food;
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
@@ -13,7 +14,7 @@ public class FeedingBehaviour implements Behaviour {
             if(exit.getDestination().containsAnActor()) {
                 for (Item item : actor.getInventory()) {
                     if (item instanceof FoodItem) {
-                        return new FeedingAction(item);
+                        return new FeedingAction(food);
                     }
                 }
             }

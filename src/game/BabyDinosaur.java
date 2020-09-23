@@ -14,13 +14,15 @@ public class BabyDinosaur extends Dinosaur{
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
+        display.println("Baby Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
         age++;
         de();
         hunger(this,map, display);
         if (age == 5 && foodLevel > 5) {
-            map.addActor(new Stegosaur("Stegosaur", male), map.locationOf(this));
             map.removeActor(this);
+            map.addActor(new Stegosaur("Stegosaur", male), map.locationOf(this));
+            display.println("Baby dinosaur has grown up!");
+            return null;
         }
 
         for (Behaviour behaviour : behaviours) {

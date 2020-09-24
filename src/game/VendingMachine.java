@@ -15,8 +15,8 @@ public class VendingMachine extends Ground {
         super('H');
         itemSold.add(new Hay());
         itemSold.add(new Fruit());
-//        itemSold.put(vegetarianMealKit,-100);
-//        itemSold.put(carnivoreMealKit, -500);
+        itemSold.add(new CarnivoreMealKit());
+        itemSold.add(new VegetarianMealKit());
 //        itemSold.put(stegosaurEggs, -200);
 //        itemSold.put(allosaurEggs,-1000);
         itemSold.add(new LaserGun());
@@ -28,9 +28,11 @@ public class VendingMachine extends Ground {
     }
 
     public void addItemPrice(){
-        itemPrice.put("Hay",-20);
-        itemPrice.put("Fruit",-30);
-        itemPrice.put("Laser Gun",-50); // Remember to change this
+        itemPrice.put("Hay",-1);
+        itemPrice.put("Fruit",-1);
+        itemPrice.put("Carnivore Meal Kit", -1);
+        itemPrice.put("Vegetarian Meal Kit", -1);
+        itemPrice.put("Laser Gun",-1); // Remember to change this
     }
 
     public HashMap<String,Integer> getItemPrice(){

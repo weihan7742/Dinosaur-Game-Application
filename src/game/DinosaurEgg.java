@@ -25,6 +25,4 @@ public class DinosaurEgg extends Item {
             currentLocation.removeItem(this);
         }
     }
-
-
 }

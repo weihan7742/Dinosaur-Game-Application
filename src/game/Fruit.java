@@ -21,4 +21,8 @@ public class Fruit extends FoodItem {
         }
     }
 
+    public int getGivenPoint(){
+        final int givenPoint = 15;
+        return givenPoint;
+    }
 }

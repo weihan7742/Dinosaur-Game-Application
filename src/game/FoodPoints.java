@@ -10,6 +10,8 @@ public class FoodPoints {
         foodPoints.put('o', 30);
         foodPoints.put('h', 20);
         foodPoints.put('^', 5);
+        foodPoints.put('V', 100);
+        foodPoints.put('C', 100);
     }
 
     public HashMap<Character, Integer> getFoodPoints() {

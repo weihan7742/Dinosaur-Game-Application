@@ -8,4 +8,9 @@ public class Hay extends FoodItem {
     public Hay() {
         super("Hay", 'h');
     }
+
+    public int getGivenPoint(){
+        final int givenPoint = 10;
+        return givenPoint;
+    }
 }

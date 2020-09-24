@@ -3,20 +3,23 @@ package game;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.Location;
 
 
 public class FeedingAction extends Action {
     private FoodItem food;
+    private Location location;
 
-    public FeedingAction(FoodItem food) {
+    public FeedingAction(FoodItem food, Location location) {
         this.food = food;
+        this.location = location;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
         if (actor.getInventory().contains(food)) {
             actor.removeItemFromInventory(food);
-            return menuDescription(actor);
+            return menuDescription(actor)  + " and " + new EatFoodAction(location.getActor(), food).execute(actor, map);
         }
         return null;
     }

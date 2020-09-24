@@ -8,7 +8,7 @@ public class BabyDinosaur extends Dinosaur{
     private Behaviour[] behaviours = {new EatFoodBehaviour(), new WanderBehaviour()};
 
     public BabyDinosaur(String name, Boolean male) {
-        super(name, 's',100,DinosaurCapability.ALIVE, male,10);
+        super(name, 's',100, DinosaurCapability.ALIVE, male,10);
         this.male = male;
     }
 
@@ -19,10 +19,8 @@ public class BabyDinosaur extends Dinosaur{
         de();
         hunger(this,map, display);
         if (age == 5 && foodLevel > 5) {
-            map.removeActor(this);
-            map.addActor(new Stegosaur("Stegosaur", male), map.locationOf(this));
-            display.println("Baby dinosaur has grown up!");
-            return null;
+            Actor dino = new Stegosaur("Stegosaur", male);
+            return new GrowUpAction(dino);
         }
 
         for (Behaviour behaviour : behaviours) {

@@ -4,12 +4,12 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
-public class DinosaurEgg extends Item {
+public class DinosaurEgg extends FoodItem {
     private int incubationPeriod = 0;
     private Probability probability =new Probability();
 
     public DinosaurEgg(String name) {
-        super(name, '0', false);
+        super(name, '0');
     }
 
     @Override

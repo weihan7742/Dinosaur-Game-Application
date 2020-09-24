@@ -13,6 +13,7 @@ public class Stegosaur extends Dinosaur {
 	//private Behaviour[] breedingBehaviour = {new FollowBehaviour()};
 	protected int turn;
 	private int period;
+	private final int MAXIMUM_FOOD_LEVEL = 100;
 
 	/**
 	 * Constructor.
@@ -22,6 +23,7 @@ public class Stegosaur extends Dinosaur {
 	 */
 	public Stegosaur(String name, Boolean male) {
 		super(name, 'd', 100, DinosaurCapability.ALIVE, male, 50);
+		addCapability(DinosaurCapability.HERBIVORE);
 	}
 
 	@Override
@@ -66,7 +68,6 @@ public class Stegosaur extends Dinosaur {
 				setPregnant(false);
 			}
 		}
-
 
 		for (Behaviour behaviour : behaviours) {
 			if (behaviour.getAction(this, map) != null)

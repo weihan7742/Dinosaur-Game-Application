@@ -13,4 +13,5 @@
     3. Wandering around
     
 * The food points for eating an Allosaurs is same as eating an Stegosaur
+* Player can try to feed dinosaur a different diet but dinosaur will not eat it. Thus, no increase in foodpoints.
     

@@ -6,7 +6,7 @@ public abstract class Dinosaur extends Actor {
     protected int foodLevel;
     private boolean gender;
     private boolean pregnant;
-    private Behaviour[] behaviours = {new EatFoodBehaviour(), new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
+    private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(), new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
     private int turn;
     private int period;
 
@@ -37,10 +37,9 @@ public abstract class Dinosaur extends Actor {
             }
         } else if (foodLevel >= 30) {
             removeCapability(DinosaurCapability.HUNGRY);
-            if (foodLevel >= 31) {
+            if (foodLevel >= 60) {
                 addCapability(DinosaurCapability.HEALTHY);
             }
-
         } else {
             addCapability(DinosaurCapability.UNCONSCIOUS);
         }
@@ -66,6 +65,7 @@ public abstract class Dinosaur extends Actor {
         return gender;
     }
 
+
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
         //prints foodLevel
@@ -83,8 +83,9 @@ public abstract class Dinosaur extends Actor {
             if (turn == 20) {
                 addCapability(DinosaurCapability.DEAD);
                 display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
-                map.removeActor(this);
+                return new deadActorAction();
             }
+            return new DoNothingAction();
         }
 
         if (isPregnant()) {

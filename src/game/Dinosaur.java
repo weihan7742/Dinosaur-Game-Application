@@ -2,13 +2,10 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-import java.util.HashMap;
-
 public abstract class Dinosaur extends Actor {
     protected int foodLevel;
     private boolean gender;
     private boolean pregnant;
-    private HashMap<String, String> species = new HashMap<>();
     private Behaviour[] behaviours = {new EatFoodBehaviour(), new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
     private int turn;
     private int period;
@@ -25,7 +22,6 @@ public abstract class Dinosaur extends Actor {
         addCapability(DinosaurCapability.ALIVE);
         this.gender = gender;
         this.foodLevel = foodLevel;
-        this.species.put(name, specie);
     }
 
     @Override

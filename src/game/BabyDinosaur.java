@@ -5,11 +5,13 @@ import edu.monash.fit2099.engine.*;
 public class BabyDinosaur extends Dinosaur{
     private int age;
     private boolean male;
+    private String species;
     private Behaviour[] behaviours = {new EatFoodBehaviour(), new WanderBehaviour()};
 
-    public BabyDinosaur(String name, Boolean male, String specie) {
-        super(name, 'b',100, male, 10, specie);
+    public BabyDinosaur(String name, Boolean male, String species) {
+        super(name, 'b',100, male, 10, species);
         this.male = male;
+        this.species = species;
     }
 
     @Override
@@ -19,7 +21,7 @@ public class BabyDinosaur extends Dinosaur{
         de();
         hunger(this,map, display);
         if (age == 5 && foodLevel > 5) {
-            Actor dino = new Stegosaur("Stegosaur", male);
+            Actor dino = new BabyDinosaur(male + species, male, species);
             return new GrowUpAction(dino);
         }
 

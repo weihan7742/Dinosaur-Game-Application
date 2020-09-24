@@ -18,9 +18,9 @@ public class DinosaurEgg extends FoodItem {
         incubationPeriod ++;
         if (incubationPeriod == 5) {
             if(probability.calculateProbability(50)) {
-                currentLocation.addActor(new BabyDinosaur("Baby Stegosaur", false, species));
+                currentLocation.addActor(new BabyDinosaur("Baby " + species, false, species));
             } else {
-                currentLocation.addActor(new BabyDinosaur("Baby Stegosaur", true, species));
+                currentLocation.addActor(new BabyDinosaur("Baby " + species, true, species));
             }
             currentLocation.removeItem(this);
         }

@@ -12,3 +12,5 @@
     2. Breeding
     3. Wandering around
     
+* The food points for eating an Allosaurs is same as eating an Stegosaur
+    

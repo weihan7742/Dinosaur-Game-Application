@@ -12,7 +12,8 @@ Put "[/]" if the item has been resolved
 - VendingMachine has ArrayList and HashMap (which can be redundant)
 
 3. Duplicated code
-- duplicated code in FollowBehaviour and EatFoodBehaviour
+- duplicated code in FollowBehaviour and EatFoodBehaviour[/]
+- duplicated code in dinosaur and baby dinosaur
 
 4. Breeding
 - Dinosaurs are able to interbreed for now (will change in the future)

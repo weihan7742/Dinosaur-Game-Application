@@ -4,11 +4,11 @@ import edu.monash.fit2099.engine.*;
 
 public class EatFoodAction extends Action {
     private Ground grass;
-    private Item food;
+    private FoodItem food;
     private Dinosaur dino;
     private FoodPoints foodpoints = new FoodPoints();
 
-    public EatFoodAction(Actor dino, Item food) {
+    public EatFoodAction(Actor dino, FoodItem food) {
         this.dino = (Dinosaur) dino;
         this.food = food;
     }

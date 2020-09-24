@@ -8,7 +8,7 @@ public class SearchFruitBehaviour implements Behaviour {
     @Override
     public Action getAction(Actor actor, GameMap map) {
         if (map.locationOf(actor).getGround().getDisplayChar() == '+' || map.locationOf(actor).getGround().getDisplayChar() == 't' || map.locationOf(actor).getGround().getDisplayChar() == 'T') {
-            return new SearchFruitAction(map.locationOf(actor));
+            return new SearchFruitAction();
         }
 
         return null;

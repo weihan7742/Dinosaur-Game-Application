@@ -4,17 +4,15 @@ import edu.monash.fit2099.engine.*;
 
 public class SearchFruitAction extends Action {
 
-    private Location location;
-    private Item fruit =  new Fruit();
-    private Probability probability = new Probability();
+    public SearchFruitAction( ) {
 
-    public SearchFruitAction(Location location) {
-        this.location = location;
     }
 
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        FoodItem fruit =  new Fruit();
+        Probability probability = new Probability();
         if (probability.calculateProbability(40)) {
             actor.addItemToInventory(fruit);
         } else {

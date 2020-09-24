@@ -6,7 +6,6 @@ import edu.monash.fit2099.engine.Location;
 
 public class Tree extends Ground {
 	private int age = 0;
-	private Probability probability = new Probability();
 	private Item fruit = new Fruit();
 
 	public Tree() {
@@ -16,6 +15,7 @@ public class Tree extends Ground {
 	@Override
 	public void tick(Location location) {
 		super.tick(location);
+		Probability probability = new Probability();
 
 		age++;
 		if (age == 10)

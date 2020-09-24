@@ -8,7 +8,7 @@ public class DinosaurEgg extends FoodItem {
     private String species;
 
     public DinosaurEgg(String species) {
-        super(species + " egg", '0');
+        super(species + " Egg", '0');
         this.species = species;
     }
 

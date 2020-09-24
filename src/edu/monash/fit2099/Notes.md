@@ -11,3 +11,9 @@ Put "[/]" if the item has been resolved
 - getAction in BuyingBehaviour is redundant (returns null anyhow)
 - VendingMachine has ArrayList and HashMap (which can be redundant)
 
+3. Duplicated code
+- duplicated code in FollowBehaviour and EatFoodBehaviour
+
+4. Breeding
+- Dinosaurs are able to interbreed for now (will change in the future)
+

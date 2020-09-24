@@ -1,15 +1,15 @@
 package game;
 
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
 public class DinosaurEgg extends FoodItem {
     private int incubationPeriod = 0;
     private Probability probability =new Probability();
+    private String species;
 
-    public DinosaurEgg(String name) {
-        super(name, '0');
+    public DinosaurEgg(String species) {
+        super(species + " egg", '0');
+        this.species = species;
     }
 
     @Override
@@ -18,9 +18,9 @@ public class DinosaurEgg extends FoodItem {
         incubationPeriod ++;
         if (incubationPeriod == 5) {
             if(probability.calculateProbability(50)) {
-                currentLocation.addActor(new BabyDinosaur("Baby Stegosaur", false));
+                currentLocation.addActor(new BabyDinosaur("Baby Stegosaur", false, species));
             } else {
-                currentLocation.addActor(new BabyDinosaur("Baby Stegosaur", true));
+                currentLocation.addActor(new BabyDinosaur("Baby Stegosaur", true, species));
             }
             currentLocation.removeItem(this);
         }

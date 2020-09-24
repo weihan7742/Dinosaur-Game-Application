@@ -1,13 +1,18 @@
 package game;
 
-import edu.monash.fit2099.engine.Actor;
-import edu.monash.fit2099.engine.Display;
-import edu.monash.fit2099.engine.GameMap;
+import edu.monash.fit2099.engine.*;
+
+import java.util.HashMap;
 
 public abstract class Dinosaur extends Actor {
     protected int foodLevel;
     private boolean gender;
     private boolean pregnant;
+    private HashMap<String, String> species = new HashMap<>();
+    private Behaviour[] behaviours = {new EatFoodBehaviour(), new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
+    private int turn;
+    private int period;
+
     /**
      * Constructor.
      *
@@ -15,11 +20,17 @@ public abstract class Dinosaur extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Dinosaur(String name, char displayChar, int hitPoints, DinosaurCapability state, boolean gender, int foodLevel) {
+    public Dinosaur(String name, char displayChar, int hitPoints, boolean gender, int foodLevel, String specie) {
         super(name, displayChar, hitPoints);
-        addCapability(state);
+        addCapability(DinosaurCapability.ALIVE);
         this.gender = gender;
         this.foodLevel = foodLevel;
+        this.species.put(name, specie);
+    }
+
+    @Override
+    public Actions getAllowableActions(Actor otherActor, String direction, GameMap map) {
+        return new Actions(new AttackAction(this));
     }
 
     public void hunger(Actor actor, GameMap map, Display display) {
@@ -57,6 +68,42 @@ public abstract class Dinosaur extends Actor {
 
     public boolean gender() {
         return gender;
+    }
+
+    @Override
+    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        //prints foodLevel
+        display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
+
+        //Decrease foodLevel by 1
+        de();
+
+        //Checking the foodLevel and add or remove capabilities respectively
+        hunger(this, map, display);
+
+        //After 20 turns of being unconscious, dinosaur will die
+        if (hasCapability(DinosaurCapability.UNCONSCIOUS)) {
+            turn ++;
+            if (turn == 20) {
+                addCapability(DinosaurCapability.DEAD);
+                display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
+                map.removeActor(this);
+            }
+        }
+
+        if (isPregnant()) {
+            period ++;
+            if (period == 10) {
+                map.locationOf(this).addItem(new DinosaurEgg("Stegosaur"));
+                setPregnant(false);
+            }
+        }
+
+        for (Behaviour behaviour : behaviours) {
+            if (behaviour.getAction(this, map) != null)
+                return behaviour.getAction(this, map);
+        }
+        return new DoNothingAction();
     }
 
 }

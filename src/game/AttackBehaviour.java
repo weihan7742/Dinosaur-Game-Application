@@ -17,9 +17,9 @@ public class AttackBehaviour implements Behaviour {
         List<Exit> exits = new ArrayList<Exit>(map.locationOf(actor).getExits());
         Collections.shuffle(exits);
 
-        if (actor.getWeapon() != null){
+        if (actor.getWeapon() != null && actor.AttackAbility()) {
             for (Exit e: exits) {
-                if (!(e.getDestination().containsAnActor()))
+                if ((!(e.getDestination().containsAnActor())) && (!(e.getDestination().getActor() instanceof Player)))
                     continue;
                 else{
                     return new AttackAction(e.getDestination().getActor());

@@ -17,8 +17,8 @@ public class VendingMachine extends Ground {
         itemSold.add(new Fruit());
         itemSold.add(new CarnivoreMealKit());
         itemSold.add(new VegetarianMealKit());
-//        itemSold.put(stegosaurEggs, -200);
-//        itemSold.put(allosaurEggs,-1000);
+        itemSold.add(new DinosaurEgg("Stegosaur"));
+        itemSold.add(new DinosaurEgg("Allosaur"));
         itemSold.add(new LaserGun());
         addItemPrice();
     }
@@ -32,6 +32,8 @@ public class VendingMachine extends Ground {
         itemPrice.put("Fruit",-1);
         itemPrice.put("Carnivore Meal Kit", -1);
         itemPrice.put("Vegetarian Meal Kit", -1);
+        itemPrice.put("Stegosaur Egg", -1);
+        itemPrice.put("Allosaur Egg", -1);
         itemPrice.put("Laser Gun",-1); // Remember to change this
     }
 

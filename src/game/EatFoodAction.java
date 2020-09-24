@@ -37,6 +37,7 @@ public class EatFoodAction extends Action {
             }
         } else if (actor.hasCapability((DinosaurCapability.CARNIVORE))) {
             dino.fed(actor, foodpoints.getFoodPoints().get(food.getDisplayChar()));
+            return menuDescription(actor) + food;
         }
         return null;
     }

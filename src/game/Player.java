@@ -48,4 +48,9 @@ public class Player extends Actor implements EcoPointInterface {
 		System.out.println("Player currently has " + ecoPoint.getEcoPoint() + " points.");
 		return menu.showMenu(this, actions, display);
 	}
+
+	@Override
+	public boolean AttackAbility() {
+		return true;
+	}
 }

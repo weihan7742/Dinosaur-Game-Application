@@ -7,8 +7,8 @@ public class BabyDinosaur extends Dinosaur{
     private boolean male;
     private Behaviour[] behaviours = {new EatFoodBehaviour(), new WanderBehaviour()};
 
-    public BabyDinosaur(String name, Boolean male) {
-        super(name, 's',100, DinosaurCapability.ALIVE, male,10);
+    public BabyDinosaur(String name, Boolean male, String specie) {
+        super(name, 'b',100, male, 10, specie);
         this.male = male;
     }
 
@@ -28,5 +28,10 @@ public class BabyDinosaur extends Dinosaur{
                 return behaviour.getAction(this, map);
         }
         return new DoNothingAction();
+    }
+
+    @Override
+    public boolean AttackAbility() {
+        return false;
     }
 }

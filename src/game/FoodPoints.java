@@ -12,6 +12,8 @@ public class FoodPoints {
         foodPoints.put('^', 5);
         foodPoints.put('V', 100);
         foodPoints.put('C', 100);
+        foodPoints.put('0', 10);
+        foodPoints.put('%', 50);
     }
 
     public HashMap<Character, Integer> getFoodPoints() {

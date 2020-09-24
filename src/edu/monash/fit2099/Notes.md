@@ -3,8 +3,7 @@ This document is used to keep track of changes that will need to make to improve
 Put "[/]" if the item has been resolved
 
 1. EcoPoint feature
-
-- [] 
+- [] FeedingAction is dependent on Hay and Fruit unnecessary. Try to think of better method.
 
 2. Buying items feature
 

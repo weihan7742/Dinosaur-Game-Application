@@ -5,7 +5,6 @@ import edu.monash.fit2099.engine.*;
 import java.util.List;
 
 public class EatFoodBehaviour implements Behaviour {
-    private CalculateDistance dis = new CalculateDistance();
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
@@ -26,6 +25,7 @@ public class EatFoodBehaviour implements Behaviour {
 
         //If actor is not standing on a grass or fruit, actor will move to the nearest food source
         if (actor.hasCapability(DinosaurCapability.HUNGRY)) {
+            CalculateDistance dis = new CalculateDistance();
             int currentDistance = 1000;
             Location actorLocation = map.locationOf(actor);
             List<Exit> exits = actorLocation.getExits();

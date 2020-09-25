@@ -7,7 +7,7 @@ public class Probability {
     public Probability() { }
 
     public boolean calculateProbability(int chances) {
-        if (rand.nextInt(100) <= chances) {
+        if (rand.nextInt(100) < chances) {
             return true;
         } else {
             return false;

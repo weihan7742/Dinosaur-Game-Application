@@ -29,9 +29,10 @@ public class Dirt extends Ground {
 					grass.addEcoPoint();
 				}
 			}
-			for (Exit exit1 : currentLocation.getExits()) {
+			for (Exit exit1 : exit.getDestination().getExits()) {
+				char currentTwo = exit1.getDestination().getDisplayChar();
 				// Check if got grass
-				if (current == '^') {
+				if (currentTwo == '^') {
 					if (probability.calculateProbability(2)) {
 						currentLocation.setGround(grass);
 						grass.addEcoPoint();

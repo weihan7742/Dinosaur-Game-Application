@@ -2,6 +2,9 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * A class that figures out a MoveAction that will move the actor one step 
  * closer to a target Actor.
@@ -9,6 +12,7 @@ import edu.monash.fit2099.engine.*;
 public class FollowBehaviour implements Behaviour {
 
 	private Actor target;
+	private CalculateDistance distance = new CalculateDistance();
 
 	/**
 	 * Constructor.
@@ -21,34 +25,24 @@ public class FollowBehaviour implements Behaviour {
 
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
+		List<Exit> exits = new ArrayList<>();
+		//CalculateDistance distance = new CalculateDistance();
 		if(!map.contains(target) || !map.contains(actor))
 			return null;
-		
-		Location here = map.locationOf(actor);
-		Location there = map.locationOf(target);
 
-		int currentDistance = distance(here, there);
+		Location here = map.locationOf(actor);
+
 		for (Exit exit : here.getExits()) {
 			Location destination = exit.getDestination();
 			if (destination.canActorEnter(actor)) {
-				int newDistance = distance(destination, there);
-				if (newDistance < currentDistance) {
-					return new MoveActorAction(destination, exit.getName());
+				exits.add(exit);
 				}
 			}
+		int i = 0;
+		if (i < exits.size() && exits.get(i) != null){
+			Exit destination = distance.shortestDistance(here, exits);
+			return new MoveActorAction(destination.getDestination(), destination.getName());
 		}
-
 		return null;
-	}
-
-	/**
-	 * Compute the Manhattan distance between two locations.
-	 * 
-	 * @param a the first location
-	 * @param b the first location
-	 * @return the number of steps between a and b if you only move in the four cardinal directions.
-	 */
-	private int distance(Location a, Location b) {
-		return Math.abs(a.x() - b.x()) + Math.abs(a.y() - b.y());
 	}
 }

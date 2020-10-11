@@ -83,7 +83,7 @@ public abstract class Dinosaur extends Actor {
             if (turn == 20) {
                 addCapability(DinosaurCapability.DEAD);
                 display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
-                return new deadActorAction();
+                return new DeadActorAction();
             }
             return new DoNothingAction();
         }

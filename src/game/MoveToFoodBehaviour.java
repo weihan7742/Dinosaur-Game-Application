@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MoveToFoodBehaviour implements Behaviour{
-    private CalculateDistance distance = new CalculateDistance();
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
         //If actor is not standing on a grass or fruit, actor will move to the nearest food source
         List<Exit> foodSource = new ArrayList<>();
+        CalculateDistance distance = new CalculateDistance();
         if (actor.hasCapability(DinosaurCapability.HUNGRY)) {
             List<Exit> exits = map.locationOf(actor).getExits();
             for (Exit exit : exits) {

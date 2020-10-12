@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * A class which allows Player to feed Dinosaur.
  */
-public class FeedingBehaviour implements Behaviour {
+public class FeedingBehaviour implements Behaviour, FoodInterface{
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
@@ -15,8 +15,8 @@ public class FeedingBehaviour implements Behaviour {
         for (Exit exit : exits) {
             if(exit.getDestination().containsAnActor()) {
                 for (Item item : actor.getInventory()) {
-                    if (item instanceof FoodItem) {
-                        return new FeedingAction((FoodItem) item, exit.getDestination());
+                    if (food.containsFood(item.getDisplayChar())) {
+                        return new FeedingAction(item, exit.getDestination());
                     }
                 }
             }

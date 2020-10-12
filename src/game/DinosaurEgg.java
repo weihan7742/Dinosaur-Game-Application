@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Location;
 /**
  * Child class of FoodItem which represents dinosaur egg which is the breeding result of Dinosaur.
  */
-public class DinosaurEgg extends FoodItem implements EcoPointInterface{
+public class DinosaurEgg extends PortableItem implements EcoPointInterface, FoodInterface{
 
     private int incubationPeriod = 0;
     private String species;
@@ -19,6 +19,7 @@ public class DinosaurEgg extends FoodItem implements EcoPointInterface{
     public DinosaurEgg(String species) {
         super(species + " Egg", '0');
         this.species = species;
+        food.addFood(this.displayChar, 10);
     }
 
     @Override

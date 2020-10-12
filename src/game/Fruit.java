@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Location;
 /**
  * A child class of FoodItem which represents fruit in the game.
  */
-public class Fruit extends FoodItem {
+public class Fruit extends PortableItem implements FoodInterface{
 
     private int age;
 
@@ -14,6 +14,7 @@ public class Fruit extends FoodItem {
      */
     public Fruit() {
         super("Fruit", 'o');
+        food.addFood(this.displayChar, 30);
     }
 
 
@@ -26,4 +27,5 @@ public class Fruit extends FoodItem {
             currentLocation.removeItem(this);
         }
     }
+
 }

@@ -3,7 +3,7 @@ package game;
 /**
  * Child class of FoodItem which can be consumed by Allosaur.
  */
-public class Corpse extends FoodItem{
+public class Corpse extends PortableItem implements FoodInterface{
     /***
      * Constructor.
      *
@@ -11,5 +11,6 @@ public class Corpse extends FoodItem{
      */
     public Corpse(String name) {
         super(name, '%');
+        food.addFood(this.displayChar, 50);
     }
 }

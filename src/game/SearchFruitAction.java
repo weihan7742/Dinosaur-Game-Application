@@ -14,7 +14,7 @@ public class SearchFruitAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        FoodItem fruit =  new Fruit();
+        Item fruit =  new Fruit();
         Probability probability = new Probability();
         if (probability.calculateProbability(40)) {
             actor.addItemToInventory(fruit);

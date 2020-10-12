@@ -5,22 +5,21 @@ import edu.monash.fit2099.engine.*;
 /**
  * Special action which allows Dinosaur to eat food items.
  */
-public class EatFoodAction extends Action {
+public class EatFoodAction extends Action implements FoodInterface{
 
     private Ground grass;
-    private Item food;
+    private Item dinosaurFood;
     private Dinosaur dino;
-    private FoodPoints foodpoints = new FoodPoints();
 
     /**
      * Constructor.
      *
      * @param dino Dinosaur actor acting
-     * @param food FoodItem to be eaten
+     * @param dinosaurFood Item to be eaten
      */
-    public EatFoodAction(Actor dino, Item food) {
+    public EatFoodAction(Actor dino, Item dinosaurFood) {
         this.dino = (Dinosaur) dino;
-        this.food = food;
+        this.dinosaurFood = dinosaurFood;
     }
 
     /**
@@ -42,17 +41,14 @@ public class EatFoodAction extends Action {
             }
         }
         if (actor.hasCapability(DinosaurCapability.HERBIVORE)) {
-            if (food != null) {
-                dino.increaseFoodLevel(foodpoints.getFoodPoints().get(food.getDisplayChar()));
-                map.locationOf(actor).removeItem(food);
-                return menuDescription(actor) + food;
+            if (dinosaurFood != null) {
+                dino.increaseFoodLevel(food.getFoodPoint(dinosaurFood.getDisplayChar()));
+                map.locationOf(actor).removeItem(dinosaurFood);
+                return menuDescription(actor) + dinosaurFood;
             } else if (grass != null) {
-                dino.increaseFoodLevel(foodpoints.getFoodPoints().get(grass.getDisplayChar()));
+                dino.increaseFoodLevel(food.getFoodPoint(grass.getDisplayChar()));
                 return menuDescription(actor) + "grass";
             }
-        } else if (actor.hasCapability((DinosaurCapability.CARNIVORE))) {
-            dino.increaseFoodLevel(foodpoints.getFoodPoints().get(food.getDisplayChar()));
-            return menuDescription(actor) + food;
         }
         return null;
     }

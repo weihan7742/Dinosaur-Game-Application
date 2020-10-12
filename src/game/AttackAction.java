@@ -46,7 +46,7 @@ public class AttackAction extends Action {
 
 		target.hurt(damage);
 		if (!target.isConscious()) {
-			FoodItem corpse = new Corpse("dead " + target);
+			Item corpse = new Corpse("dead " + target);
 			map.locationOf(target).addItem(corpse);
 			
 			Actions dropActions = new Actions();

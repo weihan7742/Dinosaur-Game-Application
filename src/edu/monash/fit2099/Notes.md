@@ -22,6 +22,9 @@ Put "[/]" if the item has been resolved
 - Spawn too much, try to reduce probability 
 
 6. Error codes
-- MoveToFoodBehaviour nullpointer
-- FollowBehaviour nullpointer
+- MoveToFoodBehaviour nullpointer[/]
+- FollowBehaviour nullpointer[/]
+
+7. Feeding
+- Dinosaur food level does not increase after being fed
 

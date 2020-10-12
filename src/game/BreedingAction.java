@@ -22,16 +22,13 @@ public class BreedingAction extends Action{
         if (dino.gender() && (!dino1.gender())) {
             if (probability.calculateProbability(40)) {
                 dino1.setPregnant(true);
-                actor = dino1;
-                return menuDescription(actor);
+                return menuDescription(dino1);
             }
         }
         else if ((!dino.gender()) && (dino1.gender())) {
             if (probability.calculateProbability(40)) {
                 dino.setPregnant(true);
-                Actor actor1 = location.getActor();
-                actor1 = dino;
-                return menuDescription(actor1);
+                return menuDescription(dino);
             }
         }
         return "Failed to breed";

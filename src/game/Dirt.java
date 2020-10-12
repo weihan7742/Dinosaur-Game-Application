@@ -10,11 +10,13 @@ import edu.monash.fit2099.engine.Location;
 public class Dirt extends Ground {
 	private Probability probability = new Probability();
 
+	/**
+	 * Constructor.
+	 */
 	public Dirt() {
 		super('.');
 	}
 
-	// Put doc
 	@Override
 	public void tick(Location currentLocation) {
 		super.tick(currentLocation);
@@ -27,15 +29,17 @@ public class Dirt extends Ground {
 				if (probability.calculateProbability(1)) {
 					currentLocation.setGround(grass);
 					grass.addEcoPoint();
+					break;
 				}
 			}
 			for (Exit exit1 : exit.getDestination().getExits()) {
 				char currentTwo = exit1.getDestination().getDisplayChar();
 				// Check if got grass
 				if (currentTwo == '^') {
-					if (probability.calculateProbability(2)) {
+					if (probability.calculateProbability(0)) {
 						currentLocation.setGround(grass);
 						grass.addEcoPoint();
+						break;
 					}
 				}
 			}

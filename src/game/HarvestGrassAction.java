@@ -2,10 +2,20 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ * Special action of a Player to harvest grass.
+ */
 public class HarvestGrassAction extends Action implements EcoPointInterface{
+
     protected int x;
     protected int y;
 
+    /**
+     * Constructor.
+     *
+     * @param x x-coordinate
+     * @param y y-coordinate
+     */
     public HarvestGrassAction(int x, int y) {
         this.x = x;
         this.y = y;
@@ -25,5 +35,4 @@ public class HarvestGrassAction extends Action implements EcoPointInterface{
     public String menuDescription(Actor actor) {
         return actor + " harvests a grass";
     }
-
 }

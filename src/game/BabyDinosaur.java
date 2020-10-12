@@ -28,7 +28,7 @@ public class BabyDinosaur extends Dinosaur{
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
         display.println("Baby Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
         age++;
-        de();
+        decreaseFoodLevel();
         hunger(this,map, display);
         if (age == 5 && foodLevel > 5) {
             Actor dino = null;

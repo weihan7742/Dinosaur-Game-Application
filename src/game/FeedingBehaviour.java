@@ -4,6 +4,9 @@ import edu.monash.fit2099.engine.*;
 
 import java.util.List;
 
+/**
+ * A class which allows Player to feed Dinosaur.
+ */
 public class FeedingBehaviour implements Behaviour {
 
     @Override

@@ -2,6 +2,9 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ * A class to allow Actor to have eating food behaviour.
+ */
 public class EatFoodBehaviour implements Behaviour {
 
     @Override
@@ -28,6 +31,4 @@ public class EatFoodBehaviour implements Behaviour {
         }
         return null;
     }
-
-
 }

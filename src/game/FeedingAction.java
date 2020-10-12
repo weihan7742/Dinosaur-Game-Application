@@ -5,11 +5,20 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
-
+/**
+ * Special action to allow Player to feed Dinosaur.
+ */
 public class FeedingAction extends Action implements EcoPointInterface {
+
     private FoodItem food;
     private Location location;
 
+    /**
+     * Constructor.
+     *
+     * @param food FoodItem to be fed
+     * @param location Location of Actor
+     */
     public FeedingAction(FoodItem food, Location location) {
         this.food = food;
         this.location = location;

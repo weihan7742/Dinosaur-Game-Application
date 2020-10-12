@@ -9,6 +9,7 @@ public abstract class Dinosaur extends Actor {
     private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(), new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
     private int turn;
     private int period;
+    private final int MAXIMUM_FOOD_LEVEL = 100;
 
     /**
      * Constructor.
@@ -49,8 +50,13 @@ public abstract class Dinosaur extends Actor {
         foodLevel -= 1;
     }
 
-    public void fed(Actor dino,int foodPoints) {
-        foodLevel += foodPoints;
+    public void fed(int foodPoints) {
+        if (foodLevel + foodPoints <= MAXIMUM_FOOD_LEVEL) {
+            foodLevel += foodPoints;
+        }
+        else {
+            foodLevel = 100;
+        }
     }
 
     public void setPregnant(boolean pregnant) {

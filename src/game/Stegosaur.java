@@ -8,7 +8,6 @@ import edu.monash.fit2099.engine.*;
  *
  */
 public class Stegosaur extends Dinosaur {
-	private final int MAXIMUM_FOOD_LEVEL = 100;
 
 	/**
 	 * Constructor.

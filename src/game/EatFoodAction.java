@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.*;
 public class EatFoodAction extends Action {
 
     private Ground grass;
-    private FoodItem food;
+    private Item food;
     private Dinosaur dino;
     private FoodPoints foodpoints = new FoodPoints();
 
@@ -18,7 +18,7 @@ public class EatFoodAction extends Action {
      * @param dino Dinosaur actor acting
      * @param food FoodItem to be eaten
      */
-    public EatFoodAction(Actor dino, FoodItem food) {
+    public EatFoodAction(Actor dino, Item food) {
         this.dino = (Dinosaur) dino;
         this.food = food;
     }
@@ -44,6 +44,7 @@ public class EatFoodAction extends Action {
         if (actor.hasCapability(DinosaurCapability.HERBIVORE)) {
             if (food != null) {
                 dino.increaseFoodLevel(foodpoints.getFoodPoints().get(food.getDisplayChar()));
+                map.locationOf(actor).removeItem(food);
                 return menuDescription(actor) + food;
             } else if (grass != null) {
                 dino.increaseFoodLevel(foodpoints.getFoodPoints().get(grass.getDisplayChar()));

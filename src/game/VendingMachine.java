@@ -6,11 +6,19 @@ import edu.monash.fit2099.engine.Item;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * A shop-like feature in the game which allows Player to purchase items using eco points.
+ */
 public class VendingMachine extends Ground {
+
     private ArrayList<Item> itemSold = new ArrayList<>();
     private HashMap<String,Integer> itemPrice = new HashMap<>();
 
-    // Put in doc
+    /**
+     * Constructor.
+     *
+     * Contains multiple items to be sold.
+     */
     public VendingMachine(){
         super('H');
         itemSold.add(new Hay());
@@ -23,10 +31,18 @@ public class VendingMachine extends Ground {
         addItemPrice();
     }
 
+    /**
+     * Getter method to retrieve array list of items sold.
+     *
+     * @return array list of items sold
+     */
     public ArrayList<Item> getItemSold(){
         return new ArrayList<Item>(itemSold);
     }
 
+    /**
+     * Method to add price to items.
+     */
     public void addItemPrice(){
         itemPrice.put("Hay",-1);
         itemPrice.put("Fruit",-1);
@@ -37,6 +53,11 @@ public class VendingMachine extends Ground {
         itemPrice.put("Laser Gun",-1); // Remember to change this
     }
 
+    /**
+     * Getter method to retrieve item price of items
+     *
+     * @return hash map of item price of items.
+     */
     public HashMap<String,Integer> getItemPrice(){
         return new HashMap<>(itemPrice);
     }

@@ -4,10 +4,17 @@ import edu.monash.fit2099.engine.Ground;
 import edu.monash.fit2099.engine.Item;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * A child class of Ground which represents tree which is a type of terrain in the game.
+ */
 public class Tree extends Ground {
+
 	private int age = 0;
 	private Item fruit = new Fruit();
 
+	/**
+	 * Constructor.
+	 */
 	public Tree() {
 		super('+');
 	}

@@ -9,10 +9,12 @@ import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * A class which allows Dinosaur to move randomly in different location in the map
+ */
 public class WanderBehaviour implements Behaviour {
 	
 	private Random random = new Random();
-
 
 	/**
 	 * Returns a MoveAction to wander to a random location, if possible.  

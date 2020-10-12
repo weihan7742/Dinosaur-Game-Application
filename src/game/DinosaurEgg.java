@@ -2,11 +2,20 @@ package game;
 
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Child class of FoodItem which represents dinosaur egg which is the breeding result of Dinosaur.
+ */
 public class DinosaurEgg extends FoodItem implements EcoPointInterface{
+
     private int incubationPeriod = 0;
     private String species;
     private int hatchesPoints;
 
+    /**
+     * Constructor.
+     *
+     * @param species
+     */
     public DinosaurEgg(String species) {
         super(species + " Egg", '0');
         this.species = species;
@@ -29,6 +38,9 @@ public class DinosaurEgg extends FoodItem implements EcoPointInterface{
         }
     }
 
+    /**
+     * Method to calculate Eco Points
+     */
     public void calculateHatchesPoints(){
         if (species == "Stegosaur"){
             hatchesPoints = 100;
@@ -38,6 +50,11 @@ public class DinosaurEgg extends FoodItem implements EcoPointInterface{
         }
     }
 
+    /**
+     * Getter method to retrieve hatches points.
+     *
+     * @return hatches points
+     */
     public int getHatchesPoints(){
         return hatchesPoints;
     }

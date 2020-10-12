@@ -2,12 +2,15 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ * Special action to allow Player to pick fruits from trees.
+ */
 public class SearchFruitAction extends Action {
 
-    public SearchFruitAction( ) {
-
-    }
-
+    /**
+     * Constructor.
+     */
+    public SearchFruitAction( ) {}
 
     @Override
     public String execute(Actor actor, GameMap map) {

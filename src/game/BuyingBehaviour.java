@@ -2,6 +2,9 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ * A class which allows Player to buy items from VendingMachine.
+ */
 public class BuyingBehaviour implements Behaviour {
 
     @Override
@@ -9,6 +12,13 @@ public class BuyingBehaviour implements Behaviour {
         return null;
     }
 
+    /**
+     * A method which allows Player to have multiple BuyingAction for different items from VendingMachine.
+     *
+     * @param actor the Actor acting
+     * @param map the GameMap containing the Actor
+     * @return {@link edu.monash.fit2099.engine.Actions} which contain collection of BuyingAction
+     */
     public Actions getMoreActions(Actor actor, GameMap map){
         Actions actions = new Actions();
         if (map.locationOf(actor).getGround().getDisplayChar() == 'H'){

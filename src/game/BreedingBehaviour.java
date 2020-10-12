@@ -5,15 +5,17 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 
+/**
+ * A class which allows Dinosaur to breed.
+ */
 public class BreedingBehaviour implements Behaviour {
-    private Dinosaur dino;
-    private Dinosaur dino1;
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
         if (actor.hasCapability(DinosaurCapability.HEALTHY)) {
-            dino = (Dinosaur) actor;
+            Dinosaur dino = (Dinosaur) actor;
             for (Exit exit : map.locationOf(actor).getExits()) {
+                Dinosaur dino1;
                 if(exit.getDestination().containsAnActor() && exit.getDestination().getActor().hasCapability(DinosaurCapability.HEALTHY)) {
                     Actor actor1 = exit.getDestination().getActor();
                     dino1 = (Dinosaur) actor1;

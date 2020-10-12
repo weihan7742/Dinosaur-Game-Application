@@ -5,9 +5,18 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 import edu.monash.fit2099.engine.Location;
 
+/**
+ * Special action to allow baby dinosaurs to grow into grown up dinosaurs.
+ */
 public class GrowUpAction extends Action {
+
     private Actor newActor;
 
+    /**
+     * Contructor.
+     *
+     * @param newActor actor acting
+     */
     public GrowUpAction(Actor newActor) {
         this.newActor = newActor;
     }

@@ -4,15 +4,14 @@ package game;
 import edu.monash.fit2099.engine.*;
 
 /**
- * A herbivorous dinosaur.
- *
+ * Child class of Dinosaur which represents a herbivorous dinosaur.
  */
 public class Stegosaur extends Dinosaur {
 
 	/**
 	 * Constructor.
-	 * All Stegosaurs are represented by a 'd' and have 100 hit points.
 	 *
+	 * All Stegosaurs are represented by a 'd' and have 100 hit points.
 	 * @param name the name of this Stegosaur
 	 */
 	public Stegosaur(String name, Boolean male) {
@@ -20,13 +19,8 @@ public class Stegosaur extends Dinosaur {
 		addCapability(DinosaurCapability.HERBIVORE);
 	}
 
-
-
 	/**
 	 * Figure out what to do next.
-	 *
-	 * FIXME: Stegosaur wanders around at random, or if no suitable MoveActions are available, it
-	 * just stands there.  That's boring.
 	 *
 	 * @see edu.monash.fit2099.engine.Actor#playTurn(Actions, Action, GameMap, Display)
 	 */

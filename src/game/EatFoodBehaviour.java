@@ -14,11 +14,9 @@ public class EatFoodBehaviour implements Behaviour {
             }
             for (Item item : map.locationOf(actor).getItems()) {
                 if (item.toString() == "Fruit") {
-                    map.locationOf(actor).removeItem(new Fruit());
-                    return new EatFoodAction(actor, new Fruit());
+                    return new EatFoodAction(actor, item);
                 } else if (item.toString() == "Hay") {
-                    map.locationOf(actor).removeItem(new Hay());
-                    return new EatFoodAction(actor, new Hay());
+                    return new EatFoodAction(actor, item);
                 }
             }
         } else if (actor.hasCapability(DinosaurCapability.CARNIVORE)) {

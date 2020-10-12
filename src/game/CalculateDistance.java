@@ -18,13 +18,15 @@ public class CalculateDistance {
     }
 
     public Exit shortestDistance(Location actorLocation, List<Exit> exits) {
-        int currentDistance = distance(actorLocation, exits.get(0).getDestination());
+        Exit currentExit = exits.get(0);
+        int currentDistance = distance(actorLocation, currentExit.getDestination());
         for (Exit exit : exits) {
             int newDistance = distance(actorLocation, exit.getDestination());
             if (newDistance < currentDistance) {
-                return exit;
+                currentDistance = newDistance;
+                currentExit = exit;
             }
         }
-        return null;
+        return currentExit;
     }
 }

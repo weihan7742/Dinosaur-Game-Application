@@ -23,8 +23,10 @@ public class EatFoodBehaviour implements Behaviour {
                 }
             }
         } else if (actor.hasCapability(DinosaurCapability.CARNIVORE)) {
-            if (map.locationOf(actor).getGround().getDisplayChar() == '%'){
-            return new EatFoodAction(actor, new Corpse("dead"));
+            for (Item item : map.locationOf(actor).getItems()){
+                if (item.getDisplayChar() == '%') {
+                    return new EatFoodAction(actor, item);
+                }
             }
         }
         return null;

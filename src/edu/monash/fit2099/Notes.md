@@ -4,6 +4,7 @@ Put "[/]" if the item has been resolved
 
 1. EcoPoint feature
 - [] FeedingAction is dependent on Hay and Fruit unnecessary. Try to think of better method.
+    - type of food in FeedingAction are compared by checking if it is the same object (will cause problem later)
 
 2. Buying items feature
 
@@ -18,6 +19,7 @@ Put "[/]" if the item has been resolved
 4. Breeding
 - Dinosaurs are able to interbreed for now (will change in the future)
 - simplify code
+- solve downcasting issue
 
 5. Spawn grass 
 - Spawn too much, try to reduce probability 
@@ -32,6 +34,7 @@ Put "[/]" if the item has been resolved
 8. Eat food
 - needs to know when it is being fed or found a food on its own[/]
 - herbivore and carnivore food
+- solve downcasting issue
 
 9. Modify the Dinosaur Capability class (DRY)
 

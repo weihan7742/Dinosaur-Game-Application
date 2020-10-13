@@ -35,20 +35,16 @@ public class EatFoodAction extends Action implements FoodInterface{
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        if (actor.isConscious()) {
-            if (map.locationOf(actor).getGround().getDisplayChar() == '^') {
-                map.locationOf(actor).setGround(new Dirt());
-            }
-        }
-        if (actor.hasCapability(DinosaurCapability.HERBIVORE)) {
-            if (dinosaurFood != null) {
-                dino.increaseFoodLevel(food.getFoodPoint(dinosaurFood.getDisplayChar()));
+        if (dinosaurFood != null) {
+            dino.increaseFoodLevel(food.getFoodPoint(dinosaurFood.getDisplayChar()));
+            if (map.locationOf(actor).getItems().contains(dinosaurFood)) {
                 map.locationOf(actor).removeItem(dinosaurFood);
-                return menuDescription(actor) + dinosaurFood;
-            } else if (grass != null) {
-                dino.increaseFoodLevel(food.getFoodPoint(grass.getDisplayChar()));
-                return menuDescription(actor) + "grass";
             }
+            return menuDescription(actor) + dinosaurFood;
+        } else if (grass != null) {
+            map.locationOf(actor).setGround(new Dirt());
+            dino.increaseFoodLevel(food.getFoodPoint(grass.getDisplayChar()));
+            return menuDescription(actor) + "grass";
         }
         return null;
     }

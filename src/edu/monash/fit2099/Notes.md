@@ -17,6 +17,7 @@ Put "[/]" if the item has been resolved
 
 4. Breeding
 - Dinosaurs are able to interbreed for now (will change in the future)
+- simplify code
 
 5. Spawn grass 
 - Spawn too much, try to reduce probability 
@@ -27,4 +28,12 @@ Put "[/]" if the item has been resolved
 
 7. Feeding
 - Dinosaur food level does not increase after being fed
+
+8. Eat food
+- needs to know when it is being fed or found a food on its own[/]
+- herbivore and carnivore food
+
+9. Modify the Dinosaur Capability class (DRY)
+
+10. Change sequence diagram for feeding action and eat food action
 

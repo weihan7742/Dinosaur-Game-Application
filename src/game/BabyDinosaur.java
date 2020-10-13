@@ -7,7 +7,7 @@ public class BabyDinosaur extends Dinosaur{
     private boolean male;
     private String species;
     private int turn;
-    private Behaviour[] behaviours = {new EatFoodBehaviour(), new WanderBehaviour()};
+    private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(), new WanderBehaviour()};
 
     public BabyDinosaur(String name, Boolean male, String species) {
         super(name, 'b',100, male, 10, species);
@@ -28,14 +28,14 @@ public class BabyDinosaur extends Dinosaur{
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
         display.println("Baby Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
         age++;
-        decreaseFoodLevel();
+        decreaseFoodLevel(1);
         hunger(this,map, display);
         if (age == 5 && foodLevel > 5) {
             Actor dino = null;
             if (species == "Allosaur") {
-                dino = new Allosaur(male + species, male);
+                dino = new Allosaur(gender() + " " + species, male);
             } else if (species == "Stegosaur") {
-                dino = new Stegosaur(male + species, male);
+                dino = new Stegosaur(gender() + " " + species, male);
             }
             return new GrowUpAction(dino);
         }
@@ -47,6 +47,8 @@ public class BabyDinosaur extends Dinosaur{
                 addCapability(DinosaurCapability.DEAD);
                 display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
                 return new DeadActorAction();
+            } else if (foodLevel > 0) {
+                removeCapability(DinosaurCapability.UNCONSCIOUS);
             }
             return new DoNothingAction();
         }

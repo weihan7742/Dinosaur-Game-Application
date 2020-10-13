@@ -44,13 +44,13 @@ public class VendingMachine extends Ground {
      * Method to add price to items.
      */
     public void addItemPrice(){
-        itemPrice.put("Hay",-1);
-        itemPrice.put("Fruit",-1);
-        itemPrice.put("Carnivore Meal Kit", -1);
-        itemPrice.put("Vegetarian Meal Kit", -1);
-        itemPrice.put("Stegosaur Egg", -1);
-        itemPrice.put("Allosaur Egg", -1);
-        itemPrice.put("Laser Gun",-1); // Remember to change this
+        itemPrice.put("Hay",20);
+        itemPrice.put("Fruit",30);
+        itemPrice.put("Carnivore Meal Kit", 100);
+        itemPrice.put("Vegetarian Meal Kit", 500);
+        itemPrice.put("Stegosaur Egg", 200);
+        itemPrice.put("Allosaur Egg", 1000);
+        itemPrice.put("Laser Gun",500); // Remember to change this
     }
 
     /**

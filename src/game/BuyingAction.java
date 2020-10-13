@@ -15,9 +15,12 @@ public class BuyingAction extends Action implements EcoPointInterface{
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        actor.addItemToInventory(item);
-        ecoPoint.addEcoPoint(vendingMachine.getItemPrice().get(item.toString()));
-        return menuDescription(actor);
+        if (checkSufficient()){
+            actor.addItemToInventory(item);
+            ecoPoint.addEcoPoint(-vendingMachine.getItemPrice().get(item.toString()));
+            return menuDescription(actor);
+        }
+        return actor + " has insufficient eco points."; // Insufficient point
     }
 
     @Override
@@ -27,5 +30,9 @@ public class BuyingAction extends Action implements EcoPointInterface{
 
     public VendingMachine getVendingMachine(){
         return vendingMachine;
+    }
+
+    public boolean checkSufficient(){
+        return ecoPoint.getEcoPoint() - vendingMachine.getItemPrice().get(item.toString()) >= 0;
     }
 }

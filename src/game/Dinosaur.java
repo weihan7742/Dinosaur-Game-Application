@@ -13,6 +13,7 @@ public abstract class Dinosaur extends Actor {
     private int turn;
     private int period;
     protected int foodLevel;
+    private final static int MAXIMUM_FOOD_LEVEL = 100;
 
     /**
      * Constructor.
@@ -69,7 +70,6 @@ public abstract class Dinosaur extends Actor {
      * @param foodPoints
      */
     public void increaseFoodLevel(int foodPoints) {
-        int MAXIMUM_FOOD_LEVEL = 100;
         if (foodLevel + foodPoints <= MAXIMUM_FOOD_LEVEL) {
             foodLevel += foodPoints;
         }
@@ -81,7 +81,7 @@ public abstract class Dinosaur extends Actor {
     /**
      * Setter method to set whether Dinosaur is pregnant or not.
      *
-     * @param pregnant True if Dinosaur is pregnant, False if Dinosaur is not pregant
+     * @param pregnant True if Dinosaur is pregnant, False if Dinosaur is not pregnant
      */
     public void setPregnant(boolean pregnant) {
         this.pregnant = pregnant;

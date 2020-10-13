@@ -1,15 +1,24 @@
 package game;
 
+import edu.monash.fit2099.engine.Capabilities;
+
 /**
  * Enum class containing constants representing different properties of Dinosaur.
  */
 public enum DinosaurCapability {
-    ALIVE,
-    DEAD,
-    HUNGRY,
-    HEALTHY,
-    UNCONSCIOUS,
-    HERBIVORE,
-    CARNIVORE,
+
+    //public enum DinosaurCapabilities {
+        ALIVE,
+        DEAD,
+        HUNGRY,
+        HEALTHY,
+        UNCONSCIOUS,
+        HERBIVORE,
+        CARNIVORE,
+    //}
+
+
+
+
 }
 

@@ -1,4 +1,4 @@
-This document is used to keep track of changes that will need to make to improve the codes in the future (Technical Debt).
+    This document is used to keep track of changes that will need to make to improve the codes in the future (Technical Debt).
 
 Put "[/]" if the item has been resolved
 
@@ -9,7 +9,7 @@ Put "[/]" if the item has been resolved
 2. Buying items feature
 
 - getAction in BuyingBehaviour is redundant (returns null anyhow)
-- VendingMachine has ArrayList and HashMap (which can be redundant)
+- VendingMachine has ArrayList and HashMap (which can be redundant) 
 - Change values based on the assignment 
 
 3. Duplicated code
@@ -22,14 +22,14 @@ Put "[/]" if the item has been resolved
 - solve downcasting issue
 
 5. Spawn grass 
-- Spawn too much, try to reduce probability 
+- Spawn too much, try to reduce probability [/]
 
 6. Error codes
 - MoveToFoodBehaviour nullpointer[/]
 - FollowBehaviour nullpointer[/]
 
 7. Feeding
-- Dinosaur food level does not increase after being fed
+- Dinosaur food level does not increase after being fed 
 
 8. Eat food
 - needs to know when it is being fed or found a food on its own[/]
@@ -38,5 +38,7 @@ Put "[/]" if the item has been resolved
 
 9. Modify the Dinosaur Capability class (DRY)
 
-10. Change sequence diagram for feeding action and eat food action
+10. Change sequence diagram for feeding action, eat food action, spawn grass
+
+11. Add condition for buying items (ecopoint not sufficient)
 

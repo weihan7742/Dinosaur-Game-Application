@@ -2,13 +2,25 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ * Special action of a Player to buy item from VendingMachine.
+ */
 public class BuyingAction extends Action implements EcoPointInterface{
+
     private Item item;
     private VendingMachine vendingMachine = new VendingMachine();
 
+    /**
+     * Constructor.
+     */
     public BuyingAction(){
     }
 
+    /**
+     * Constructor.
+     *
+     * @param newItem item to be bought
+     */
     public BuyingAction(Item newItem){
         item = newItem;
     }
@@ -28,10 +40,20 @@ public class BuyingAction extends Action implements EcoPointInterface{
         return actor + " buys " + item.toString();
     }
 
+    /**
+     * Getter method to retrieve vending machine.
+     *
+     * @return VendingMachine
+     */
     public VendingMachine getVendingMachine(){
         return vendingMachine;
     }
 
+    /**
+     * Check if Player has enough eco points to buy the item.
+     *
+     * @return True if sufficient eco points, false if insufficient eco points
+     */
     public boolean checkSufficient(){
         return ecoPoint.getEcoPoint() - vendingMachine.getItemPrice().get(item.toString()) >= 0;
     }

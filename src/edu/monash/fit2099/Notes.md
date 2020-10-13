@@ -1,15 +1,15 @@
     This document is used to keep track of changes that will need to make to improve the codes in the future (Technical Debt).
 
-Put "[/]" if the item has been resolved
+Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixable
 
 1. EcoPoint feature
-- [] FeedingAction is dependent on Hay and Fruit unnecessary. Try to think of better method.
+- FeedingAction is dependent on Hay and Fruit unnecessary. Try to think of better method. [0]
 
 2. Buying items feature
 
-- getAction in BuyingBehaviour is redundant (returns null anyhow)
-- VendingMachine has ArrayList and HashMap (which can be redundant) 
-- Change values based on the assignment 
+- getAction in BuyingBehaviour is redundant (returns null anyhow) [0]
+- VendingMachine has ArrayList and HashMap (which can be redundant) [0] 
+- Change values based on the assignment [/]  
 
 3. Duplicated code
 - Duplicated code in FollowBehaviour and EatFoodBehaviour[/]
@@ -33,9 +33,9 @@ Put "[/]" if the item has been resolved
 - needs to know when it is being fed or found a food on its own[/]
 - herbivore and carnivore food 
 
-9. Modify the Dinosaur Capability class (DRY)
+9. Modify the Dinosaur Capability class (DRY) 
 
 10. Change sequence diagram for feeding action, eat food action, spawn grass
 
-11. Add condition for buying items (ecopoint not sufficient)
+11. Add condition for buying items (ecopoint not sufficient) [/]
 

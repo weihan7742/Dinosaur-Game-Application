@@ -13,7 +13,7 @@ public class FeedingBehaviour implements Behaviour, FoodInterface{
     public Action getAction(Actor actor, GameMap map) {
         List<Exit> exits = map.locationOf(actor).getExits();
         for (Exit exit : exits) {
-            if(exit.getDestination().containsAnActor()) {
+            if(exit.getDestination().containsAnActor() && exit.getDestination().getActor() instanceof EatingInterface) {
                 for (Item item : actor.getInventory()) {
                     if (food.containsFood(item.getDisplayChar())) {
                         return new FeedingAction(item, exit.getDestination());

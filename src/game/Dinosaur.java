@@ -5,14 +5,15 @@ import edu.monash.fit2099.engine.*;
 /**
  * An abstract class which represents Dinosaur.
  */
-public abstract class Dinosaur extends Actor {
+public abstract class Dinosaur extends Actor implements EatingInterface,BreedingInterface{
 
-    private boolean gender;
+    private boolean male;
     private boolean pregnant;
     private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(), new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
     private int turn;
     private int period;
     protected int foodLevel;
+    private final static int MINIMUM_FOOD_LEVEL = 0;
     private final static int MAXIMUM_FOOD_LEVEL = 100;
 
     /**
@@ -22,10 +23,10 @@ public abstract class Dinosaur extends Actor {
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Dinosaur(String name, char displayChar, int hitPoints, boolean gender, int foodLevel, String specie) {
+    public Dinosaur(String name, char displayChar, int hitPoints, boolean male, int foodLevel, String species) {
         super(name, displayChar, hitPoints);
         addCapability(DinosaurCapability.ALIVE);
-        this.gender = gender;
+        this.male = male;
         this.foodLevel = foodLevel;
     }
 
@@ -60,8 +61,10 @@ public abstract class Dinosaur extends Actor {
     /**
      * Decrease food level by one.
      */
-    public void decreaseFoodLevel() {
-        foodLevel -= 1;
+    public void decreaseFoodLevel(int point) {
+        if (foodLevel > MINIMUM_FOOD_LEVEL) {
+            foodLevel -= point;
+        }
     }
 
     /**
@@ -101,18 +104,26 @@ public abstract class Dinosaur extends Actor {
      *
      * @return True if Dinosaur is male, False if Dinosaur is female
      */
-    public boolean gender() {
-        return gender;
+    public boolean isMale() {
+        return male;
+    }
+
+    public String gender() {
+        if (isMale()) {
+            return "Male";
+        } else {
+            return "Female";
+        }
     }
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
 
-        //prints foodLevel
+        //prints foodLevel (for debugging purpose, remove later) TODO
         display.println(this.name + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
 
         //Decrease foodLevel by 1
-        decreaseFoodLevel();
+        decreaseFoodLevel(1);
 
         //Checking the foodLevel and add or remove capabilities respectively
         hunger(this, map, display);
@@ -124,6 +135,8 @@ public abstract class Dinosaur extends Actor {
                 addCapability(DinosaurCapability.DEAD);
                 display.println(this.name + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
                 return new DeadActorAction();
+            } else if (foodLevel > 0) {
+                removeCapability(DinosaurCapability.UNCONSCIOUS);
             }
             return new DoNothingAction();
         }

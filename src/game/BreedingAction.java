@@ -3,32 +3,29 @@ package game;
 import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
-import edu.monash.fit2099.engine.Location;
 
 public class BreedingAction extends Action{
 
-    private Location location;
-    private Dinosaur dino;
+    private Actor partner;
 
-    public BreedingAction(Actor dino, Location location) {
-        this.dino = (Dinosaur) dino;
-        this.location = location;
+    public BreedingAction(Actor partner) {
+        this.partner = partner;
     }
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        Probability probability = new Probability();
-        Dinosaur dino1 = (Dinosaur) location.getActor();
-        if (dino.gender() && (!dino1.gender())) {
-            if (probability.calculateProbability(40)) {
-                dino1.setPregnant(true);
-                return menuDescription(dino1);
-            }
-        }
-        else if ((!dino.gender()) && (dino1.gender())) {
-            if (probability.calculateProbability(40)) {
-                dino.setPregnant(true);
-                return menuDescription(dino);
+        if (actor instanceof BreedingInterface && partner instanceof BreedingInterface) {
+            Probability probability = new Probability();
+            if (((BreedingInterface) actor).isMale() && (!((BreedingInterface) partner).isMale())) {
+                if (probability.calculateProbability(100)) {
+                    ((BreedingInterface) partner).setPregnant(true);
+                    return menuDescription(partner);
+                }
+            } else if ((!((BreedingInterface) actor).isMale()) && (((BreedingInterface) partner).isMale())) {
+                if (probability.calculateProbability(40)) {
+                    ((BreedingInterface) actor).setPregnant(true);
+                    return menuDescription(actor);
+                }
             }
         }
         return "Failed to breed";

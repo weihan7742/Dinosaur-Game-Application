@@ -30,7 +30,7 @@ public class FeedingAction extends Action implements EcoPointInterface {
             ecoPoint.addEcoPoint(15);
         }
         actor.removeItemFromInventory(food);
-        return menuDescription(actor)  + " and " + new EatFoodAction(location.getActor(), food).execute(location.getActor(), map);
+        return menuDescription(actor)  + " and " + new EatFoodAction(food).execute(location.getActor(), map);
     }
 
     @Override

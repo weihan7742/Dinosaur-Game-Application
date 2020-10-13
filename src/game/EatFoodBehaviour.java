@@ -13,19 +13,19 @@ public class EatFoodBehaviour implements Behaviour {
         //If actor is standing on grass or a fruit, actor will eat it
         if (actor.hasCapability(DinosaurCapability.HERBIVORE)) {
             if (map.locationOf(actor).getGround().getDisplayChar() == '^') {
-                return new EatFoodAction(actor, new Grass());
+                return new EatFoodAction(map.locationOf(actor).getGround());
             }
             for (Item item : map.locationOf(actor).getItems()) {
                 if (item.toString() == "Fruit") {
-                    return new EatFoodAction(actor, item);
+                    return new EatFoodAction(item);
                 } else if (item.toString() == "Hay") {
-                    return new EatFoodAction(actor, item);
+                    return new EatFoodAction(item);
                 }
             }
         } else if (actor.hasCapability(DinosaurCapability.CARNIVORE)) {
             for (Item item : map.locationOf(actor).getItems()){
                 if (item.getDisplayChar() == '%') {
-                    return new EatFoodAction(actor, item);
+                    return new EatFoodAction(item);
                 }
             }
         }

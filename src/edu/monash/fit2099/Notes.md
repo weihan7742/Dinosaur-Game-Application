@@ -19,7 +19,8 @@ Put "[/]" if the item has been resolved
 4. Breeding
 - Dinosaurs are able to interbreed for now (will change in the future)
 - simplify code
-- solve downcasting issue
+- solve downcasting issue[/]
+- Dinosaur still breeds after being pregnant
 
 5. Spawn grass 
 - Spawn too much, try to reduce probability [/]
@@ -29,16 +30,22 @@ Put "[/]" if the item has been resolved
 - FollowBehaviour nullpointer[/]
 
 7. Feeding
-- Dinosaur food level does not increase after being fed 
+- Dinosaur food level does not increase after being fed [/]
 
 8. Eat food
 - needs to know when it is being fed or found a food on its own[/]
 - herbivore and carnivore food
-- solve downcasting issue
+- solve downcasting issue[/]
 
 9. Modify the Dinosaur Capability class (DRY)
 
 10. Change sequence diagram for feeding action, eat food action, spawn grass
 
 11. Add condition for buying items (ecopoint not sufficient)
+
+12. ***Dinosaur has the tendency to move upwards?????***
+
+13. Experiment on corpse eating
+
+
 

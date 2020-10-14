@@ -7,6 +7,7 @@ import edu.monash.fit2099.engine.Location;
  */
 public class Fruit extends PortableItem implements FoodInterface{
 
+    private final int itemPrice = 30;
     private int age;
 
     /**
@@ -29,4 +30,7 @@ public class Fruit extends PortableItem implements FoodInterface{
         }
     }
 
+    public int getItemPrice(){
+        return itemPrice;
+    }
 }

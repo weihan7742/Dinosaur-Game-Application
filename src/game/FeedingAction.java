@@ -23,12 +23,14 @@ public class FeedingAction extends Action implements EcoPointInterface {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        if(food == new Hay()){
+
+        if(food.toString().equals(new Hay().toString())){
             ecoPoint.addEcoPoint(10);
         }
-        if(food == new Fruit()){
+        if(food.toString().equals(new Fruit().toString())){
             ecoPoint.addEcoPoint(15);
         }
+
         actor.removeItemFromInventory(food);
         return menuDescription(actor)  + " and " + new EatFoodAction(food).execute(location.getActor(), map);
     }

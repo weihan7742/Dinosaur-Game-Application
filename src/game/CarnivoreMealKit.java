@@ -3,7 +3,9 @@ package game;
 /**
  * A child class of FoodItem which can be consumed by Allosaur.
  */
-public class CarnivoreMealKit extends PortableItem implements FoodInterface{
+public class CarnivoreMealKit extends PortableItem implements FoodInterface,ItemSoldInterface{
+
+    private final int itemPrice = 500;
 
     /**
      * Constructor.
@@ -11,6 +13,7 @@ public class CarnivoreMealKit extends PortableItem implements FoodInterface{
     public CarnivoreMealKit(){
         super("Carnivore Meal Kit", 'C');
         food.addFood(this.displayChar,100);
+        itemPriceList.put(this.toString(),itemPrice);
         addCapability(TypeOfFood.CARNIVOROUS);
     }
 }

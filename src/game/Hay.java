@@ -11,5 +11,6 @@ public class Hay extends PortableItem implements FoodInterface{
     public Hay() {
         super("Hay", 'h');
         food.addFood(this.displayChar, 20);
+        addCapability(TypeOfFood.HERBIVOROUS);
     }
 }

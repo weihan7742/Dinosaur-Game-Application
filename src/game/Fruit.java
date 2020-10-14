@@ -15,6 +15,7 @@ public class Fruit extends PortableItem implements FoodInterface{
     public Fruit() {
         super("Fruit", 'o');
         food.addFood(this.displayChar, 30);
+        addCapability(TypeOfFood.HERBIVOROUS);
     }
 
 

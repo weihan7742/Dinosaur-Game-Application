@@ -15,6 +15,7 @@ public class Grass extends Ground implements EcoPointInterface,FoodInterface {
     public Grass() {
         super('^');
         food.addFood(this.displayChar, 5);
+        addCapability(TypeOfFood.HERBIVOROUS);
     }
 
     /**

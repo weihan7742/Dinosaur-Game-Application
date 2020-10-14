@@ -11,5 +11,6 @@ public class VegetarianMealKit extends PortableItem implements FoodInterface{
     public VegetarianMealKit(){
         super("Vegetarian Meal Kit", 'V');
         food.addFood(this.displayChar, 100);
+        addCapability(TypeOfFood.HERBIVOROUS);
     }
 }

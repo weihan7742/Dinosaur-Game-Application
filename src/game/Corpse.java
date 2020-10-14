@@ -12,5 +12,6 @@ public class Corpse extends PortableItem implements FoodInterface{
     public Corpse(String name) {
         super(name, '%');
         food.addFood(this.displayChar, 50);
+        addCapability(TypeOfFood.CARNIVOROUS);
     }
 }

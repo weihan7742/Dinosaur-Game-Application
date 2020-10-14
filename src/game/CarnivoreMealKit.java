@@ -11,5 +11,6 @@ public class CarnivoreMealKit extends PortableItem implements FoodInterface{
     public CarnivoreMealKit(){
         super("Carnivore Meal Kit", 'C');
         food.addFood(this.displayChar,100);
+        addCapability(TypeOfFood.CARNIVOROUS);
     }
 }

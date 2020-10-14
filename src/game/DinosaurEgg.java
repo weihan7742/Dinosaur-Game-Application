@@ -20,6 +20,7 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
         super(species + " Egg", '0');
         this.species = species;
         food.addFood(this.displayChar, 10);
+        addCapability(TypeOfFood.CARNIVOROUS);
     }
 
     @Override

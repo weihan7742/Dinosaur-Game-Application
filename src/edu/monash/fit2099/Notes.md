@@ -34,7 +34,7 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 8. Eat food
 - needs to know when it is being fed or found a food on its own[/]
-- herbivore and carnivore food
+- herbivore and carnivore food [/]
 - solve downcasting issue[/]
 
 9. Modify the Dinosaur Capability class (DRY) 
@@ -43,7 +43,7 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 11. Add condition for buying items (ecopoint not sufficient) [/]
 
-12. ***Dinosaur has the tendency to move upwards?????***
+12. ***Dinosaur has the tendency to move upwards?????***[Maybe not]
 
 13. Experiment on corpse eating
 

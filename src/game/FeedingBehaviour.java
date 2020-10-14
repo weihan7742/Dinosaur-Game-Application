@@ -16,6 +16,7 @@ public class FeedingBehaviour implements Behaviour, FoodInterface{
             if(exit.getDestination().containsAnActor() && exit.getDestination().getActor() instanceof EatingInterface) {
                 for (Item item : actor.getInventory()) {
                     if (food.containsFood(item.getDisplayChar())) {
+                        if (exit.getDestination().getActor().hasCapability(DinosaurCapability.HERBIVORE) && item.hasCapability(TypeOfFood.HERBIVOROUS) || exit.getDestination().getActor().hasCapability(DinosaurCapability.CARNIVORE) && item.hasCapability(TypeOfFood.CARNIVOROUS))
                         return new FeedingAction(item, exit.getDestination());
                     }
                 }

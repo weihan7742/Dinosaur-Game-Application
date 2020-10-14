@@ -39,15 +39,6 @@ public class BuyingAction extends Action implements EcoPointInterface,ItemSoldIn
         return actor + " buys " + item.toString();
     }
 
-//    /** TODO
-//     * Getter method to retrieve vending machine.
-//     *
-//     * @return VendingMachine
-//     */
-//    public VendingMachine getVendingMachine(){
-//        return vendingMachine;
-//    }
-
     /**
      * Check if Player has enough eco points to buy the item.
      *

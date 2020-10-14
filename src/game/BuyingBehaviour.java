@@ -20,10 +20,11 @@ public class BuyingBehaviour implements Behaviour {
      * @return {@link edu.monash.fit2099.engine.Actions} which contain collection of BuyingAction
      */
     public Actions getMoreActions(Actor actor, GameMap map){
+        VendingMachine vendingMachine = new VendingMachine();
         Actions actions = new Actions();
         if (map.locationOf(actor).getGround().getDisplayChar() == 'H'){
             BuyingAction buyingAction = new BuyingAction();
-            for(Item items: buyingAction.getVendingMachine().getItemSold()){
+            for(Item items: vendingMachine.getItemSold()){
                 actions.add(new BuyingAction(items));
             }
             return actions;

@@ -5,11 +5,12 @@ import edu.monash.fit2099.engine.Location;
 /**
  * Child class of FoodItem which represents dinosaur egg which is the breeding result of Dinosaur.
  */
-public class DinosaurEgg extends PortableItem implements EcoPointInterface, FoodInterface{
+public class DinosaurEgg extends PortableItem implements EcoPointInterface, FoodInterface,ItemSoldInterface{
 
     private int incubationPeriod = 0;
     private String species;
     private int hatchesPoints;
+    private static int itemPrice;
 
     /**
      * Constructor.
@@ -20,6 +21,8 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
         super(species + " Egg", '0');
         this.species = species;
         food.addFood(this.displayChar, 10);
+        calculateItemPrice();
+        itemPriceList.put(this.toString(),itemPrice);
         addCapability(TypeOfFood.CARNIVOROUS);
     }
 
@@ -59,5 +62,14 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
      */
     public int getHatchesPoints(){
         return hatchesPoints;
+    }
+
+    public void calculateItemPrice(){
+        if(species == "Stegosaur"){
+            itemPrice = 200;
+        }
+        else{
+            itemPrice = 1000;
+        }
     }
 }

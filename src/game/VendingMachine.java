@@ -61,4 +61,5 @@ public class VendingMachine extends Ground {
     public HashMap<String,Integer> getItemPrice(){
         return new HashMap<>(itemPrice);
     }
+
 }

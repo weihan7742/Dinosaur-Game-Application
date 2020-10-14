@@ -9,6 +9,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
 
     private boolean male;
     private boolean pregnant;
+    private String species;
     private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(), new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
     private int turn;
     private int period;
@@ -25,9 +26,9 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
      */
     public Dinosaur(String name, char displayChar, int hitPoints, boolean male, int foodLevel, String species) {
         super(name, displayChar, hitPoints);
-        addCapability(DinosaurCapability.ALIVE);
         this.male = male;
         this.foodLevel = foodLevel;
+        this.species = species;
     }
 
     @Override
@@ -116,32 +117,10 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         }
     }
 
-    public boolean capablePregnant(Actor actor, Actor partner) {
-        if (actor.hasCapability(DinosaurCapability.HEALTHY) && !(isPregnant())) {
-            if (partner.hasCapability(DinosaurCapability.HEALTHY) && !((BreedingInterface) partner).isPregnant()) {
-                if (this.isMale() != ((BreedingInterface)partner).isMale()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-
-        //prints foodLevel (for debugging purpose, remove later) TODO
-        display.println(this.name + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
-
-        //Decrease foodLevel by 1
-        decreaseFoodLevel(1);
-
-        //Checking the foodLevel and add or remove capabilities respectively
-        hunger(this, map, display);
-
+    public Action unconscious(Display display, GameMap map) {
         //After 20 turns of being unconscious, dinosaur will die
+        turn ++;
         if (hasCapability(DinosaurCapability.UNCONSCIOUS)) {
-            turn ++;
             if (turn == 20) {
                 addCapability(DinosaurCapability.DEAD);
                 display.println(this.name + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
@@ -151,15 +130,47 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
             }
             return new DoNothingAction();
         }
+        return null;
+    }
 
-        // After 10 turns of being pregnant, dinosaur will create new DinosaurEgg object
+    public boolean capablePregnant(Actor actor, Actor partner) {
+        if (actor.hasCapability(DinosaurCapability.HEALTHY) && !(isPregnant())) {
+            if (partner.hasCapability(DinosaurCapability.HEALTHY) && !((BreedingInterface) partner).isPregnant()) {
+                return this.isMale() != ((BreedingInterface) partner).isMale();
+            }
+        }
+        return false;
+    }
+
+    public void birthing(GameMap map) {
         if (isPregnant()) {
             period ++;
             if (period == 10) {
-                map.locationOf(this).addItem(new DinosaurEgg(this.name));
+                map.locationOf(this).addItem(new DinosaurEgg(species));
                 setPregnant(false);
             }
         }
+    }
+
+
+    @Override
+    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        //prints foodLevel (for debugging purpose, remove later) TODO
+        display.println(this.name + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
+
+        //Decrease foodLevel by 1
+        decreaseFoodLevel(1);
+
+        //Checking the foodLevel and add or remove capabilities respectively
+        hunger(this, map, display);
+
+        Action action = unconscious(display,map);
+        if (action != null) {
+            return action;
+        }
+
+        // After 10 turns of being pregnant, dinosaur will create new DinosaurEgg object
+        birthing(map);
 
         for (Behaviour behaviour : behaviours) {
             if (behaviour.getAction(this, map) != null)

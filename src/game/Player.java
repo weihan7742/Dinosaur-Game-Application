@@ -45,6 +45,7 @@ public class Player extends Actor implements EcoPointInterface {
 				return lastAction.getNextAction();
 			}
 		}
+		actions.add(new DeadActorAction());
 		System.out.println("Player currently has " + ecoPoint.getEcoPoint() + " points.");
 		return menu.showMenu(this, actions, display);
 	}

@@ -6,7 +6,6 @@ public class BabyDinosaur extends Dinosaur{
     private int age;
     private boolean male;
     private String species;
-    private int turn;
     private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(), new WanderBehaviour()};
 
     public BabyDinosaur(String name, Boolean male, String species) {
@@ -17,20 +16,15 @@ public class BabyDinosaur extends Dinosaur{
     }
 
     private void capabilities() {
-        if (species == "Allosaur") {
+        if (species.equals("Allosaur")) {
             addCapability(DinosaurCapability.CARNIVORE);
-        } else if (species == "Stegosaur") {
+        } else if (species.equals("Stegosaur")) {
             addCapability(DinosaurCapability.HERBIVORE);
         }
     }
 
-    @Override
-    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        display.println("Baby Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
-        age++;
-        decreaseFoodLevel(1);
-        hunger(this,map, display);
-        if (age == 5 && foodLevel > 5) {
+    public Action aging() {
+        if (age == 5 && foodLevel >= 60) {
             Actor dino = null;
             if (species == "Allosaur") {
                 dino = new Allosaur(gender() + " " + species, male);
@@ -39,25 +33,19 @@ public class BabyDinosaur extends Dinosaur{
             }
             return new GrowUpAction(dino);
         }
+        return null;
+    }
 
-        //After 20 turns of being unconscious, dinosaur will die
-        if (hasCapability(DinosaurCapability.UNCONSCIOUS)) {
-            turn ++;
-            if (turn == 20) {
-                addCapability(DinosaurCapability.DEAD);
-                display.println("Stegosaur at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
-                return new DeadActorAction();
-            } else if (foodLevel > 0) {
-                removeCapability(DinosaurCapability.UNCONSCIOUS);
-            }
-            return new DoNothingAction();
+    @Override
+    public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        //display.println("Baby " + species + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
+        age++;
+        Action action = aging();
+        if (action != null) {
+            return action;
         }
+        return super.playTurn(actions, lastAction, map, display);
 
-        for (Behaviour behaviour : behaviours) {
-            if (behaviour.getAction(this, map) != null)
-                return behaviour.getAction(this, map);
-        }
-        return new DoNothingAction();
     }
 
     @Override

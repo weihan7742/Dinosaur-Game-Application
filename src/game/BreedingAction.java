@@ -17,7 +17,7 @@ public class BreedingAction extends Action{
         if (actor instanceof BreedingInterface && partner instanceof BreedingInterface) {
             Probability probability = new Probability();
             if (((BreedingInterface) actor).isMale() && (!((BreedingInterface) partner).isMale())) {
-                if (probability.calculateProbability(100)) {
+                if (probability.calculateProbability(40)) {
                     ((BreedingInterface) partner).setPregnant(true);
                     return menuDescription(partner);
                 }

@@ -30,7 +30,7 @@ public class Tree extends Ground {
 		if (age == 20)
 			displayChar = 'T';
 
-		if (probability.calculateProbability(5)) {
+		if (location.getDisplayChar() != fruit.getDisplayChar() &&probability.calculateProbability(5)) {
 			location.addItem(fruit);
 		}
 	}

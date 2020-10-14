@@ -8,30 +8,42 @@ import java.util.List;
 /**
  * A class which allows Dinosaur to move to food source when below certain food level.
  */
-public class MoveToFoodBehaviour implements Behaviour{
+public class MoveToFoodBehaviour implements Behaviour,FoodInterface{
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        //If actor is not standing on a grass or fruit, actor will move to the nearest food source
+        //If actor is not standing on a food, actor will move to the nearest food source
         List<Exit> foodSource = new ArrayList<>();
         CalculateDistance distance = new CalculateDistance();
         if (actor.hasCapability(DinosaurCapability.HUNGRY)) {
             List<Exit> exits = map.locationOf(actor).getExits();
             for (Exit exit : exits) {
-                char d = exit.getDestination().getDisplayChar();
-                if ((!exit.getDestination().containsAnActor())) {
-                    if ((actor.hasCapability(DinosaurCapability.HERBIVORE) && (d == '^' || d == 'o')) ||
-                            (actor.hasCapability(DinosaurCapability.CARNIVORE) && (d == '%'))) {
-                        foodSource.add(exit);
-                    }
+                if (exit.getDestination().canActorEnter(actor) && diet(actor, exit.getDestination())) {
+                    foodSource.add(exit);
                 }
-            }
-            int i = 0;
-            if (i < foodSource.size() && foodSource.get(i) != null){
-                Exit destination = distance.shortestDistance(map.locationOf(actor), foodSource);
-                return new MoveActorAction(destination.getDestination(), destination.getName());
+                int i = 0;
+                if (i < foodSource.size() && foodSource.get(i) != null) {
+                    Exit destination = distance.shortestDistance(map.locationOf(actor), foodSource);
+                    return new MoveActorAction(destination.getDestination(), destination.getName());
+                }
             }
         }
         return null;
     }
+
+    private boolean diet(Actor actor, Location destination) {
+        if (food.containsFood(destination.getDisplayChar())) {
+            if ((destination.getGround().hasCapability(TypeOfFood.HERBIVOROUS) && actor.hasCapability(DinosaurCapability.HERBIVORE)) || ((destination.getGround().hasCapability(TypeOfFood.CARNIVOROUS) && actor.hasCapability(DinosaurCapability.CARNIVORE)))) {
+                return true;
+            }
+            for (Item item: destination.getItems()) {
+                if ((item.hasCapability(TypeOfFood.HERBIVOROUS) && actor.hasCapability(DinosaurCapability.HERBIVORE)) || (item.hasCapability(TypeOfFood.CARNIVOROUS) && actor.hasCapability(DinosaurCapability.CARNIVORE))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
+
+

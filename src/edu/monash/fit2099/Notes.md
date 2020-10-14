@@ -13,10 +13,10 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 3. Duplicated code
 - Duplicated code in FollowBehaviour and EatFoodBehaviour[/]
-- Duplicated code in dinosaur and baby dinosaur
+- Duplicated code in dinosaur and baby dinosaur[/]
 
 4. Breeding
-- Dinosaurs are able to interbreed for now (will change in the future)
+- Dinosaurs are able to interbreed for now (will change in the future)[0]
 - simplify code[/]
 - solve downcasting issue[/]
 - Dinosaur still breeds after being pregnant[/]
@@ -30,7 +30,7 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 7. Feeding
 - Dinosaur food level does not increase after being fed [/]
-- type of food in FeedingAction are compared by checking if it is the same object (will cause problem later)
+- type of food in FeedingAction are compared by checking if it is the same object (will cause problem later)[/]
 
 8. Eat food
 - needs to know when it is being fed or found a food on its own[/]
@@ -46,6 +46,8 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 12. ***Dinosaur has the tendency to move upwards?????***[Maybe not]
 
 13. Experiment on corpse eating
+
+14. Change menu description
 
 
 

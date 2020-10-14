@@ -93,7 +93,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
     /**
      * Getter method to retrieve Dinosaur's pregnancy status.
      *
-     * @return True if Dinosaur is pregnant, False if Dinosaur is not pregant
+     * @return True if Dinosaur is pregnant, False if Dinosaur is not pregnant
      */
     public boolean isPregnant() {
         return pregnant;
@@ -114,6 +114,17 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         } else {
             return "Female";
         }
+    }
+
+    public boolean capablePregnant(Actor actor, Actor partner) {
+        if (actor.hasCapability(DinosaurCapability.HEALTHY) && !(isPregnant())) {
+            if (partner.hasCapability(DinosaurCapability.HEALTHY) && !((BreedingInterface) partner).isPregnant()) {
+                if (this.isMale() != ((BreedingInterface)partner).isMale()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     @Override

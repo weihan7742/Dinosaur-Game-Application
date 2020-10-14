@@ -3,9 +3,7 @@
 Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixable
 
 1. EcoPoint feature
-- FeedingAction is dependent on Hay and Fruit unnecessary. Try to think of better method. [0]
-- [] FeedingAction is dependent on Hay and Fruit unnecessary. Try to think of better method.
-    - type of food in FeedingAction are compared by checking if it is the same object (will cause problem later)
+- FeedingAction is dependent on Hay and Fruit unnecessary. Try to think of better method. [0]   
 
 2. Buying items feature
 
@@ -19,9 +17,9 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 4. Breeding
 - Dinosaurs are able to interbreed for now (will change in the future)
-- simplify code
+- simplify code[/]
 - solve downcasting issue[/]
-- Dinosaur still breeds after being pregnant
+- Dinosaur still breeds after being pregnant[/]
 
 5. Spawn grass 
 - Spawn too much, try to reduce probability [/]
@@ -32,6 +30,7 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 7. Feeding
 - Dinosaur food level does not increase after being fed [/]
+- type of food in FeedingAction are compared by checking if it is the same object (will cause problem later)
 
 8. Eat food
 - needs to know when it is being fed or found a food on its own[/]

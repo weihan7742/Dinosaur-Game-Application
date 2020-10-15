@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.Ground;
  */
 public class Grass extends Ground implements EcoPointInterface,FoodInterface {
 
-    private final int GIVENECOPOINT = 1;
+    private final int GIVEN_ECO_POINT = 1;
 
     /**
      * Constructor.
@@ -22,7 +22,7 @@ public class Grass extends Ground implements EcoPointInterface,FoodInterface {
      * Method to add eco point.
      */
     public void addEcoPoint(){
-        ecoPoint.addEcoPoint(GIVENECOPOINT);
+        ecoPoint.addEcoPoint(GIVEN_ECO_POINT);
     }
 }
 

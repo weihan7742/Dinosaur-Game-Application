@@ -10,14 +10,14 @@ import edu.monash.fit2099.engine.WeaponItem;
 public class LaserGun extends WeaponItem implements ItemSoldInterface{
 
     private int age = 100;
-    private final int ITEMPRICE = 500;
+    private final int ITEM_PRICE = 500;
 
     /**
      * Constructor.
      */
     public LaserGun(){
         super("Laser Gun", 'L', 50,"zaps");
-        itemPriceList.put(this.toString(), ITEMPRICE);
+        itemPriceList.put(this.toString(), ITEM_PRICE);
     }
 
     @Override

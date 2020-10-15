@@ -13,6 +13,7 @@ public class BabyDinosaur extends Dinosaur{
         this.male = male;
         this.species = species;
         capabilities();
+        addCapability(DinosaurCapability.JUVENILE);
     }
 
     private void capabilities() {

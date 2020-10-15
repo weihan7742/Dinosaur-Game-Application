@@ -18,6 +18,7 @@ public class Allosaur extends Dinosaur{
     public Allosaur(String name, boolean gender) {
         super(name, 'A', 100, gender, 50, "Allosaur");
         addCapability(DinosaurCapability.CARNIVORE);
+        addCapability(DinosaurCapability.ADULT);
     }
 
     @Override

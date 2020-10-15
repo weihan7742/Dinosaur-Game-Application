@@ -16,13 +16,11 @@ public class BreedingAction extends Action{
     public String execute(Actor actor, GameMap map) {
         if (actor instanceof BreedingInterface && partner instanceof BreedingInterface) {
             Probability probability = new Probability();
-            if (((BreedingInterface) actor).isMale() && (!((BreedingInterface) partner).isMale())) {
-                if (probability.calculateProbability(40)) {
+            if (probability.calculateProbability(40)) {
+                if (((BreedingInterface) actor).isMale() && (!((BreedingInterface) partner).isMale())) {
                     ((BreedingInterface) partner).setPregnant(true);
                     return menuDescription(partner);
-                }
-            } else if ((!((BreedingInterface) actor).isMale()) && (((BreedingInterface) partner).isMale())) {
-                if (probability.calculateProbability(40)) {
+                } else if ((!((BreedingInterface) actor).isMale()) && (((BreedingInterface) partner).isMale())) {
                     ((BreedingInterface) actor).setPregnant(true);
                     return menuDescription(actor);
                 }

@@ -17,6 +17,7 @@ public class Stegosaur extends Dinosaur {
 	public Stegosaur(String name, Boolean male) {
 		super(name, 'd', 100,  male, 50, "Stegosaur");
 		addCapability(DinosaurCapability.HERBIVORE);
+		addCapability(DinosaurCapability.ADULT);
 	}
 
 	/**

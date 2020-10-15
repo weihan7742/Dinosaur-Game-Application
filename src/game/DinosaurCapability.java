@@ -12,5 +12,7 @@ public enum DinosaurCapability {
         UNCONSCIOUS,
         HERBIVORE,
         CARNIVORE,
+        ADULT,
+        JUVENILE,
 }
 

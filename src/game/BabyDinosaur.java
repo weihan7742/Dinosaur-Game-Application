@@ -2,12 +2,22 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ * A class which represents the grow up product of dinosaur eggs.
+ */
 public class BabyDinosaur extends Dinosaur{
+
     private int age;
     private boolean male;
     private String species;
-    private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(), new WanderBehaviour()};
 
+    /**
+     * Constructor.
+     *
+     * @param name Name of dinosaur
+     * @param male True if male, false if female
+     * @param species Species of dinosaur
+     */
     public BabyDinosaur(String name, Boolean male, String species) {
         super(name, 'b',100, male, 10, species);
         this.male = male;
@@ -16,6 +26,9 @@ public class BabyDinosaur extends Dinosaur{
         addCapability(DinosaurCapability.JUVENILE);
     }
 
+    /**
+     * Assign carnivore or herbivore capability to baby dinosaur.
+     */
     private void capabilities() {
         if (species.equals("Allosaur")) {
             addCapability(DinosaurCapability.CARNIVORE);
@@ -24,6 +37,11 @@ public class BabyDinosaur extends Dinosaur{
         }
     }
 
+    /**
+     * A method to allow baby dinosaur to grow up.
+     *
+     * @return GrowUpAction of baby dinosaur
+     */
     public Action aging() {
         if (age == 5 && foodLevel >= 60) {
             Actor dino = null;

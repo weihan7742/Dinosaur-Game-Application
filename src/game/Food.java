@@ -2,8 +2,9 @@ package game;
 
 import java.util.HashMap;
 
-//A class used to contain food points for different food items.
-
+/**
+ * A class used to contain food points for different food items.
+ */
 public class Food implements FoodInterface {
 
     private HashMap<Character, Integer> foods = new HashMap<>();
@@ -15,6 +16,12 @@ public class Food implements FoodInterface {
         foods.put(displayChar, foodPoint);
     }
 
+    /**
+     * Method to check if food is included in the food list.
+     *
+     * @param displayChar character of food
+     * @return True if containing, false if not containing
+     */
     public boolean containsFood(char displayChar) {
         return foods.containsKey(displayChar);
     }

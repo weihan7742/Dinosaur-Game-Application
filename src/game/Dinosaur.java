@@ -117,6 +117,13 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         }
     }
 
+    /**
+     * Method to represent the state of unconscious.
+     *
+     * @param display Current I/O that will be shown to user
+     * @param map Current running game map
+     * @return DoNothingAction object which represents that actor will do nothing.
+     */
     public Action unconscious(Display display, GameMap map) {
         //After 20 turns of being unconscious, dinosaur will die
         turn ++;

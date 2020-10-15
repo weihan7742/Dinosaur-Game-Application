@@ -5,7 +5,7 @@ package game;
  */
 public class VegetarianMealKit extends PortableItem implements FoodInterface,ItemSoldInterface{
 
-    private final int itemPrice = 100;
+    private final int ITEMPRICE = 100;
 
     /**
      * Constructor.
@@ -13,7 +13,7 @@ public class VegetarianMealKit extends PortableItem implements FoodInterface,Ite
     public VegetarianMealKit(){
         super("Vegetarian Meal Kit", 'V');
         food.addFood(this.displayChar, 100);
-        itemPriceList.put(this.toString(),itemPrice);
+        itemPriceList.put(this.toString(), ITEMPRICE);
         addCapability(TypeOfFood.HERBIVOROUS);
     }
 }

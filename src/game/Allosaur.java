@@ -3,7 +3,7 @@ package game;
 import edu.monash.fit2099.engine.*;
 
 /**
- * Child class of Dinosaur which represents a carnivore Dinosaur
+ * Child class of Dinosaur which represents a carnivore Dinosaur.
  */
 public class Allosaur extends Dinosaur{
 

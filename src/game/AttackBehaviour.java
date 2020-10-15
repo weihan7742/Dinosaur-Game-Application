@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A class which allows Actor to attack other actors.
+ * A class which allows Actor to have the behaviour to attack other actors.
  */
 
 public class AttackBehaviour implements Behaviour {

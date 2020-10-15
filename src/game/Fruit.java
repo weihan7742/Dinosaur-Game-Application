@@ -5,9 +5,9 @@ import edu.monash.fit2099.engine.Location;
 /**
  * A child class of FoodItem which represents fruit in the game.
  */
-public class Fruit extends PortableItem implements FoodInterface{
+public class Fruit extends PortableItem implements FoodInterface,ItemSoldInterface{
 
-    private final int itemPrice = 30;
+    private final int ITEMPRICE = 30;
     private int age;
 
     /**
@@ -16,6 +16,7 @@ public class Fruit extends PortableItem implements FoodInterface{
     public Fruit() {
         super("Fruit", 'o');
         food.addFood(this.displayChar, 30);
+        itemPriceList.put(this.toString(),ITEMPRICE);
         addCapability(TypeOfFood.HERBIVOROUS);
     }
 
@@ -28,9 +29,5 @@ public class Fruit extends PortableItem implements FoodInterface{
         if (age == 20) {
             currentLocation.removeItem(this);
         }
-    }
-
-    public int getItemPrice(){
-        return itemPrice;
     }
 }

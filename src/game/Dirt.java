@@ -19,6 +19,11 @@ public class Dirt extends Ground {
 		super('.');
 	}
 
+	/**
+	 * Every time this method is called, there is a chance for spawning grass.
+	 *
+	 * @param currentLocation Location of Dirt
+	 */
 	@Override
 	public void tick(Location currentLocation) {
 		Probability probability = new Probability();

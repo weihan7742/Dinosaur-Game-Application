@@ -4,10 +4,18 @@ import edu.monash.fit2099.engine.Action;
 import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
+/**
+ * Special action to allow Dinosaur to breed.
+ */
 public class BreedingAction extends Action{
 
     private Actor partner;
 
+    /**
+     * Constructor.
+     *
+     * @param partner Dinosaur actor
+     */
     public BreedingAction(Actor partner) {
         this.partner = partner;
     }

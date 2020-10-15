@@ -11,12 +11,6 @@ public class BuyingAction extends Action implements EcoPointInterface,ItemSoldIn
 
     /**
      * Constructor.
-     */
-    public BuyingAction(){
-    }
-
-    /**
-     * Constructor.
      *
      * @param newItem item to be bought
      */

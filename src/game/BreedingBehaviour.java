@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.Exit;
 import edu.monash.fit2099.engine.GameMap;
 
 /**
- * A class which allows Dinosaur to breed.
+ * A class which allows Dinosaur to have the behaviour to breed.
  */
 public class BreedingBehaviour implements Behaviour {
 

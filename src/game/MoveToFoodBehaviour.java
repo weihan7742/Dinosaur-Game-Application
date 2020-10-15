@@ -31,6 +31,13 @@ public class MoveToFoodBehaviour implements Behaviour,FoodInterface{
         return null;
     }
 
+    /**
+     * Method to check if there is a suitable food source for suitable dinosaur.
+     *
+     * @param actor Dinosaur
+     * @param destination Location in the game map
+     * @return True if there is suitable food source, false if no suitable food source
+     */
     private boolean diet(Actor actor, Location destination) {
         if (food.containsFood(destination.getDisplayChar())) {
             if ((destination.getGround().hasCapability(TypeOfFood.HERBIVOROUS) && actor.hasCapability(DinosaurCapability.HERBIVORE)) || ((destination.getGround().hasCapability(TypeOfFood.CARNIVOROUS) && actor.hasCapability(DinosaurCapability.CARNIVORE)))) {

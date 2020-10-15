@@ -2,6 +2,9 @@ package game;
 
 import java.util.Random;
 
+/**
+ * A class to generate probabilities for different game features. 
+ */
 public class Probability {
 
     Random rand = new Random();

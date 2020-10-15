@@ -9,6 +9,7 @@ import java.util.List;
  * A class to compute different type of distances.
  */
 public class CalculateDistance {
+
     /**
      * Compute the Manhattan distance between two locations.
      *

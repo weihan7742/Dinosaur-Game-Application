@@ -20,7 +20,6 @@ public class Fruit extends PortableItem implements FoodInterface,ItemSoldInterfa
         addCapability(TypeOfFood.HERBIVOROUS);
     }
 
-
     @Override
     public void tick(Location currentLocation) {
         super.tick(currentLocation);

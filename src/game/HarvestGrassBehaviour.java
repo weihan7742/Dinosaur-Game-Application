@@ -11,7 +11,7 @@ public class HarvestGrassBehaviour implements Behaviour {
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
-        if (map.locationOf(actor).getGround().getDisplayChar() == '^') {
+        if (map.locationOf(actor).getGround().getDisplayChar() == new Grass().getDisplayChar()) {
             int x = map.locationOf(actor).x();
             int y = map.locationOf(actor).y();
             return new HarvestGrassAction(x,y);

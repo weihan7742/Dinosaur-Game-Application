@@ -32,9 +32,8 @@ public class Dirt extends Ground {
 				break;
 			}
 
-			char current = exit.getDestination().getDisplayChar();
  			// Check if got tree
-			if (current == '+' || current == 't' || current == 'T') {
+			if (exit.getDestination().toString() == new Tree().toString()) {
 				checked = true;
 				if (probability.calculateProbability(1)) {
 					currentLocation.setGround(grass);
@@ -49,9 +48,8 @@ public class Dirt extends Ground {
 					break;
 				}
 
-				char currentTwo = exit1.getDestination().getDisplayChar();
 				// Check if got grass
-				if (currentTwo == '^') {
+				if (exit1.getDestination().getDisplayChar() == grass.getDisplayChar()) {
 					checked = true;
 					if (probability.calculateProbability(2)) {
 						currentLocation.setGround(grass);

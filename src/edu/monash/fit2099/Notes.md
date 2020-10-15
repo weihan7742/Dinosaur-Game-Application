@@ -45,9 +45,11 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 12. ***Dinosaur has the tendency to move upwards?????***[Maybe not]
 
-13. Experiment on corpse eating
+13. Experiment on corpse eating[/]
 
 14. Change menu description
+
+15. change constant to uppercase
 
 
 

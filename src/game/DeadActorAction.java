@@ -13,7 +13,7 @@ public class DeadActorAction extends Action {
     public String execute(Actor actor, GameMap map) {
         map.locationOf(actor).addItem(new Corpse("dead " + actor));
         map.removeActor(actor);
-        return menuDescription(actor);
+        return "End Game";
     }
 
     @Override

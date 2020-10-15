@@ -16,7 +16,7 @@ import java.util.List;
 public class AttackBehaviour implements Behaviour {
 
     @Override
-    public Action getAction(Actor actor, GameMap map){
+    public Action getAction(Actor actor, GameMap map) {
         // Is there an attackable Actor next to me?
         List<Exit> exits = new ArrayList<Exit>(map.locationOf(actor).getExits());
         Collections.shuffle(exits);
@@ -25,7 +25,7 @@ public class AttackBehaviour implements Behaviour {
             for (Exit e: exits) {
                 if ((!(e.getDestination().containsAnActor())) && (!(e.getDestination().getActor() instanceof Player)))
                     continue;
-                else{
+                else {
                     return new AttackAction(e.getDestination().getActor());
                 }
             }

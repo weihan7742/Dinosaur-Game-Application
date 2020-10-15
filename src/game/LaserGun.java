@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.WeaponItem;
 /**
  * A class which represents laser gun which is a weapon item and can be used by Player
  */
-public class LaserGun extends WeaponItem implements ItemSoldInterface{
+public class LaserGun extends WeaponItem implements ItemSoldInterface {
 
     private int age = 100;
     private final int ITEM_PRICE = 500;
@@ -15,13 +15,13 @@ public class LaserGun extends WeaponItem implements ItemSoldInterface{
     /**
      * Constructor.
      */
-    public LaserGun(){
+    public LaserGun() {
         super("Laser Gun", 'L', 50,"zaps");
         itemPriceList.put(this.toString(), ITEM_PRICE);
     }
 
     @Override
-    public void tick(Location currentLocation, Actor actor){
+    public void tick(Location currentLocation, Actor actor) {
         super.tick(currentLocation,actor);
         age--;
 

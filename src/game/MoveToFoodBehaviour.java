@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * A class which allows Dinosaur to move to food source when below certain food level.
  */
-public class MoveToFoodBehaviour implements Behaviour,FoodInterface{
+public class MoveToFoodBehaviour implements Behaviour,FoodInterface {
 
     @Override
     public Action getAction(Actor actor, GameMap map) {
@@ -21,11 +21,11 @@ public class MoveToFoodBehaviour implements Behaviour,FoodInterface{
                 if (exit.getDestination().canActorEnter(actor) && diet(actor, exit.getDestination())) {
                     foodSource.add(exit);
                 }
-                int i = 0;
-                if (i < foodSource.size() && foodSource.get(i) != null) {
-                    Exit destination = distance.shortestDistance(map.locationOf(actor), foodSource);
-                    return new MoveActorAction(destination.getDestination(), destination.getName());
-                }
+            }
+            int i = 0;
+            if (i < foodSource.size() && foodSource.get(i) != null) {
+                Exit destination = distance.shortestDistance(map.locationOf(actor), foodSource);
+                return new MoveActorAction(destination.getDestination(), destination.getName());
             }
         }
         return null;
@@ -40,11 +40,17 @@ public class MoveToFoodBehaviour implements Behaviour,FoodInterface{
      */
     private boolean diet(Actor actor, Location destination) {
         if (food.containsFood(destination.getDisplayChar())) {
-            if ((destination.getGround().hasCapability(TypeOfFood.HERBIVOROUS) && actor.hasCapability(DinosaurCapability.HERBIVORE)) || ((destination.getGround().hasCapability(TypeOfFood.CARNIVOROUS) && actor.hasCapability(DinosaurCapability.CARNIVORE)))) {
+            if ((destination.getGround().hasCapability(TypeOfFood.HERBIVOROUS)
+                    && actor.hasCapability(DinosaurCapability.HERBIVORE))
+                    || ((destination.getGround().hasCapability(TypeOfFood.CARNIVOROUS)
+                    && actor.hasCapability(DinosaurCapability.CARNIVORE)))) {
                 return true;
             }
             for (Item item: destination.getItems()) {
-                if ((item.hasCapability(TypeOfFood.HERBIVOROUS) && actor.hasCapability(DinosaurCapability.HERBIVORE)) || (item.hasCapability(TypeOfFood.CARNIVOROUS) && actor.hasCapability(DinosaurCapability.CARNIVORE))) {
+                if ((item.hasCapability(TypeOfFood.HERBIVOROUS)
+                        && actor.hasCapability(DinosaurCapability.HERBIVORE))
+                        || (item.hasCapability(TypeOfFood.CARNIVOROUS)
+                        && actor.hasCapability(DinosaurCapability.CARNIVORE))) {
                     return true;
                 }
             }

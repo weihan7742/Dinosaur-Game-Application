@@ -39,7 +39,7 @@ public class FollowBehaviour implements Behaviour {
 				}
 			}
 		int i = 0;
-		if (i < exits.size() && exits.get(i) != null){
+		if (i < exits.size() && exits.get(i) != null) {
 			Exit destination = distance.shortestDistance(here, exits);
 			return new MoveActorAction(destination.getDestination(), destination.getName());
 		}

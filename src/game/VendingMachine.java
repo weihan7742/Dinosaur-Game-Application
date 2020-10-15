@@ -19,7 +19,7 @@ public class VendingMachine extends Ground implements ItemSoldInterface {
      *
      * Contains multiple items to be sold.
      */
-    public VendingMachine(){
+    public VendingMachine() {
         super('H');
         itemSold.add(new Hay());
         itemSold.add(new Fruit());
@@ -43,8 +43,8 @@ public class VendingMachine extends Ground implements ItemSoldInterface {
     /**
      * Method to add price to items.
      */
-    public void addItemPrice(){
-        for(Item items: itemSold){
+    public void addItemPrice() {
+        for(Item items: itemSold) {
             itemPriceList.put(items.toString(),itemPriceList.get(items.toString()));
         }
     }

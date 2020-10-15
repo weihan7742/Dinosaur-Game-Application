@@ -3,7 +3,7 @@ package game;
 /**
  * Child class of FoodItem which can be consumed by Allosaur.
  */
-public class Corpse extends PortableItem implements FoodInterface{
+public class Corpse extends PortableItem implements FoodInterface {
 
     /***
      * Constructor.

@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * Special action which allows Dinosaur to eat food items.
  */
-public class EatFoodAction extends Action implements FoodInterface{
+public class EatFoodAction extends Action implements FoodInterface {
 
     private Ground grass;
     private Item dinosaurFood;
@@ -30,12 +30,15 @@ public class EatFoodAction extends Action implements FoodInterface{
 
     @Override
     public String execute(Actor actor, GameMap map) {
+        //Check if the food is a Item or a Ground
         if (dinosaurFood != null) {
-            ((EatingInterface) actor).increaseFoodLevel(food.getFoodPoint(dinosaurFood.getDisplayChar()));
+            ((EatingInterface) actor).increaseFoodLevel(food.getFoodPoint
+                    (dinosaurFood.getDisplayChar()));
             if (map.locationOf(actor).getItems().contains(dinosaurFood)) {
                 map.locationOf(actor).removeItem(dinosaurFood);
             }
             return menuDescription(actor) + dinosaurFood;
+
         } else if (grass != null) {
             map.locationOf(actor).setGround(new Dirt());
             ((EatingInterface) actor).increaseFoodLevel(food.getFoodPoint(grass.getDisplayChar()));

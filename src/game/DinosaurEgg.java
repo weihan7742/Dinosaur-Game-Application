@@ -3,9 +3,9 @@ package game;
 import edu.monash.fit2099.engine.Location;
 
 /**
- * Child class of FoodItem which represents dinosaur egg which is the breeding result of Dinosaur.
+ * Child class of PortableItem which represents dinosaur egg which is the breeding result of Dinosaur.
  */
-public class DinosaurEgg extends PortableItem implements EcoPointInterface, FoodInterface,ItemSoldInterface{
+public class DinosaurEgg extends PortableItem implements EcoPointInterface, FoodInterface,ItemSoldInterface {
 
     private int incubationPeriod = 0;
     private String species;
@@ -15,7 +15,7 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
     /**
      * Constructor.
      *
-     * @param species
+     * @param species species of the DinosaurEgg
      */
     public DinosaurEgg(String species) {
         super(species + " Egg", '0');
@@ -31,7 +31,7 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
         super.tick(currentLocation);
         Probability probability =new Probability();
         incubationPeriod ++;
-        if (incubationPeriod == 5) {
+        if (incubationPeriod == 20) {
             calculateHatchesPoints();
             ecoPoint.addEcoPoint(getHatchesPoints());
             if(probability.calculateProbability(50)) {
@@ -46,11 +46,10 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
     /**
      * Method to calculate Eco Points
      */
-    public void calculateHatchesPoints(){
-        if (species == "Stegosaur"){
+    public void calculateHatchesPoints() {
+        if (species == "Stegosaur") {
             hatchesPoints = 100;
-        }
-        else{
+        } else {
             hatchesPoints = 1000;
         }
     }
@@ -64,11 +63,10 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
         return hatchesPoints;
     }
 
-    public void calculateItemPrice(){
-        if(species == "Stegosaur"){
+    public void calculateItemPrice() {
+        if(species == "Stegosaur") {
             itemPrice = 200;
-        }
-        else{
+        } else {
             itemPrice = 1000;
         }
     }

@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * A shop-like feature in the game which allows Player to purchase items using eco points.
  */
-public class VendingMachine extends Ground {
+public class VendingMachine extends Ground implements ItemSoldInterface {
 
     private ArrayList<Item> itemSold = new ArrayList<>();
     private HashMap<String,Integer> itemPrice = new HashMap<>();
@@ -44,13 +44,9 @@ public class VendingMachine extends Ground {
      * Method to add price to items.
      */
     public void addItemPrice(){
-        itemPrice.put("Hay",20);
-        itemPrice.put("Fruit",30);
-        itemPrice.put("Carnivore Meal Kit", 100);
-        itemPrice.put("Vegetarian Meal Kit", 500);
-        itemPrice.put("Stegosaur Egg", 200);
-        itemPrice.put("Allosaur Egg", 1000);
-        itemPrice.put("Laser Gun",500); // Remember to change this
+        for(Item items: itemSold){
+            itemPriceList.put(items.toString(),itemPriceList.get(items.toString()));
+        }
     }
 
     /**

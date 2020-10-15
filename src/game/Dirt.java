@@ -11,7 +11,6 @@ import java.util.List;
  * A class that represents bare dirt.
  */
 public class Dirt extends Ground {
-	private Probability probability = new Probability();
 
 	/**
 	 * Constructor.
@@ -22,6 +21,7 @@ public class Dirt extends Ground {
 
 	@Override
 	public void tick(Location currentLocation) {
+		Probability probability = new Probability();
 		super.tick(currentLocation);
 		Grass grass = new Grass();
 		boolean checked = false;

@@ -5,7 +5,8 @@ package game;
  */
 public class VegetarianMealKit extends PortableItem implements FoodInterface,ItemSoldInterface {
 
-    private final int ITEM_PRICE = 100;
+    private static final int FOOD_POINT = 100;
+    private static final int ITEM_PRICE = 100;
 
     /**
      * Constructor.

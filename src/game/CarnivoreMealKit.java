@@ -5,7 +5,8 @@ package game;
  */
 public class CarnivoreMealKit extends PortableItem implements FoodInterface,ItemSoldInterface {
 
-    private final int ITEM_PRICE = 500;
+    private static final int FOOD_POINT = 100;
+    private static final int ITEM_PRICE = 500;
 
     /**
      * Constructor.
@@ -13,7 +14,7 @@ public class CarnivoreMealKit extends PortableItem implements FoodInterface,Item
      */
     public CarnivoreMealKit() {
         super("Carnivore Meal Kit", 'C');
-        food.addFood(this.displayChar,100);
+        food.addFood(this.displayChar,FOOD_POINT);
         itemPriceList.put(this.toString(), ITEM_PRICE);
         addCapability(TypeOfFood.CARNIVOROUS);
     }

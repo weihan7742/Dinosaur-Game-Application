@@ -7,14 +7,15 @@ import edu.monash.fit2099.engine.Ground;
  */
 public class Grass extends Ground implements EcoPointInterface, FoodInterface {
 
-    private final int GIVEN_ECO_POINT = 1;
+    private static final int FOOD_POINT = 5;
+    private static final int GIVEN_ECO_POINT = 1;
 
     /**
      * Constructor.
      */
     public Grass() {
         super('^');
-        food.addFood(this.displayChar, 5);
+        food.addFood(this.displayChar, FOOD_POINT);
         addCapability(TypeOfFood.HERBIVOROUS);
     }
 

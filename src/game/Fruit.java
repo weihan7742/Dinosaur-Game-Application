@@ -7,7 +7,8 @@ import edu.monash.fit2099.engine.Location;
  */
 public class Fruit extends PortableItem implements FoodInterface,ItemSoldInterface {
 
-    private final int ITEM_PRICE = 30;
+    private static final int FOOD_POINT = 30;
+    private static final int ITEM_PRICE = 30;
     private int age;
 
     /**
@@ -15,7 +16,7 @@ public class Fruit extends PortableItem implements FoodInterface,ItemSoldInterfa
      */
     public Fruit() {
         super("Fruit", 'o');
-        food.addFood(this.displayChar, 30);
+        food.addFood(this.displayChar, FOOD_POINT);
         itemPriceList.put(this.toString(),ITEM_PRICE);
         addCapability(TypeOfFood.HERBIVOROUS);
     }

@@ -10,7 +10,8 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
     private int incubationPeriod = 0;
     private String species;
     private int hatchesPoints;
-    private int itemPrice;
+    private static int itemPrice;
+    private static final int FOOD_POINT = 40;
 
     /**
      * Constructor.
@@ -20,7 +21,7 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
     public DinosaurEgg(String species) {
         super(species + " Egg", '0');
         this.species = species;
-        food.addFood(this.displayChar, 10);
+        food.addFood(this.displayChar, FOOD_POINT);
         calculateItemPrice();
         itemPriceList.put(this.toString(),itemPrice);
         addCapability(TypeOfFood.CARNIVOROUS);

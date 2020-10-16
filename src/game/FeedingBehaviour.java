@@ -22,10 +22,10 @@ public class FeedingBehaviour implements Behaviour, FoodInterface{
 
                         //Checking the Actor's diet and the type of food
                         Actor anotherActor = exit.getDestination().getActor();
-                        if ((anotherActor.hasCapability(DinosaurCapability.HERBIVORE) &&
-                                item.hasCapability(TypeOfFood.HERBIVOROUS)) ||
-                                (anotherActor.hasCapability(DinosaurCapability.CARNIVORE) &&
-                                        item.hasCapability(TypeOfFood.CARNIVOROUS))) {
+                        if ((anotherActor.hasCapability(DinosaurCapability.HERBIVORE)
+                                && item.hasCapability(TypeOfFood.HERBIVOROUS))
+                                || (anotherActor.hasCapability(DinosaurCapability.CARNIVORE)
+                                && item.hasCapability(TypeOfFood.CARNIVOROUS))) {
 
                             return new FeedingAction(item, exit.getDestination());
                         }

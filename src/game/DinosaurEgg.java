@@ -10,7 +10,7 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
     private int incubationPeriod = 0;
     private String species;
     private int hatchesPoints;
-    private  int itemPrice;
+    private int itemPrice;
 
     /**
      * Constructor.

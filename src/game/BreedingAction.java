@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.GameMap;
 /**
  * Special action to allow Dinosaur to breed.
  */
-public class BreedingAction extends Action{
+public class BreedingAction extends Action {
 
     private Actor partner;
 

@@ -5,12 +5,13 @@ import edu.monash.fit2099.engine.*;
 /**
  * An abstract class which represents Dinosaur.
  */
-public abstract class Dinosaur extends Actor implements EatingInterface,BreedingInterface{
+public abstract class Dinosaur extends Actor implements EatingInterface,BreedingInterface {
 
     private boolean male;
     private boolean pregnant;
     private String species;
-    private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(), new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
+    private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(),
+            new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
     private int turn;
     private int period;
     protected int foodLevel;
@@ -24,7 +25,8 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
      * @param displayChar the character that will represent the Actor in the display
      * @param hitPoints   the Actor's starting hit points
      */
-    public Dinosaur(String name, char displayChar, int hitPoints, boolean male, int foodLevel, String species) {
+    public Dinosaur(String name, char displayChar, int hitPoints, boolean male, int foodLevel,
+                    String species) {
         super(name, displayChar, hitPoints);
         this.male = male;
         this.foodLevel = foodLevel;
@@ -45,7 +47,10 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
      */
     public void hunger(Actor actor, GameMap map, Display display) {
         if (foodLevel < 30 && foodLevel > 0) {
-            display.println(actor + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is getting hungry");
+
+            display.println(actor + " at (" + map.locationOf(this).x() + ", "
+                    + map.locationOf(this).y() + ") is getting hungry");
+
             if ((!hasCapability(DinosaurCapability.HUNGRY))) {
                 addCapability(DinosaurCapability.HUNGRY);
             }
@@ -70,8 +75,6 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
 
     /**
      * Increase food level based on food points.
-     *
-     * @param foodPoints
      */
     public void increaseFoodLevel(int foodPoints) {
         if (foodLevel + foodPoints <= MAXIMUM_FOOD_LEVEL) {
@@ -118,6 +121,26 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
     }
 
     /**
+     * Checks if a pair of Actors has met the conditions to breed
+     * @param actor Dinosaur actor that initialises the mating
+     * @param partner The Dinosaur actor mating partner
+     * @return true if both Dinosaurs has met the conditions to breed, false if not
+     */
+    public boolean capablePregnant(Actor actor, Actor partner) {
+        if (actor.hasCapability(DinosaurCapability.HEALTHY) &&
+                (actor.hasCapability(DinosaurCapability.ADULT) && !(isPregnant()))) {
+
+            if (partner.hasCapability(DinosaurCapability.HEALTHY) &&
+                    (actor.hasCapability(DinosaurCapability.ADULT) &&
+                            !((BreedingInterface) partner).isPregnant())) {
+
+                return this.isMale() != ((BreedingInterface) partner).isMale();
+            }
+        }
+        return false;
+    }
+
+    /**
      * Method to represent the state of unconscious.
      *
      * @param display Current I/O that will be shown to user
@@ -130,7 +153,8 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         if (hasCapability(DinosaurCapability.UNCONSCIOUS)) {
             if (turn == 20) {
                 addCapability(DinosaurCapability.DEAD);
-                display.println(this.name + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") is dead");
+                display.println(this.name + " at (" + map.locationOf(this).x() + ", " +
+                        map.locationOf(this).y() + ") is dead");
                 return new DeadActorAction();
             } else if (foodLevel > 0) {
                 removeCapability(DinosaurCapability.UNCONSCIOUS);
@@ -140,19 +164,15 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         return null;
     }
 
-    public boolean capablePregnant(Actor actor, Actor partner) {
-        if (actor.hasCapability(DinosaurCapability.HEALTHY) && (actor.hasCapability(DinosaurCapability.ADULT) && !(isPregnant()))) {
-            if (partner.hasCapability(DinosaurCapability.HEALTHY) && (actor.hasCapability(DinosaurCapability.ADULT) && !((BreedingInterface) partner).isPregnant())) {
-                return this.isMale() != ((BreedingInterface) partner).isMale();
-            }
-        }
-        return false;
-    }
 
+    /**
+     * Check the pregnancy term and lay a DinosaurEgg when the actor reaches a full term pregnancy
+     * @param map the current GameMap
+     */
     public void birthing(GameMap map) {
         if (isPregnant()) {
             period ++;
-            if (period == 10) {
+            if (period == 20) {
                 map.locationOf(this).addItem(new DinosaurEgg(species));
                 setPregnant(false);
             }
@@ -162,21 +182,19 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        //prints foodLevel (for debugging purpose, remove later) TODO
-        display.println(this.name + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
-
         //Decrease foodLevel by 1
         decreaseFoodLevel(1);
 
         //Checking the foodLevel and add or remove capabilities respectively
         hunger(this, map, display);
 
+        //Remove the Dinosaur when it has been for unconscious for 20 turns
         Action action = unconscious(display,map);
         if (action != null) {
             return action;
         }
 
-        // After 10 turns of being pregnant, dinosaur will create new DinosaurEgg object
+        // After 20 turns of being pregnant, dinosaur will create new DinosaurEgg object
         birthing(map);
 
         for (Behaviour behaviour : behaviours) {

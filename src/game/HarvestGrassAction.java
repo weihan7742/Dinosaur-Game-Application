@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * Special action of a Player to harvest grass.
  */
-public class HarvestGrassAction extends Action implements EcoPointInterface{
+public class HarvestGrassAction extends Action implements EcoPointInterface {
 
     protected int x;
     protected int y;

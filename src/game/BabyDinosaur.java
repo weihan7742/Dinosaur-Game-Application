@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * A class which represents the grow up product of dinosaur eggs.
  */
-public class BabyDinosaur extends Dinosaur{
+public class BabyDinosaur extends Dinosaur {
 
     private int age;
     private boolean male;
@@ -43,7 +43,7 @@ public class BabyDinosaur extends Dinosaur{
      * @return GrowUpAction of baby dinosaur
      */
     public Action aging() {
-        if (age == 5 && foodLevel >= 60) {
+        if (age == 30 && foodLevel >= 60 && hitPoints >= 95) {
             Actor dino = null;
             if (species == "Allosaur") {
                 dino = new Allosaur(gender() + " " + species, male);
@@ -57,7 +57,6 @@ public class BabyDinosaur extends Dinosaur{
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        //display.println("Baby " + species + " at (" + map.locationOf(this).x() + ", " + map.locationOf(this).y() + ") "+ foodLevel);
         age++;
         Action action = aging();
         if (action != null) {

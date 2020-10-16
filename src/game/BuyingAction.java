@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * Special action of a Player to buy item from VendingMachine.
  */
-public class BuyingAction extends Action implements EcoPointInterface,ItemSoldInterface{
+public class BuyingAction extends Action implements EcoPointInterface,ItemSoldInterface {
 
     private Item item;
 

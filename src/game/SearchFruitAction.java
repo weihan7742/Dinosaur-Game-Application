@@ -7,11 +7,6 @@ import edu.monash.fit2099.engine.*;
  */
 public class SearchFruitAction extends Action {
 
-    /**
-     * Constructor.
-     */
-    public SearchFruitAction( ) {}
-
     @Override
     public String execute(Actor actor, GameMap map) {
         Item fruit =  new Fruit();

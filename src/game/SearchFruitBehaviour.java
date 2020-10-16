@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Actor;
 import edu.monash.fit2099.engine.GameMap;
 
 /**
- * A class to allow Player to have a behaviour of searching fruits from trees.
+ * A class to allow Player to have a behaviour of searching fruits from trees when standing at location that has a Tree
  */
 public class SearchFruitBehaviour implements Behaviour {
 

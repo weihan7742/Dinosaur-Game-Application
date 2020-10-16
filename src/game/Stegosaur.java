@@ -21,6 +21,15 @@ public class Stegosaur extends Dinosaur {
 	}
 
 	/**
+	 * To know if Stegosaur can attack other Actors
+	 * @return true if Stegosaur can attack other Actors, false if not
+	 */
+	@Override
+	public boolean AttackAbility() {
+		return false;
+	}
+
+	/**
 	 * Figure out what to do next.
 	 *
 	 * @see edu.monash.fit2099.engine.Actor#playTurn(Actions, Action, GameMap, Display)
@@ -30,8 +39,5 @@ public class Stegosaur extends Dinosaur {
 		return super.playTurn(actions, lastAction, map, display);
 	}
 
-	@Override
-	public boolean AttackAbility() {
-		return false;
-	}
+
 }

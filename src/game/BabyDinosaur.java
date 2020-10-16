@@ -43,7 +43,7 @@ public class BabyDinosaur extends Dinosaur {
      * @return GrowUpAction of baby dinosaur
      */
     public Action aging() {
-        if (age == 30 && foodLevel >= 60 && hitPoints >= 95) {
+        if (age >= 30 && foodLevel >= 60 && hitPoints >= 95) {
             Actor dino = null;
             if (species == "Allosaur") {
                 dino = new Allosaur(gender() + " " + species, male);

@@ -12,7 +12,7 @@ public class Player extends Actor implements EcoPointInterface {
 
 	private Menu menu = new Menu();
 	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(),
-			new FeedingBehaviour(), new BuyingBehaviour(), new AttackBehaviour()};
+			new FeedingBehaviour(), new BuyingBehaviour()};
 
 	/**
 	 * Constructor.

@@ -24,9 +24,12 @@ public class FeedingAction extends Action implements EcoPointInterface {
     @Override
     public String execute(Actor actor, GameMap map) {
 
+        // Check if food is a hay
         if(food.toString().equals(new Hay().toString())){
             ecoPoint.addEcoPoint(10);
         }
+
+        // Check if food is a fruit
         if(food.toString().equals(new Fruit().toString())){
             ecoPoint.addEcoPoint(15);
         }

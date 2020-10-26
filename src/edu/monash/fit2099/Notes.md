@@ -47,9 +47,11 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 13. Experiment on corpse eating[/]
 
-14. Change menu description
+14. Change menu description[/]
 
-15. change constant to uppercase
+15. change constant to uppercase[/]
+
+16. Try to simplify thirst functionality
 
 
 

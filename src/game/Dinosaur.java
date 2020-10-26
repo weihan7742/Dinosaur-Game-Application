@@ -15,6 +15,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
     private int turn;
     private int period;
     protected int foodLevel;
+    private int waterLevel;
     private final static int MINIMUM_FOOD_LEVEL = 0;
     private final static int MAXIMUM_FOOD_LEVEL = 100;
 
@@ -30,7 +31,9 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         super(name, displayChar, hitPoints);
         this.male = male;
         this.foodLevel = foodLevel;
+        this.waterLevel = 60;
         this.species = species;
+        addCapability(DinosaurCapability.ACROSSWATER);
     }
 
     @Override
@@ -82,6 +85,29 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         }
         else {
             foodLevel = 100;
+        }
+    }
+
+    public void decreaseWaterLevel(int point) {
+        waterLevel -= point;
+    }
+
+    public void increaseWaterLevel(int point) {
+        waterLevel += point;
+    }
+
+
+    public void thirst(Actor actor, GameMap map, Display display) {
+        if (waterLevel > 0 && waterLevel < 45) {
+            display.println(actor + " at (" + map.locationOf(this).x() + ", "
+                    + map.locationOf(this).y() + ") is thirsty");
+            if ((!hasCapability(DinosaurCapability.THIRSTY))) {
+                addCapability(DinosaurCapability.THIRSTY);
+            }
+        } else if (waterLevel > 45) {
+            removeCapability(DinosaurCapability.THIRSTY);
+        } else {
+            addCapability(DinosaurCapability.UNCONSCIOUS);
         }
     }
 
@@ -156,7 +182,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
                 display.println(this.name + " at (" + map.locationOf(this).x() + ", " +
                         map.locationOf(this).y() + ") is dead");
                 return new DeadActorAction();
-            } else if (foodLevel > 0) {
+            } else if (foodLevel > 0 && waterLevel > 0) {
                 removeCapability(DinosaurCapability.UNCONSCIOUS);
             }
             return new DoNothingAction();
@@ -182,11 +208,17 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
+        //TODO: DELETE (debugging purpose)
+        display.println(this.name + " at (" + map.locationOf(this).x() + ", " +
+                        map.locationOf(this).y() + ")" + waterLevel);
         //Decrease foodLevel by 1
         decreaseFoodLevel(1);
+        //Decrease waterLevel by 1
+        decreaseWaterLevel(1);
 
         //Checking the foodLevel and add or remove capabilities respectively
         hunger(this, map, display);
+        thirst(this, map, display);
 
         //Remove the Dinosaur when it has been for unconscious for 20 turns
         Action action = unconscious(display,map);

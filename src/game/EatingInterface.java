@@ -32,4 +32,10 @@ public interface EatingInterface {
      */
     void hunger(Actor actor, GameMap map, Display display);
 
+    void decreaseWaterLevel(int point);
+
+    void increaseWaterLevel(int point);
+
+    void thirst(Actor actor, GameMap map, Display display);
+   
 }

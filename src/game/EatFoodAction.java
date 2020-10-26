@@ -7,7 +7,7 @@ import edu.monash.fit2099.engine.*;
  */
 public class EatFoodAction extends Action implements FoodInterface {
 
-    private Ground grass;
+    private Ground groundFood;
     private Item dinosaurFood;
 
     /**
@@ -22,10 +22,10 @@ public class EatFoodAction extends Action implements FoodInterface {
     /**
      * Constructor.
      *
-     * @param grass Grass to be eaten
+     * @param groundFood Grass to be eaten
      */
-    public EatFoodAction(Ground grass) {
-        this.grass = grass;
+    public EatFoodAction(Ground groundFood) {
+        this.groundFood = groundFood;
     }
 
     @Override
@@ -39,10 +39,14 @@ public class EatFoodAction extends Action implements FoodInterface {
             }
             return menuDescription(actor) + dinosaurFood;
 
-        } else if (grass != null) {
+        } else if (groundFood != null) {
             map.locationOf(actor).setGround(new Dirt());
-            ((EatingInterface) actor).increaseFoodLevel(food.getFoodPoint(grass.getDisplayChar()));
-            return menuDescription(actor) + "grass";
+            if (!groundFood.hasCapability(TypeOfFood.WATER)) {
+                ((EatingInterface) actor).increaseFoodLevel(food.getFoodPoint(groundFood.getDisplayChar()));
+            } else {
+                ((EatingInterface) actor).increaseWaterLevel(food.getFoodPoint(groundFood.getDisplayChar()));
+            }
+            return menuDescription(actor) + groundFood.toString();
         }
         return null;
     }

@@ -2,7 +2,6 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,19 +12,12 @@ public class MoveToFoodBehaviour implements Behaviour,FoodInterface {
     @Override
     public Action getAction(Actor actor, GameMap map) {
         //If actor is not standing on a food, actor will move to the nearest food source
-        List<Exit> foodSource = new ArrayList<>();
-        CalculateDistance distance = new CalculateDistance();
-        if (actor.hasCapability(DinosaurCapability.HUNGRY)) {
+        if (actor.hasCapability(DinosaurCapability.THIRSTY) || actor.hasCapability(DinosaurCapability.HUNGRY)) {
             List<Exit> exits = map.locationOf(actor).getExits();
             for (Exit exit : exits) {
                 if (exit.getDestination().canActorEnter(actor) && diet(actor, exit.getDestination())) {
-                    foodSource.add(exit);
+                    return new MoveActorAction(exit.getDestination(), exit.getName());
                 }
-            }
-            int i = 0;
-            if (i < foodSource.size() && foodSource.get(i) != null) {
-                Exit destination = distance.shortestDistance(map.locationOf(actor), foodSource);
-                return new MoveActorAction(destination.getDestination(), destination.getName());
             }
         }
         return null;
@@ -40,6 +32,9 @@ public class MoveToFoodBehaviour implements Behaviour,FoodInterface {
      */
     private boolean diet(Actor actor, Location destination) {
         if (food.containsFood(destination.getDisplayChar())) {
+            if (actor.hasCapability(DinosaurCapability.THIRSTY) && destination.getGround().hasCapability(TypeOfFood.WATER)) {
+                return true;
+            }
             if ((destination.getGround().hasCapability(TypeOfFood.HERBIVOROUS)
                     && actor.hasCapability(DinosaurCapability.HERBIVORE))
                     || ((destination.getGround().hasCapability(TypeOfFood.CARNIVOROUS)

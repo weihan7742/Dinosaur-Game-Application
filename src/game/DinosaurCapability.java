@@ -12,5 +12,6 @@ public enum DinosaurCapability {
         CARNIVORE,
         ADULT,
         JUVENILE,
+        ACROSSWATER
 }
 

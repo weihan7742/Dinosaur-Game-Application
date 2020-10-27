@@ -67,8 +67,10 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
     public void calculateItemPrice() {
         if(species == "Stegosaur") {
             itemPrice = 200;
-        } else {
+        } else if (species == "Allosaur") {
             itemPrice = 1000;
+        } else {
+            itemPrice = 600;
         }
     }
 }

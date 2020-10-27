@@ -27,6 +27,8 @@ public class VendingMachine extends Ground implements ItemSoldInterface {
         itemSold.add(new VegetarianMealKit());
         itemSold.add(new DinosaurEgg("Stegosaur"));
         itemSold.add(new DinosaurEgg("Allosaur"));
+        itemSold.add(new DinosaurEgg("Agilisaurus"));
+        itemSold.add(new DinosaurEgg("Archaeopteryx"));
         itemSold.add(new LaserGun());
         addItemPrice();
     }

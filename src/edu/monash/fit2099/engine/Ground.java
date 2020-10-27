@@ -34,7 +34,6 @@ public abstract class Ground implements GroundInterface, Capable, Printable {
 	public Actions allowableActions(Actor actor, Location location, String direction){
 		return new Actions();
 	}
-
 	/**
 	 * Override this to implement impassable terrain, or terrain that is only passable if conditions are met.
 	 *

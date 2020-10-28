@@ -12,7 +12,7 @@ public class MoveToFoodBehaviour implements Behaviour,FoodInterface {
     @Override
     public Action getAction(Actor actor, GameMap map) {
         //If actor is not standing on a food, actor will move to the nearest food source
-        if (actor.hasCapability(DinosaurCapability.THIRSTY) || actor.hasCapability(DinosaurCapability.HUNGRY)) {
+        if (actor.hasCapability(DinosaurCapability.HUNGRY)) {
             List<Exit> exits = map.locationOf(actor).getExits();
             for (Exit exit : exits) {
                 if (exit.getDestination().canActorEnter(actor) && diet(actor, exit.getDestination())) {
@@ -32,9 +32,6 @@ public class MoveToFoodBehaviour implements Behaviour,FoodInterface {
      */
     private boolean diet(Actor actor, Location destination) {
         if (food.containsFood(destination.getDisplayChar())) {
-            if (actor.hasCapability(DinosaurCapability.THIRSTY) && destination.getGround().hasCapability(TypeOfFood.WATER)) {
-                return true;
-            }
             if ((destination.getGround().hasCapability(TypeOfFood.HERBIVOROUS)
                     && actor.hasCapability(DinosaurCapability.HERBIVORE))
                     || ((destination.getGround().hasCapability(TypeOfFood.CARNIVOROUS)

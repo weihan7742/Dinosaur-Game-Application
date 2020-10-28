@@ -5,12 +5,13 @@ import edu.monash.fit2099.engine.*;
 /**
  * An abstract class which represents Dinosaur.
  */
-public abstract class Dinosaur extends Actor implements EatingInterface,BreedingInterface {
+public abstract class Dinosaur extends Actor implements EatingInterface,BreedingInterface, DrinksInterface {
 
     private boolean male;
     private boolean pregnant;
     private String species;
-    private Behaviour[] behaviours = {new EatFoodBehaviour(), new MoveToFoodBehaviour(),
+    private Behaviour[] behaviours = {new DrinksBehaviour(), new MoveToWaterBehaviour(),
+            new EatFoodBehaviour(), new MoveToFoodBehaviour(),
             new BreedingBehaviour(), new AttackBehaviour(), new WanderBehaviour()};
     private int turn;
     private int period;
@@ -33,7 +34,6 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         this.foodLevel = foodLevel;
         this.waterLevel = 60;
         this.species = species;
-        addCapability(DinosaurCapability.ACROSSWATER);
     }
 
     @Override
@@ -195,7 +195,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
      * Check the pregnancy term and lay a DinosaurEgg when the actor reaches a full term pregnancy
      * @param map the current GameMap
      */
-    public void birthing(GameMap map) {
+    public void giveBirth(GameMap map) {
         if (isPregnant()) {
             period ++;
             if (period == 20) {
@@ -227,7 +227,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         }
 
         // After 20 turns of being pregnant, dinosaur will create new DinosaurEgg object
-        birthing(map);
+        giveBirth(map);
 
         for (Behaviour behaviour : behaviours) {
             if (behaviour.getAction(this, map) != null)

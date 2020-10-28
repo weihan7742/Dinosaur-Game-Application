@@ -22,20 +22,5 @@ public interface EatingInterface {
      * @param point food points to be decrease from food level
      */
     void decreaseFoodLevel(int point);
-
-    /**
-     * Method to represent hungry feature of actor
-     *
-     * @param actor current actor
-     * @param map current running game map
-     * @param display current I/O for system
-     */
-    void hunger(Actor actor, GameMap map, Display display);
-
-    void decreaseWaterLevel(int point);
-
-    void increaseWaterLevel(int point);
-
-    void thirst(Actor actor, GameMap map, Display display);
    
 }

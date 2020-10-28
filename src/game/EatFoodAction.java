@@ -41,12 +41,8 @@ public class EatFoodAction extends Action implements FoodInterface {
 
         } else if (groundFood != null) {
             map.locationOf(actor).setGround(new Dirt());
-            if (!groundFood.hasCapability(TypeOfFood.WATER)) {
-                ((EatingInterface) actor).increaseFoodLevel(food.getFoodPoint(groundFood.getDisplayChar()));
-            } else {
-                ((EatingInterface) actor).increaseWaterLevel(food.getFoodPoint(groundFood.getDisplayChar()));
-            }
-            return menuDescription(actor) + groundFood.toString();
+            ((EatingInterface) actor).increaseFoodLevel(food.getFoodPoint(groundFood.getDisplayChar()));
+            return menuDescription(actor) + "grass";
         }
         return null;
     }

@@ -13,6 +13,9 @@ public class Player extends Actor implements EcoPointInterface {
 	private Menu menu = new Menu();
 	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(),
 			new FeedingBehaviour(), new BuyingBehaviour()};
+	private int moves = 0;
+	private boolean challengeOrNot = false;
+
 
 	/**
 	 * Constructor.
@@ -50,8 +53,17 @@ public class Player extends Actor implements EcoPointInterface {
 				return lastAction.getNextAction();
 			}
 		}
-		actions.add(new DeadActorAction());
-		System.out.println("Player currently has " + ecoPoint.getEcoPoint() + " points.");
+		actions.add(new EndGameAction());
+		display.println("Player currently has " + ecoPoint.getEcoPoint() + " points.");
+		display.println("Number of moves: " + moves);
 		return menu.showMenu(this, actions, display);
+	}
+
+	public void addMove(){
+		moves += 1;
+	}
+
+	public void setChallengeOrNot(boolean bool){
+		challengeOrNot = bool;
 	}
 }

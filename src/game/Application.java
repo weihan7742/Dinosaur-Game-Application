@@ -13,8 +13,8 @@ public class Application {
 
 	public static void main(String[] args) {
 		World world = new World(new Display());
-
 		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree(),new Water());
+		Probability probability = new Probability();
 
 		List<String> map = Arrays.asList(
 				"................................................................................",
@@ -22,7 +22,7 @@ public class Application {
 				".....#######....................................................................",
 				".....#_____#....................................................................",
 				".....#_____#....................................................................",
-				".....###_###....................................................................",
+				".....###_###........................~~~~~~......................................",
 				"................................................................................",
 				"......................................+++.......................................",
 				".......................................++++..........~~~~~~.....................",
@@ -87,11 +87,7 @@ public class Application {
 		boolean displayOnMenu;
 		char someChar;
 		for(int i=0; i<gameMap.getXRange().max()+1; i++){
-			if ((i%3 == 0)) {
-				displayOnMenu = true;
-			} else{
-				displayOnMenu = false;
-			}
+			displayOnMenu = i % 3 == 0;
 			// Old Map
 			Border borderOld = new Border(newGameMap.at(i,newGameMapSouth-1),"to new map",displayOnMenu);
 			gameMap.at(i,gameMapNorth).setGround(borderOld);
@@ -100,9 +96,6 @@ public class Application {
 			Border borderNew = new Border(gameMap.at(i,gameMapNorth+1), "to old map", displayOnMenu);
 			newGameMap.at(i,newGameMapSouth).setGround(borderNew);
 		}
-		// Allows player to move from new map to old map
-		// TODO
-
 		// Place a pair of stegosaurs in the middle of the map
 		gameMap.at(30, 12).addActor(new Stegosaur("Male Stegosaur", true));
 		gameMap.at(32, 12).addActor(new Stegosaur("Female Stegosaur", false));
@@ -111,7 +104,6 @@ public class Application {
 		gameMap.at(9,4).setGround(new VendingMachine());
 
 		// Place grass initially
-		Probability probability = new Probability();
 		for(int i: gameMap.getYRange()){
 			for(int j: gameMap.getXRange()){
 				if(gameMap.at(j,i).getDisplayChar() == '.') {

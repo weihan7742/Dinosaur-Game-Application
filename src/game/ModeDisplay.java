@@ -26,7 +26,6 @@ public class ModeDisplay {
     }
 
     public int inputNumber(String condition, boolean chooseMode){
-        displayDivider();
         boolean valid = false;
         int input = 0;
         do{

@@ -24,4 +24,8 @@ public class EcoPoint {
     public void addEcoPoint(int newPoint){
         ecoPoint += newPoint;
     }
+
+    public void setEcoPoint(int ecoPoint) {
+        this.ecoPoint = ecoPoint;
+    }
 }

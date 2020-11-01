@@ -71,57 +71,59 @@ public class Application {
 				"................................................................................",
 				"................................................................................");
 
-
-		GameMap gameMap = new GameMap(groundFactory, map);
-		world.addGameMap(gameMap);
-
-		// Adding new map into the world
-		GameMap newGameMap = new GameMap(groundFactory,newMap);
-		world.addGameMap(newGameMap);
-
 		Player player = new Player("Player", '@', 100);
-		world.addPlayer(player, gameMap.at(9, 4));
 
 		int gameNumber;
-		do{
+		while(true){
 			gameNumber = setMode(player);
-		} while(gameNumber != 3);
+			if(gameNumber == 3){
+				break;
+			}
+			player.resetPointsAndMoves();
+			GameMap gameMap = new GameMap(groundFactory, map);
+			world.addGameMap(gameMap);
 
-		// Allows player to move from old map to new map
-		int gameMapNorth = gameMap.getYRange().min();
-		int newGameMapSouth = newGameMap.getYRange().max();
-		boolean displayOnMenu;
-		char someChar;
-		for(int i=0; i<gameMap.getXRange().max()+1; i++){
-			displayOnMenu = i % 3 == 0;
-			// Old Map
-			Border borderOld = new Border(newGameMap.at(i,newGameMapSouth-1),"to new map",displayOnMenu);
-			gameMap.at(i,gameMapNorth).setGround(borderOld);
+			// Adding new map into the world
+			GameMap newGameMap = new GameMap(groundFactory,newMap);
+			world.addGameMap(newGameMap);
 
-			// New Map
-			Border borderNew = new Border(gameMap.at(i,gameMapNorth+1), "to old map", displayOnMenu);
-			newGameMap.at(i,newGameMapSouth).setGround(borderNew);
-		}
-		// Place a pair of stegosaurs in the middle of the map
-		gameMap.at(30, 12).addActor(new Stegosaur("Male Stegosaur", true));
-		gameMap.at(32, 12).addActor(new Stegosaur("Female Stegosaur", false));
+			world.addPlayer(player, gameMap.at(9, 4));
+			// Allows player to move from old map to new map
+			int gameMapNorth = gameMap.getYRange().min();
+			int newGameMapSouth = newGameMap.getYRange().max();
+			boolean displayOnMenu;
+			char someChar;
+			for(int i=0; i<gameMap.getXRange().max()+1; i++){
+				displayOnMenu = i % 3 == 0;
+				// Old Map
+				Border borderOld = new Border(newGameMap.at(i,newGameMapSouth-1),"to new map",displayOnMenu);
+				gameMap.at(i,gameMapNorth).setGround(borderOld);
 
-		// Place a vending machine in the map
-		gameMap.at(9,4).setGround(new VendingMachine());
+				// New Map
+				Border borderNew = new Border(gameMap.at(i,gameMapNorth+1), "to old map", displayOnMenu);
+				newGameMap.at(i,newGameMapSouth).setGround(borderNew);
+			}
+			// Place a pair of stegosaurs in the middle of the map
+			gameMap.at(30, 12).addActor(new Stegosaur("Male Stegosaur", true));
+			gameMap.at(32, 12).addActor(new Stegosaur("Female Stegosaur", false));
 
-		// Place grass initially
-		for(int i: gameMap.getYRange()){
-			for(int j: gameMap.getXRange()){
-				if(gameMap.at(j,i).getDisplayChar() == '.') {
-					if(probability.calculateProbability(2)) {
-						Grass grass = new Grass();
-						gameMap.at(j,i).setGround(grass);
-						grass.addEcoPoint();
+			// Place a vending machine in the map
+			gameMap.at(9,4).setGround(new VendingMachine());
+
+			// Place grass initially
+			for(int i: gameMap.getYRange()){
+				for(int j: gameMap.getXRange()){
+					if(gameMap.at(j,i).getDisplayChar() == '.') {
+						if(probability.calculateProbability(2)) {
+							Grass grass = new Grass();
+							gameMap.at(j,i).setGround(grass);
+							grass.addEcoPoint();
+						}
 					}
 				}
 			}
+			world.run();
 		}
-		world.run();
 	}
 
 	public static int setMode(Player player){

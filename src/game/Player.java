@@ -10,7 +10,7 @@ public class Player extends Actor implements EcoPointInterface {
 	private Menu menu = new Menu();
 	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(),
 			new FeedingBehaviour(), new BuyingBehaviour()};
-	private int currentMoves = 0;
+	private int currentMoves = -1;
 	private int winningMoves = 0;
 	private int winningEcoPoints = 0;
 	private boolean challengeOrNot = false;
@@ -54,20 +54,17 @@ public class Player extends Actor implements EcoPointInterface {
 		}
 		actions.add(new EndGameAction());
 		display.println("Player currently has " + ecoPoint.getEcoPoint() + " points.");
+
 		if(challengeOrNot){
-			// Game end
-			if(checkMoves()){
-				// Check for winning
-				if(checkWinning()){
-					display.println("Player has won.");
-				}
-				else{
-					display.println("Player has lost");
-				}
-				map.removeActor(this);
-			}
 			addMove();
 			display.println("Number of moves: " + currentMoves);
+			// Check if current points exceeding winning points
+			if(checkWinning()){
+				return endChallenge(display,"Player has won",map);
+			}
+			else if (checkMoves()){
+				return endChallenge(display,"Player has lost",map);
+			}
 		}
 		return menu.showMenu(this, actions, display);
 	}
@@ -93,6 +90,17 @@ public class Player extends Actor implements EcoPointInterface {
 	}
 
 	public boolean checkMoves(){
-		return currentMoves > winningMoves;
+		return currentMoves >= winningMoves;
+	}
+
+	public void resetPointsAndMoves(){
+		currentMoves = -1;
+		ecoPoint.setEcoPoint(0);
+	}
+
+	public Action endChallenge(Display display, String message, GameMap map){
+		display.println(message);
+		map.removeActor(this);
+		return new EndGameAction();
 	}
 }

@@ -1,9 +1,6 @@
 package game;
 
 import edu.monash.fit2099.engine.*;
-import edu.monash.fit2099.interfaces.GroundInterface;
-
-import java.util.ArrayList;
 
 /**
  * Class representing the Player.
@@ -13,7 +10,9 @@ public class Player extends Actor implements EcoPointInterface {
 	private Menu menu = new Menu();
 	private Behaviour[] behaviours = {new HarvestGrassBehaviour(), new SearchFruitBehaviour(),
 			new FeedingBehaviour(), new BuyingBehaviour()};
-	private int moves = 0;
+	private int currentMoves = 0;
+	private int winningMoves = 0;
+	private int winningEcoPoints = 0;
 	private boolean challengeOrNot = false;
 
 
@@ -55,15 +54,45 @@ public class Player extends Actor implements EcoPointInterface {
 		}
 		actions.add(new EndGameAction());
 		display.println("Player currently has " + ecoPoint.getEcoPoint() + " points.");
-		display.println("Number of moves: " + moves);
+		if(challengeOrNot){
+			// Game end
+			if(checkMoves()){
+				// Check for winning
+				if(checkWinning()){
+					display.println("Player has won.");
+				}
+				else{
+					display.println("Player has lost");
+				}
+				map.removeActor(this);
+			}
+			addMove();
+			display.println("Number of moves: " + currentMoves);
+		}
 		return menu.showMenu(this, actions, display);
 	}
 
 	public void addMove(){
-		moves += 1;
+		currentMoves += 1;
 	}
 
 	public void setChallengeOrNot(boolean bool){
 		challengeOrNot = bool;
+	}
+
+	public void setWinningMoves(int winningMoves) {
+		this.winningMoves = winningMoves;
+	}
+
+	public void setWinningEcoPoints(int winningEcoPoints) {
+		this.winningEcoPoints = winningEcoPoints;
+	}
+
+	public boolean checkWinning(){
+		return ecoPoint.getEcoPoint() > winningEcoPoints;
+	}
+
+	public boolean checkMoves(){
+		return currentMoves > winningMoves;
 	}
 }

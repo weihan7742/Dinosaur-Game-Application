@@ -71,6 +71,7 @@ public class Application {
 				"................................................................................",
 				"................................................................................");
 
+
 		GameMap gameMap = new GameMap(groundFactory, map);
 		world.addGameMap(gameMap);
 
@@ -80,6 +81,11 @@ public class Application {
 
 		Player player = new Player("Player", '@', 100);
 		world.addPlayer(player, gameMap.at(9, 4));
+
+		int gameNumber;
+		do{
+			gameNumber = setMode(player);
+		} while(gameNumber != 3);
 
 		// Allows player to move from old map to new map
 		int gameMapNorth = gameMap.getYRange().min();
@@ -116,5 +122,25 @@ public class Application {
 			}
 		}
 		world.run();
+	}
+
+	public static int setMode(Player player){
+		ModeDisplay modeDisplay = new ModeDisplay();
+		int userInput = modeDisplay.chooseMode(player);
+
+		switch(userInput){
+			case 1:
+				player.setChallengeOrNot(true);
+				int moves = modeDisplay.inputNumber("Enter number of moves: ",false);
+				int points = modeDisplay.inputNumber("Enter number of points: ",false);
+				player.setWinningMoves(moves);
+				player.setWinningEcoPoints(points);
+				break;
+
+			case 2:
+				player.setChallengeOrNot(false);
+				break;
+		}
+		return userInput;
 	}
 }

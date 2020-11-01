@@ -53,5 +53,9 @@ Put "[/]" if the item has been resolved. Put "[0]" if the item is ignored/unfixa
 
 16. Try to simplify thirst functionality
 
+17. Better design for baby dinosaur capabilites
+
+18. Test attack action
+
 
 

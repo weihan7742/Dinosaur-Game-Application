@@ -23,7 +23,8 @@ public class AttackBehaviour implements Behaviour {
 
         if (actor.getWeapon() != null && actor.AttackAbility()) {
             for (Exit e: exits) {
-                if ((!(e.getDestination().containsAnActor())) && (!(e.getDestination().getActor() instanceof Player)))
+                if ((!(e.getDestination().containsAnActor())) && (!(e.getDestination().getActor() instanceof Player))
+                        && (!((actor.hasCapability(DinosaurCapability.SMALL)) && e.getDestination().getActor().hasCapability(DinosaurCapability.LARGE))))
                     continue;
                 else {
                     return new AttackAction(e.getDestination().getActor());

@@ -13,6 +13,8 @@ public enum DinosaurCapability {
         ADULT,
         JUVENILE,
         ACROSSWATER,
-        THIRSTY
+        THIRSTY,
+        LARGE,
+        SMALL
 }
 

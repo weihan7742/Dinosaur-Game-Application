@@ -229,6 +229,10 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
         // After 20 turns of being pregnant, dinosaur will create new DinosaurEgg object
         giveBirth(map);
 
+        if (lastAction.getNextAction() != null) {
+            return lastAction.getNextAction();
+        }
+
         for (Behaviour behaviour : behaviours) {
             if (behaviour.getAction(this, map) != null)
                 return behaviour.getAction(this, map);

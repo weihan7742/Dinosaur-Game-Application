@@ -19,6 +19,7 @@ public class Allosaur extends Dinosaur{
         super(name, 'A', 100, gender, 50, "Allosaur");
         addCapability(DinosaurCapability.CARNIVORE);
         addCapability(DinosaurCapability.ADULT);
+        addCapability(DinosaurCapability.LARGE);
     }
 
     @Override

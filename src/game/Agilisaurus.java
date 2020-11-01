@@ -14,14 +14,14 @@ public class Agilisaurus extends Dinosaur {
      */
     public Agilisaurus(String name, boolean male) {
         super(name, 'a', 100, male, 50, "Agilisaurus");
-        addCapability(DinosaurCapability.ACROSSWATER);
         addCapability(DinosaurCapability.HERBIVORE);
         addCapability(DinosaurCapability.CARNIVORE);
+        addCapability(DinosaurCapability.SMALL);
     }
 
     @Override
     public boolean AttackAbility() {
-        return false;
+        return true;
     }
 
     @Override

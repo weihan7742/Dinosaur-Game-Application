@@ -18,6 +18,7 @@ public class Stegosaur extends Dinosaur {
 		super(name, 'd', 100,  male, 50, "Stegosaur");
 		addCapability(DinosaurCapability.HERBIVORE);
 		addCapability(DinosaurCapability.ADULT);
+		addCapability(DinosaurCapability.LARGE);
 	}
 
 	/**

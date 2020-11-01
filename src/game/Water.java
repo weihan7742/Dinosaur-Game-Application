@@ -6,13 +6,11 @@ import edu.monash.fit2099.engine.Ground;
 /**
  * Class representing water terrain type
  */
-public class Water extends Ground implements FoodInterface{
+public class Water extends Ground implements FoodInterface {
 
     public Water(){
         super('~');
-        food.addFood(this.displayChar, 5);
-        addCapability(TypeOfFood.HERBIVOROUS);
-        addCapability(TypeOfFood.CARNIVOROUS);
+        food.addFood(this.displayChar, 20);
         addCapability(TypeOfFood.WATER);
     }
 

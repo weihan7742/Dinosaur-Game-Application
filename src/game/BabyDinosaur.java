@@ -30,7 +30,7 @@ public class BabyDinosaur extends Dinosaur {
      * Assign carnivore or herbivore capability to baby dinosaur.
      */
     private void capabilities() {
-        if (species.equals("Allosaur")) {
+        if (species.equals("Allosaur") || species.equals("Agilisaurus") || species.equals("Archaeopteryx")) {
             addCapability(DinosaurCapability.CARNIVORE);
         } else if (species.equals("Stegosaur")) {
             addCapability(DinosaurCapability.HERBIVORE);

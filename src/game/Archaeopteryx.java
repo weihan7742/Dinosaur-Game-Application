@@ -16,6 +16,7 @@ public class Archaeopteryx extends Dinosaur {
         super(name, 'x', 100, male, 50, "Archaeopteryx");
         addCapability(DinosaurCapability.ACROSSWATER);
         addCapability(DinosaurCapability.CARNIVORE);
+        addCapability(DinosaurCapability.LARGE);
     }
 
     @Override

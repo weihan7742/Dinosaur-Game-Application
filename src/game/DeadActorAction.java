@@ -11,7 +11,7 @@ public class DeadActorAction extends Action {
 
     @Override
     public String execute(Actor actor, GameMap map) {
-        map.locationOf(actor).addItem(new Corpse("dead " + actor));
+        map.locationOf(actor).addItem(new Corpse(actor.toString(), actor.getDisplayChar()) );
         map.removeActor(actor);
         return actor + " is dead";
     }

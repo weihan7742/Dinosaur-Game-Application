@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * Child class of Dinosaur which represents a carnivore Dinosaur.
  */
-public class Allosaur extends Dinosaur{
+public class Allosaur extends Dinosaur implements CorpseInterface {
 
     /**
      * Constructor.
@@ -16,10 +16,11 @@ public class Allosaur extends Dinosaur{
      * @param gender
      */
     public Allosaur(String name, boolean gender) {
-        super(name, 'A', 100, gender, 50, "Allosaur");
+        super(name, 'a', 100, gender, 50, "Allosaur");
         addCapability(DinosaurCapability.CARNIVORE);
         addCapability(DinosaurCapability.ADULT);
         addCapability(DinosaurCapability.LARGE);
+        point.addCorpse(this.displayChar, 50);
     }
 
     @Override

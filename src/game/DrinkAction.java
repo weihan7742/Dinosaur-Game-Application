@@ -25,7 +25,10 @@ public class DrinkAction extends Action implements FoodInterface {
 
     @Override
     public Action getNextAction() {
-        return new WanderBehaviour().getAction(actor, map);
+        if (new WanderBehaviour().getAction(actor, map) != null) {
+            return new WanderBehaviour().getAction(actor, map);
+        }
+        return null;
     }
 
     @Override

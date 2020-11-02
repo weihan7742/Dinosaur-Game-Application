@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 
-public class Agilisaurus extends Dinosaur {
+public class Agilisaurus extends Dinosaur implements CorpseInterface {
     /**
      * Constructor.
      *
@@ -13,10 +13,11 @@ public class Agilisaurus extends Dinosaur {
      * @param male
      */
     public Agilisaurus(String name, boolean male) {
-        super(name, 'a', 100, male, 50, "Agilisaurus");
+        super(name, 's', 100, male, 50, "Agilisaurus");
         addCapability(DinosaurCapability.HERBIVORE);
         addCapability(DinosaurCapability.CARNIVORE);
         addCapability(DinosaurCapability.SMALL);
+        point.addCorpse(this.displayChar, 10);
     }
 
     @Override

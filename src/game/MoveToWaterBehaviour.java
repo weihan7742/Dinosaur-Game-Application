@@ -15,7 +15,7 @@ public class MoveToWaterBehaviour implements Behaviour {
                 //    return new MoveActorAction(exit.getDestination(), exit.getName());
                 //}
                 for (Exit otherExit : exit.getDestination().getExits()) {
-                    if (otherExit.getDestination().getGround().hasCapability(TypeOfFood.WATER)) {
+                    if (otherExit.getDestination().getGround().hasCapability(TypeOfFood.WATER) && !(otherExit.getDestination().containsAnActor())) {
                         return new MoveActorAction(exit.getDestination(), exit.getName());
                     }
                 }

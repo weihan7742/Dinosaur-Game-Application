@@ -6,7 +6,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * Child class of Dinosaur which represents a herbivorous dinosaur.
  */
-public class Stegosaur extends Dinosaur {
+public class Stegosaur extends Dinosaur implements CorpseInterface {
 
 	/**
 	 * Constructor.
@@ -19,6 +19,7 @@ public class Stegosaur extends Dinosaur {
 		addCapability(DinosaurCapability.HERBIVORE);
 		addCapability(DinosaurCapability.ADULT);
 		addCapability(DinosaurCapability.LARGE);
+		point.addCorpse(this.displayChar, 20);
 	}
 
 	/**

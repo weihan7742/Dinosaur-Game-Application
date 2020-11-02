@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 
-public class Archaeopteryx extends Dinosaur {
+public class Archaeopteryx extends Dinosaur implements CorpseInterface {
     /**
      * Constructor.
      *
@@ -17,6 +17,7 @@ public class Archaeopteryx extends Dinosaur {
         addCapability(DinosaurCapability.ACROSSWATER);
         addCapability(DinosaurCapability.CARNIVORE);
         addCapability(DinosaurCapability.LARGE);
+        point.addCorpse('X', 30);
     }
 
     @Override
@@ -29,5 +30,4 @@ public class Archaeopteryx extends Dinosaur {
         return super.playTurn(actions, lastAction, map, display);
     }
 
-    //TODO needs to traverse through water???
 }

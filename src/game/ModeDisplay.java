@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class ModeDisplay {
 
-    private Scanner scanner = new Scanner(System.in);
     private Display display = new Display();
     private ArrayList<String> modes = new ArrayList<>();
 
@@ -26,6 +25,7 @@ public class ModeDisplay {
     }
 
     public int inputNumber(String condition, boolean chooseMode){
+        Scanner scanner = new Scanner(System.in);
         boolean valid = false;
         int input = 0;
         do{
@@ -43,6 +43,7 @@ public class ModeDisplay {
 
             } catch (Exception e) {
                 display.println("Invalid input");
+                scanner = new Scanner(System.in);
             }
         } while(!valid);
         displayDivider();

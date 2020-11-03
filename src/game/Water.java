@@ -8,6 +8,9 @@ import edu.monash.fit2099.engine.Ground;
  */
 public class Water extends Ground implements FoodInterface {
 
+    /**
+     * Constructor
+     */
     public Water(){
         super('~');
         food.addFood(this.displayChar, 20);

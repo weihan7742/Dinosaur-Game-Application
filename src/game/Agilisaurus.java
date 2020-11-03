@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Actions;
 import edu.monash.fit2099.engine.Display;
 import edu.monash.fit2099.engine.GameMap;
 
-public class Agilisaurus extends Dinosaur implements CorpseInterface {
+public class Agilisaurus extends Dinosaur{
     /**
      * Constructor.
      *

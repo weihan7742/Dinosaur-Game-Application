@@ -62,6 +62,7 @@ public class Player extends Actor implements EcoPointInterface {
 			if(checkWinning()){
 				return endChallenge(display,"Player has won",map);
 			}
+			// Check if current moves exceeded moves set
 			else if (checkMoves()){
 				return endChallenge(display,"Player has lost",map);
 			}
@@ -69,35 +70,74 @@ public class Player extends Actor implements EcoPointInterface {
 		return menu.showMenu(this, actions, display);
 	}
 
+	/**
+	 * Add move to existing move.
+	 */
 	public void addMove(){
 		currentMoves += 1;
 	}
 
+	/**
+	 * Set the game to challenge mode or not.
+	 *
+	 * @param bool true if challenge mode, false otherwise.
+	 */
 	public void setChallengeOrNot(boolean bool){
 		challengeOrNot = bool;
 	}
 
+	/**
+	 * Set winning moves if it is challenge mode
+	 *
+	 * @param winningMoves number of moves allowed
+	 */
 	public void setWinningMoves(int winningMoves) {
 		this.winningMoves = winningMoves;
 	}
 
+	/**
+	 * Set winning eco points if it is challenge mode
+	 *
+	 * @param winningEcoPoints number of eco points
+	 */
 	public void setWinningEcoPoints(int winningEcoPoints) {
 		this.winningEcoPoints = winningEcoPoints;
 	}
 
+	/**
+	 * Check if current eco points exceeded to set eco points.
+	 *
+	 * @return true if exceeded, false otherwise
+	 */
 	public boolean checkWinning(){
 		return ecoPoint.getEcoPoint() > winningEcoPoints;
 	}
 
+	/**
+	 * Check if current moves exceeded or equal to set moves.
+	 *
+	 * @return true if exceeded or equal, false otherwise
+	 */
 	public boolean checkMoves(){
 		return currentMoves >= winningMoves;
 	}
 
+	/**
+	 * Reset current moves and eco points when game restarted
+	 */
 	public void resetPointsAndMoves(){
 		currentMoves = -1;
 		ecoPoint.setEcoPoint(0);
 	}
 
+	/**
+	 * End challenge when winning or losing condition is met, or when user chooses to end game.
+	 *
+	 * @param display I/O input
+	 * @param message String to be displayed
+	 * @param map Current game map.
+	 * @return EndGameAction to end the game
+	 */
 	public Action endChallenge(Display display, String message, GameMap map){
 		display.println(message);
 		map.removeActor(this);

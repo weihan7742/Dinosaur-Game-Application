@@ -25,7 +25,7 @@ public class Agilisaurus extends Dinosaur{
         addCapability(DinosaurCapability.CARNIVORE);
         addCapability(DinosaurCapability.ADULT);
         addCapability(DinosaurCapability.SMALL);
-        point.addCorpse(this.displayChar, 10);
+        food.addFood(this.displayChar, 10);
     }
 
     @Override

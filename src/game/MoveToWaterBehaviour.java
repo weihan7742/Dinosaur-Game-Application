@@ -11,9 +11,6 @@ public class MoveToWaterBehaviour implements Behaviour {
         if (actor.hasCapability(DinosaurCapability.THIRSTY)) {
             List<Exit> exits = map.locationOf(actor).getExits();
             for (Exit exit : exits) {
-                //if (exit.getDestination().getGround().hasCapability(TypeOfFood.WATER)) {
-                //    return new MoveActorAction(exit.getDestination(), exit.getName());
-                //}
                 for (Exit otherExit : exit.getDestination().getExits()) {
                     if (otherExit.getDestination().getGround().hasCapability(TypeOfFood.WATER) && !(otherExit.getDestination().containsAnActor())) {
                         return new MoveActorAction(exit.getDestination(), exit.getName());

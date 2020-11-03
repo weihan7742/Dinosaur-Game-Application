@@ -25,7 +25,7 @@ public class Archaeopteryx extends Dinosaur {
         addCapability(DinosaurCapability.CARNIVORE);
         addCapability(DinosaurCapability.ADULT);
         addCapability(DinosaurCapability.LARGE);
-        point.addCorpse('X', 30);
+        food.addFood(this.displayChar, 30);
     }
 
     @Override

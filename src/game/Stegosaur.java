@@ -22,7 +22,7 @@ public class Stegosaur extends Dinosaur{
 		addCapability(DinosaurCapability.HERBIVORE);
 		addCapability(DinosaurCapability.ADULT);
 		addCapability(DinosaurCapability.LARGE);
-		point.addCorpse(this.displayChar, 20);
+		food.addFood(this.displayChar, 20);
 	}
 
 	/**

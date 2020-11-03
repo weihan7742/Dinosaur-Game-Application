@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * An abstract class which represents Dinosaur.
  */
-public abstract class Dinosaur extends Actor implements EatingInterface,BreedingInterface, DrinksInterface,CorpseInterface {
+public abstract class Dinosaur extends Actor implements EatingInterface, BreedingInterface, DrinksInterface, FoodInterface {
 
     private boolean male;
     private boolean pregnant;

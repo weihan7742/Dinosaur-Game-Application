@@ -27,7 +27,7 @@ public class BabyDinosaur extends Dinosaur{
         this.species = species;
         capabilities();
         addCapability(DinosaurCapability.JUVENILE);
-        point.addCorpse(this.displayChar, 10);
+        food.addFood(this.displayChar, 10);
     }
 
     /**

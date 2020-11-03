@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * Child class of Dinosaur which represents a large adult carnivorous Dinosaur.
  */
-public class Allosaur extends Dinosaur{
+public class Allosaur extends Dinosaur {
 
     /**
      * Constructor.
@@ -21,7 +21,7 @@ public class Allosaur extends Dinosaur{
         addCapability(DinosaurCapability.CARNIVORE);
         addCapability(DinosaurCapability.ADULT);
         addCapability(DinosaurCapability.LARGE);
-        point.addCorpse(this.displayChar, 50);
+        food.addFood(this.displayChar, 50);
     }
 
     @Override

@@ -98,6 +98,7 @@ public class Application {
 			int gameMapNorth = gameMap.getYRange().min();
 			int newGameMapSouth = newGameMap.getYRange().max();
 			boolean displayOnMenu;
+			// Set border
 			for(int i=0; i<gameMap.getXRange().max()+1; i++){ //
 				displayOnMenu = i % 3 == 0;
 				// Old Map
@@ -141,6 +142,12 @@ public class Application {
 		}
 	}
 
+	/**
+	 * Allow user to set game mode
+	 *
+	 * @param player Player playing
+	 * @return number representing game mode
+	 */
 	public static int setMode(Player player){
 		ModeDisplay modeDisplay = new ModeDisplay();
 		int userInput = modeDisplay.chooseMode(player);

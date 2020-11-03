@@ -1,7 +1,8 @@
 package game;
 
-import edu.monash.fit2099.engine.Item;
-
+/**
+ * Interface to contain CorpseFoodPoint object to store foodPoint for different corpse
+ */
 public interface CorpseInterface {
     CorpseFoodPoint point = new CorpseFoodPoint();
 }

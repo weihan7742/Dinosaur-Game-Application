@@ -2,7 +2,7 @@ package game;
 
 
 /**
- * Child class of FoodItem which can be consumed by Allosaur.
+ * Child class of PortableItem which can be consumed by Carnivorous Dinosaurs
  */
 public class Corpse extends PortableItem implements FoodInterface, CorpseInterface {
 
@@ -10,7 +10,8 @@ public class Corpse extends PortableItem implements FoodInterface, CorpseInterfa
     /***
      * Constructor.
      *
-     * @param name the name of this Item
+     * @param name the name of the Corpse item
+     * @param displayChar display character of the corpse
      */
     public Corpse(String name, char displayChar) {
         super("dead " + name, displayChar);

@@ -4,14 +4,17 @@ package game;
 import edu.monash.fit2099.engine.*;
 
 /**
- * Child class of Dinosaur which represents a herbivorous dinosaur.
+ * Child class of Dinosaur which represents a large adult herbivorous dinosaur.
  */
 public class Stegosaur extends Dinosaur{
 
 	/**
 	 * Constructor.
 	 *
-	 * All Stegosaurs are represented by a 'd' and have 100 hit points.
+	 * All Stegosaurs are represented by a 'd' and have 100 hit points and food level of 50.
+	 * Stegosaurs are herbivorous and has HERBIVORE capability
+	 * Stegosaurs is large and has a LARGE capability
+	 *
 	 * @param name the name of this Stegosaur
 	 */
 	public Stegosaur(String name, Boolean male) {

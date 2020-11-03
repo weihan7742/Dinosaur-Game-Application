@@ -2,12 +2,21 @@ package game;
 
 import edu.monash.fit2099.engine.*;
 
+/**
+ *  Special Action to allow Actor to drink
+ */
 public class DrinkAction extends Action implements FoodInterface {
 
     private Actor actor;
     private GameMap map;
     private Ground drink;
 
+    /**
+     * Constructor
+     * @param actor Actor to perform drinking action
+     * @param map   Current map of Actor
+     * @param drink Drink to be drink
+     */
     public DrinkAction (Actor actor, GameMap map, Ground drink) {
         this.actor = actor;
         this.map = map;

@@ -14,6 +14,9 @@ public class BabyDinosaur extends Dinosaur{
     /**
      * Constructor.
      *
+     * All baby dinosaurs are represented by 'b'
+     * Baby Dinosaurs have different diet according to their species
+     *
      * @param name Name of dinosaur
      * @param male True if male, false if female
      * @param species Species of dinosaur

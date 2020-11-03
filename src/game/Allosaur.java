@@ -3,14 +3,15 @@ package game;
 import edu.monash.fit2099.engine.*;
 
 /**
- * Child class of Dinosaur which represents a carnivore Dinosaur.
+ * Child class of Dinosaur which represents a large adult carnivorous Dinosaur.
  */
 public class Allosaur extends Dinosaur{
 
     /**
      * Constructor.
      *
-     * Allow Allosaur to have CARNIVORE capability.
+     * All Allosaurs are represented by 'a' and have 100 hit points and foodLevel of 50
+     * Allow Allosaur to have CARNIVORE and LARGE capability.
      *
      * @param name
      * @param gender

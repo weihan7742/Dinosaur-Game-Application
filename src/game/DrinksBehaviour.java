@@ -4,6 +4,9 @@ import edu.monash.fit2099.engine.*;
 
 import java.util.List;
 
+/**
+ * A class to allow Actor to have drinking behaviour when is on or besides water
+ */
 public class DrinksBehaviour implements Behaviour, FoodInterface {
 
     @Override

@@ -113,10 +113,8 @@ public class Application {
 			// Place a pair of stegosaurs in the middle of the map
 			gameMap.at(30, 12).addActor(new Stegosaur("Male Stegosaur", true));
 			gameMap.at(32, 12).addActor(new Stegosaur("Female Stegosaur", false));
-			gameMap.at(30, 5).addActor(new Allosaur("Female Allosaur", false));
-			//gameMap.at(32, 5).addActor(new Allosaur("Male Allosaur", true));
-			//newGameMap.at(5,15).addActor(new Stegosaur("Male Stegosaur", true));
-			//newGameMap.at(7,15).addActor(new Stegosaur("Female Stegosaur",false));
+			newGameMap.at(5,15).addActor(new Stegosaur("Male Stegosaur", true));
+			newGameMap.at(7,15).addActor(new Stegosaur("Female Stegosaur",false));
 
 			// Place a vending machine in the map
 			gameMap.at(9,4).setGround(new VendingMachine());

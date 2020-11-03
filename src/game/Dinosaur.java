@@ -19,6 +19,8 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
     private int waterLevel;
     private final static int MINIMUM_FOOD_LEVEL = 0;
     private final static int MAXIMUM_FOOD_LEVEL = 100;
+    private final static int MINIMUM_WATER_LEVEL = 0;
+    private final static int MAXIMUM_WATER_LEVEL = 100;
 
     /**
      * Constructor.
@@ -82,18 +84,24 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
     public void increaseFoodLevel(int foodPoints) {
         if (foodLevel + foodPoints <= MAXIMUM_FOOD_LEVEL) {
             foodLevel += foodPoints;
-        }
-        else {
+        } else {
             foodLevel = 100;
         }
     }
 
     public void decreaseWaterLevel(int point) {
-        waterLevel -= point;
+        if (waterLevel > MINIMUM_WATER_LEVEL) {
+            waterLevel -= point;
+        }
     }
 
     public void increaseWaterLevel(int point) {
-        waterLevel += point;
+        if (waterLevel + point <= MAXIMUM_WATER_LEVEL) {
+            waterLevel += point;
+        } else {
+            waterLevel = 100;
+        }
+
     }
 
 

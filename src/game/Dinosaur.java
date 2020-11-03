@@ -166,7 +166,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface,Breeding
 
             if (partner.hasCapability(DinosaurCapability.HEALTHY) &&
                     (actor.hasCapability(DinosaurCapability.ADULT) &&
-                            !((BreedingInterface) partner).isPregnant())) {
+                            !(((BreedingInterface) partner).isPregnant()))) {
 
                 return this.isMale() != ((BreedingInterface) partner).isMale();
             }

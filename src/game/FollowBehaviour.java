@@ -26,7 +26,6 @@ public class FollowBehaviour implements Behaviour {
 	@Override
 	public Action getAction(Actor actor, GameMap map) {
 		List<Exit> exits = new ArrayList<>();
-		//CalculateDistance distance = new CalculateDistance();
 		if(!map.contains(target) || !map.contains(actor))
 			return null;
 

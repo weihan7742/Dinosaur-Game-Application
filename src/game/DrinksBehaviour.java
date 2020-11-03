@@ -17,10 +17,10 @@ public class DrinksBehaviour implements Behaviour, FoodInterface {
         }
         List<Exit> exits = map.locationOf(actor).getExits();
         for (Exit exit: exits) {
-            Ground ground1 = exit.getDestination().getGround();
-            if (food.containsFood(ground1.getDisplayChar())
-                    && ground.hasCapability(TypeOfFood.WATER)) {
-                return new DrinkAction(actor, map, ground1);
+            Ground nextGround = exit.getDestination().getGround();
+            if (food.containsFood(nextGround.getDisplayChar())
+                    && nextGround.hasCapability(TypeOfFood.WATER)) {
+                return new DrinkAction(actor, map, nextGround);
             }
         }
             return null;

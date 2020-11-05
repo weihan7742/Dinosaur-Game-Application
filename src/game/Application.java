@@ -73,12 +73,13 @@ public class Application {
 		Player player = new Player("Player", '@', 100);
 
 		int gameNumber;
+		int endGameNumber = -1; // Quitting game always have -1 return
 		while(true){
 			World world = new World(new Display());
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree(),new Water());
 
 			gameNumber = setMode(player);
-			if(gameNumber == 3){
+			if(gameNumber == endGameNumber){
 				break;
 			}
 			// Reset points and moves
@@ -165,6 +166,9 @@ public class Application {
 			case 2:
 				player.setChallengeOrNot(false);
 				break;
+
+			case 3: // Quit
+				return -1;
 		}
 		return userInput;
 	}

@@ -82,4 +82,8 @@ public class ModeDisplay {
     public void displayDivider(){
         display.println("----------------------");
     }
+
+    public ArrayList<String> getModes() {
+        return new ArrayList<>(modes);
+    }
 }

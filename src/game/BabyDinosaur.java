@@ -53,6 +53,10 @@ public class BabyDinosaur extends Dinosaur{
                 dino = new Allosaur(gender() + " " + species, male);
             } else if (species == "Stegosaur") {
                 dino = new Stegosaur(gender() + " " + species, male);
+            } else if (species == "Agilisaurus"){
+                dino = new Agilisaurus(gender() + " " + species, male);
+            } else if (species == "Archaeopteryx"){
+                dino = new Archaeopteryx(gender() + " " + species, male);
             }
             return new GrowUpAction(dino);
         }

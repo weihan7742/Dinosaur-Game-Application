@@ -11,7 +11,7 @@ public class Water extends Ground implements FoodInterface {
     /**
      * Constructor
      */
-    public Water(){
+    public Water() {
         super('~');
         food.addFood(this.displayChar, 20);
         addCapability(TypeOfFood.WATER);

@@ -34,7 +34,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
         super(name, displayChar, hitPoints);
         this.male = male;
         this.foodLevel = foodLevel;
-        this.waterLevel = 60;
+        this.waterLevel = 70;
         this.species = species;
     }
 
@@ -52,13 +52,9 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
      */
     public void hunger(Actor actor, GameMap map, Display display) {
         if (foodLevel < 30 && foodLevel > 0) {
-
             display.println(actor + " at (" + map.locationOf(this).x() + ", "
                     + map.locationOf(this).y() + ") is getting hungry");
-
-            if ((!hasCapability(DinosaurCapability.HUNGRY))) {
-                addCapability(DinosaurCapability.HUNGRY);
-            }
+            addCapability(DinosaurCapability.HUNGRY);
         } else if (foodLevel >= 30) {
             removeCapability(DinosaurCapability.HUNGRY);
             if (foodLevel >= 60) {
@@ -109,9 +105,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
         if (waterLevel > 0 && waterLevel < 45) {
             display.println(actor + " at (" + map.locationOf(this).x() + ", "
                     + map.locationOf(this).y() + ") is thirsty");
-            if ((!hasCapability(DinosaurCapability.THIRSTY))) {
-                addCapability(DinosaurCapability.THIRSTY);
-            }
+            addCapability(DinosaurCapability.THIRSTY);
         } else if (waterLevel > 45) {
             removeCapability(DinosaurCapability.THIRSTY);
         } else {
@@ -216,9 +210,6 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
 
     @Override
     public Action playTurn(Actions actions, Action lastAction, GameMap map, Display display) {
-        //TODO: DELETE (debugging purpose)
-        display.println(this.name + " at (" + map.locationOf(this).x() + ", " +
-                        map.locationOf(this).y() + ")" + waterLevel);
         //Decrease foodLevel by 1
         decreaseFoodLevel(1);
         //Decrease waterLevel by 1

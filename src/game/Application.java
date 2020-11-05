@@ -74,12 +74,12 @@ public class Application {
 
 		int gameNumber;
 		int endGameNumber = -1; // Quitting game always have -1 return
-		while(true){
+		while (true) {
 			World world = new World(new Display());
 			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree(),new Water());
 
 			gameNumber = setMode(player);
-			if(gameNumber == endGameNumber){
+			if (gameNumber == endGameNumber) {
 				break;
 			}
 			// Reset player
@@ -101,7 +101,7 @@ public class Application {
 			int newGameMapSouth = newGameMap.getYRange().max();
 			boolean displayOnMenu;
 			// Set border to allow player to move across maps
-			for(int i=0; i<gameMap.getXRange().max()+1; i++){ //
+			for (int i=0; i<gameMap.getXRange().max()+1; i++) { //
 				displayOnMenu = i % 3 == 0;
 				// Old Map
 				Border borderOld = new Border(newGameMap.at(i,newGameMapSouth-1),"to new map",displayOnMenu);

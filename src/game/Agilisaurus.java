@@ -8,7 +8,7 @@ import edu.monash.fit2099.engine.GameMap;
 /**
  * Child class of Dinosaur which represents a small adult Omnivorous Dinosaur
  */
-public class Agilisaurus extends Dinosaur{
+public class Agilisaurus extends Dinosaur {
     /**
      * Constructor.
      *

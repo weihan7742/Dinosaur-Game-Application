@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * A class which allows Dinosaur to move to food source when below certain food level.
  */
-public class MoveToFoodBehaviour implements Behaviour,FoodInterface {
+public class MoveToFoodBehaviour implements Behaviour, FoodInterface {
 
     @Override
     public Action getAction(Actor actor, GameMap map) {

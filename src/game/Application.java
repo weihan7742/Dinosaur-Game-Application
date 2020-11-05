@@ -13,8 +13,6 @@ import edu.monash.fit2099.engine.*;
 public class Application {
 
 	public static void main(String[] args) {
-		World world = new World(new Display());
-		FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree(),new Water());
 		Probability probability = new Probability();
 
 		List<String> map = Arrays.asList(
@@ -76,6 +74,9 @@ public class Application {
 
 		int gameNumber;
 		while(true){
+			World world = new World(new Display());
+			FancyGroundFactory groundFactory = new FancyGroundFactory(new Dirt(), new Wall(), new Floor(), new Tree(),new Water());
+
 			gameNumber = setMode(player);
 			if(gameNumber == 3){
 				break;
@@ -98,7 +99,7 @@ public class Application {
 			int gameMapNorth = gameMap.getYRange().min();
 			int newGameMapSouth = newGameMap.getYRange().max();
 			boolean displayOnMenu;
-			// Set border
+			// Set border to allow player to move across maps
 			for(int i=0; i<gameMap.getXRange().max()+1; i++){ //
 				displayOnMenu = i % 3 == 0;
 				// Old Map

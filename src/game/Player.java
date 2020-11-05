@@ -123,14 +123,6 @@ public class Player extends Actor implements EcoPointInterface {
 	}
 
 	/**
-	 * Reset current moves and eco points when game restarted
-	 */
-	public void resetPointsAndMoves(){
-		currentMoves = -1;
-		ecoPoint.setEcoPoint(0);
-	}
-
-	/**
 	 * End challenge when winning or losing condition is met, or when user chooses to end game.
 	 *
 	 * @param display I/O input

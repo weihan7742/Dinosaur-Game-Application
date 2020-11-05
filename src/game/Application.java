@@ -82,8 +82,8 @@ public class Application {
 			if(gameNumber == endGameNumber){
 				break;
 			}
-			// Reset points and moves
-			player.resetPointsAndMoves();
+			// Reset player
+			player = new Player("Player", '@', 100);
 
 			// Add game map (old)
 			GameMap gameMap = new GameMap(groundFactory, map);

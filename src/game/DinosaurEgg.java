@@ -45,13 +45,17 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
     }
 
     /**
-     * Method to calculate Eco Points
+     * Method to calculate hatches points.
      */
     public void calculateHatchesPoints() {
         if (species == "Stegosaur") {
             hatchesPoints = 100;
-        } else {
+        } else if (species == "Allosaur"){
             hatchesPoints = 1000;
+        } else if (species == "Agilisaurus"){
+            hatchesPoints = 500;
+        } else if (species == "Archaeopteryx"){
+            hatchesPoints = 500;
         }
     }
 
@@ -64,6 +68,9 @@ public class DinosaurEgg extends PortableItem implements EcoPointInterface, Food
         return hatchesPoints;
     }
 
+    /**
+     * Method to calculate dinosaur egg price according to species.
+     */
     public void calculateItemPrice() {
         if(species == "Stegosaur") {
             itemPrice = 200;

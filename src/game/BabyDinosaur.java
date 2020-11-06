@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.*;
 /**
  * A class which represents the grow up product of dinosaur eggs.
  */
-public class BabyDinosaur extends Dinosaur{
+public class BabyDinosaur extends Dinosaur {
 
     private int age;
     private boolean male;

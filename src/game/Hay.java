@@ -3,7 +3,7 @@ package game;
 /**
  * Child class of FoodItem which represents hay
  */
-public class Hay extends PortableItem implements FoodInterface,ItemSoldInterface {
+public class Hay extends PortableItem implements FoodInterface, ItemSoldInterface {
 
     private static final int FOOD_POINT = 20;
     private static final int ITEM_PRICE = 20;

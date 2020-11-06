@@ -5,7 +5,7 @@ import edu.monash.fit2099.engine.Location;
 /**
  * A child class of FoodItem which represents fruit in the game.
  */
-public class Fruit extends PortableItem implements FoodInterface,ItemSoldInterface {
+public class Fruit extends PortableItem implements FoodInterface, ItemSoldInterface {
 
     private static final int FOOD_POINT = 30;
     private static final int ITEM_PRICE = 30;

@@ -19,6 +19,6 @@ public class Water extends Ground implements FoodInterface {
 
     @Override
     public boolean canActorEnter(Actor actor) {
-        return actor.hasCapability(DinosaurCapability.ACROSSWATER);
+        return actor.hasCapability(DinosaurCapability.ACROSS_WATER);
     }
 }

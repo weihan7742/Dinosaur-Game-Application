@@ -159,7 +159,6 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
     /**
      * Get string representation of gender.
      *
-     * @return
      */
     public String gender() {
         if (isMale()) {
@@ -176,14 +175,16 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
      * @return true if both Dinosaurs has met the conditions to breed, false if not
      */
     public boolean capablePregnant(Actor actor, Actor partner) {
-        if (actor.hasCapability(DinosaurCapability.HEALTHY) &&
-                (actor.hasCapability(DinosaurCapability.ADULT) && !(isPregnant()))) {
+        if (this.species.equals(((Dinosaur)partner).species)) {
+            if (actor.hasCapability(DinosaurCapability.HEALTHY) &&
+                    (actor.hasCapability(DinosaurCapability.ADULT) && !(isPregnant()))) {
 
-            if (partner.hasCapability(DinosaurCapability.HEALTHY) &&
-                    (actor.hasCapability(DinosaurCapability.ADULT) &&
-                            !(((BreedingInterface) partner).isPregnant()))) {
+                if (partner.hasCapability(DinosaurCapability.HEALTHY) &&
+                        (actor.hasCapability(DinosaurCapability.ADULT) &&
+                                !(((BreedingInterface) partner).isPregnant()))) {
 
-                return this.isMale() != ((BreedingInterface) partner).isMale();
+                    return this.isMale() != ((BreedingInterface) partner).isMale();
+                }
             }
         }
         return false;
@@ -207,6 +208,7 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
                 return new DeadActorAction();
             } else if (foodLevel > 0 && waterLevel > 0) {
                 removeCapability(DinosaurCapability.UNCONSCIOUS);
+                turn = 0;
             }
             return new DoNothingAction();
         }
@@ -220,9 +222,10 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
     public void giveBirth(GameMap map) {
         if (isPregnant()) {
             period ++;
-            if (period == 20) {
+            if (period >= 20) {
                 map.locationOf(this).addItem(new DinosaurEgg(species));
                 setPregnant(false);
+                period = 0;
             }
         }
     }

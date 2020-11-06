@@ -30,7 +30,7 @@ public class Archaeopteryx extends Dinosaur {
 
     @Override
     public boolean AttackAbility() {
-        return false;
+        return true;
     }
 
     @Override

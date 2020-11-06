@@ -21,7 +21,7 @@ public class Archaeopteryx extends Dinosaur {
      */
     public Archaeopteryx(String name, boolean male) {
         super(name, 'x', 100, male, 50, "Archaeopteryx");
-        addCapability(DinosaurCapability.ACROSSWATER);
+        addCapability(DinosaurCapability.ACROSS_WATER);
         addCapability(DinosaurCapability.CARNIVORE);
         addCapability(DinosaurCapability.ADULT);
         addCapability(DinosaurCapability.LARGE);

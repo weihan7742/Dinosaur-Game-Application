@@ -18,7 +18,7 @@ public class Border extends Ground {
      * @param direction String message to be displayed
      * @param displayOrNot boolean if it should display the direction message
      */
-    public Border(Location location, String direction, Boolean displayOrNot){
+    public Border(Location location, String direction, Boolean displayOrNot) {
         super('-');
         this.newLocation = location;
         this.newDirection = direction;
@@ -26,7 +26,7 @@ public class Border extends Ground {
     }
 
     @Override
-    public Actions allowableActions(Actor actor, Location location, String direction){
+    public Actions allowableActions(Actor actor, Location location, String direction) {
         Actions actions = super.allowableActions(actor,location,direction);
         // Ensures that no multiple options appearing on the user menu
         if(displayOnMenuOrNot){

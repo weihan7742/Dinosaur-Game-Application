@@ -4,6 +4,9 @@ import edu.monash.fit2099.engine.*;
 
 import java.util.List;
 
+/**
+ * A class which allows Dinosaur to move to Water when below certain water level.
+ */
 public class MoveToWaterBehaviour implements Behaviour {
 
     @Override

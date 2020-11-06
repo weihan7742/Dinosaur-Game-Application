@@ -85,12 +85,22 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
         }
     }
 
+    /**
+     * Decrease water level based on point
+     *
+     * @param point points to be deducted from water level
+     */
     public void decreaseWaterLevel(int point) {
         if (waterLevel > MINIMUM_WATER_LEVEL) {
             waterLevel -= point;
         }
     }
 
+    /**
+     * Increase water level based on point
+     *
+     * @param point points to be added to water level
+     */
     public void increaseWaterLevel(int point) {
         if (waterLevel + point <= MAXIMUM_WATER_LEVEL) {
             waterLevel += point;
@@ -100,7 +110,13 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
 
     }
 
-
+    /**
+     * Implement thirst feature for dinosaurs
+     *
+     * @param actor current actor
+     * @param map current running game map
+     * @param display current I/O for system
+     */
     public void thirst(Actor actor, GameMap map, Display display) {
         if (waterLevel > 0 && waterLevel < 45) {
             display.println(actor + " at (" + map.locationOf(this).x() + ", "
@@ -140,6 +156,11 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
         return male;
     }
 
+    /**
+     * Get string representation of gender.
+     *
+     * @return
+     */
     public String gender() {
         if (isMale()) {
             return "Male";
@@ -191,7 +212,6 @@ public abstract class Dinosaur extends Actor implements EatingInterface, Breedin
         }
         return null;
     }
-
 
     /**
      * Check the pregnancy term and lay a DinosaurEgg when the actor reaches a full term pregnancy

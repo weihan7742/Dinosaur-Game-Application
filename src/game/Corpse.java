@@ -8,18 +8,6 @@ public class Corpse extends PortableItem implements FoodInterface {
 
     /***
      * Constructor.
-     * Corpse item for dead Actor other than Dinosaurs
-     * @param name the name of the Corpse item
-     */
-    public Corpse(String name) {
-        super(name, '%');
-        food.addFood(this.displayChar, 20);
-        addCapability(TypeOfFood.CARNIVOROUS);
-        addCapability(DinosaurCapability.DEAD);
-    }
-
-    /***
-     * Constructor.
      *
      * Corpse item for dead Dinosaurs
      * @param name the name of the Corpse item

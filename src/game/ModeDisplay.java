@@ -83,6 +83,11 @@ public class ModeDisplay {
         display.println("----------------------");
     }
 
+    /**
+     * Retrieve array list of game modes.
+     *
+     * @return array list of game modes
+     */
     public ArrayList<String> getModes() {
         return new ArrayList<>(modes);
     }
